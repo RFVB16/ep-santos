@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="300">
+<title>EP — Ao Vivo</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: #f0f2f5; color: #1a1a1a; }
+
+.header { background: #1B4F72; color: white; padding: 10px 16px;
+           display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+.header .meta { font-size: 11px; opacity: .85; text-align: right; line-height: 1.5; }
+
+.stats { display: flex; gap: 16px; padding: 7px 14px; background: #eaf0fb;
+         border-bottom: 1px solid #d0daf0; font-size: 11px; color: #1B4F72; }
+.stats b { font-weight: 700; }
+
+.container { display: flex; gap: 12px; padding: 12px; max-width: 100%; margin: 0 auto; height: calc(100vh - 100px); }
+
+.panel { background: white; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.12); overflow: hidden; }
+.panel-title { background: #2E86C1; color: white; padding: 7px 12px;
+                font-size: 12px; font-weight: 700; letter-spacing: .5px; }
+
+/* Fila */
+.fila { width: 155px; flex-shrink: 0; overflow-y: auto; }
+.fila table { width: 100%; border-collapse: collapse; }
+.fila td { padding: 3px 5px; border-bottom: 1px solid #eee; }
+.pos { width: 24px; font-weight: 700; color: #888; font-size: 10px; }
+.prat { font-weight: 700; font-size: 12px; letter-spacing: .3px; }
+.st { text-align: right; font-size: 10px; }
+.fila .badge { font-size: 9px; padding: 1px 4px; }
+
+/* Projeção */
+.proj { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.proj-scroll { flex: 1; overflow-y: scroll; overflow-x: auto;
+                scrollbar-width: thin; scrollbar-color: #2E86C1 #f0f0f0; }
+.proj-scroll::-webkit-scrollbar { width: 8px; height: 10px; }
+.proj-scroll::-webkit-scrollbar-thumb { background: #2E86C1; border-radius: 4px; }
+.proj-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+.proj table { min-width: 100%; border-collapse: collapse; table-layout: auto; }
+.proj th { background: #1B4F72; color: white; padding: 6px 8px;
+            font-size: 11px; text-align: left; position: sticky; top: 0; z-index: 1;
+            white-space: nowrap; }
+.proj td { padding: 3px 8px; border-bottom: 1px solid #e8e8e8; font-size: 12px; }
+.es { width: 28px; text-align: center; font-weight: 700; white-space: nowrap; }
+.star2 { font-size: 9px; color: #d4a017; margin-left: 2px; }
+.vessel { font-weight: 600; white-space: nowrap; }
+.berco { font-weight: 600; font-size: 11px; white-space: nowrap; }
+.dt { width: 85px; white-space: nowrap; }
+.ep { font-weight: 700; font-size: 14px; color: #1B4F72; letter-spacing: .5px; white-space: nowrap; }
+.cal, .brd { font-size: 10.5px; color: #666; white-space: nowrap; }
+.esc { font-size: 9.5px; font-family: "Consolas","Courier New",monospace; color: #333;
+        white-space: nowrap;
+        letter-spacing: -0.3px; word-spacing: -2px; }
+.agt { font-size: 11px; color: #666; max-width: 90px; }
+.obs { font-size: 10px; color: #555; max-width: 240px;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Histórico */
+.hist { max-width: 100%; margin: 0 auto; padding: 0 12px 16px; }
+.hist table { width: 100%; border-collapse: collapse; }
+.hist th { background: #1B4F72; color: white; padding: 6px 8px; font-size: 11px; text-align: left; }
+.hist td { padding: 4px 8px; font-size: 12px; border-right: 1px solid #e8e8e8; }
+.hdt { width: 110px; white-space: nowrap; font-weight: 600; }
+.hvessel { font-weight: 600; width: 180px; }
+.hrota { color: #555; width: 180px; }
+.hep { font-weight: 700; color: #1B4F72; width: 60px; }
+.hpts { width: 50px; color: #666; }
+
+.ab-a { font-weight: 700; color: #1a5276; text-align: center; width: 28px; }
+.ab-b { font-weight: 700; color: #1e8449; text-align: center; width: 28px; }
+
+.badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+.badge.ok { background: #d5f5e3; color: #1e8449; }
+.badge.hhmm { background: #d6eaf8; color: #1a5276; }
+.badge.cred { background: #fef3cd; color: #856404; }
+.badge.esp { background: #e8f4e8; color: #2d6a2d; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>⚓ EP — ESCALA A/B | Porto de Santos</h1>
+  <div class="meta">
+    Atualizado: <b>25/04/2026 12:55</b><br>
+    Último histórico: <b>22/04 22:00</b> | Ontem: <b>43</b> manobras | Hoje: <b>12</b> manobras
+  </div>
+</div>
+
+<div class="stats">
+  <span>Fila: <b>12</b></span>
+  <span>Disponíveis: <b>8</b></span>
+  <span>Com crédito: <b>0</b></span>
+  <span>Passadas: <b>24</b></span>
+  <span>Futuras: <b>38</b></span>
+  <span style="margin-left:auto;opacity:.7">↻ auto-refresh em <span id="countdown">5:00</span></span>
+</div>
+
+<script>
+// Contador visual do proximo refresh (a pagina recarrega sozinha via meta http-equiv)
+(function(){
+  let s = 300;
+  const el = document.getElementById('countdown');
+  setInterval(() => {
+    s = Math.max(0, s - 1);
+    const m = Math.floor(s/60), ss = s%60;
+    if (el) el.textContent = m + ':' + String(ss).padStart(2,'0');
+  }, 1000);
+})();
+</script>
+
+<div class="container">
+  <div class="panel fila">
+    <div class="panel-title">🗂 FILA EP ATUAL</div>
+    <table><tbody><tr style="background:#f0f4ff;color:#3355aa">
+          <td class="pos">P1</td>
+          <td class="prat">RD</td>
+          <td class="st"><span class="badge hhmm">13:45</span></td>
+        </tr><tr style="background:#f0f4ff;color:#3355aa">
+          <td class="pos">P2</td>
+          <td class="prat">AY</td>
+          <td class="st"><span class="badge hhmm">13:45</span></td>
+        </tr><tr style="background:#f0f4ff;color:#3355aa">
+          <td class="pos">P3</td>
+          <td class="prat">GO</td>
+          <td class="st"><span class="badge hhmm">14:30</span></td>
+        </tr><tr style="background:#f0f4ff;color:#3355aa">
+          <td class="pos">P4</td>
+          <td class="prat">LE</td>
+          <td class="st"><span class="badge hhmm">14:30</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P5</td>
+          <td class="prat">LB</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P6</td>
+          <td class="prat">MC</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P7</td>
+          <td class="prat">EV</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P8</td>
+          <td class="prat">PA</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P9</td>
+          <td class="prat">CM</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P10</td>
+          <td class="prat">AG</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P11</td>
+          <td class="prat">LC</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr><tr style="background:#ffffff;color:#1a1a1a">
+          <td class="pos">P12</td>
+          <td class="prat">SP</td>
+          <td class="st"><span class="badge ok">✓</span></td>
+        </tr></tbody></table>
+  </div>
+
+  <div class="panel proj">
+    <div class="panel-title">🚢 MANOBRAS — PROJEÇÃO EP</div>
+    <div class="proj-scroll">
+      <table>
+        <thead><tr>
+          <th>E/S</th><th>Navio</th><th>Rota</th><th>Horário</th>
+          <th>EP</th><th>A/B</th><th>Δt</th><th>Escalação</th>
+        </tr></thead>
+        <tbody><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">GENTLE LEADER</td>
+          <td class="berco">FB → TEV</td>
+          <td class="dt">24/04 07:30</td>
+          <td class="ep">AB</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(09:00) &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">PEDRO ALVARES CABRAL</td>
+          <td class="berco">FB → BTP-1</td>
+          <td class="dt">24/04 07:30</td>
+          <td class="ep">GA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(09:00) &gt; AB(09:00) &gt; GA &gt; ED &gt; DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">TIGER WEST</td>
+          <td class="berco">FB → 39</td>
+          <td class="dt">24/04 08:00</td>
+          <td class="ep">ED</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(09:00) &gt; AB(09:00) &gt; GA(10:00) &gt; ED &gt; DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">SCARLET FALCON</td>
+          <td class="berco">FB → TGG</td>
+          <td class="dt">24/04 08:00</td>
+          <td class="ep">DE</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(09:00) &gt; AB(09:00) &gt; GA(10:00) &gt; ED(09:30) &gt; DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">M</td>
+          <td class="vessel">SAGA EXPLORER</td>
+          <td class="berco">ULT → 34</td>
+          <td class="dt">24/04 09:00</td>
+          <td class="ep">RD</td>
+          <td class="ab-b">B</td>
+          <td class="cal">9h30</td>
+          <td class="esc">RD &gt; AB &gt; GA(09:45) &gt; ED(09:30) &gt; DE(09:30) &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">SWANSEA</td>
+          <td class="berco">TC 2 → FB</td>
+          <td class="dt">24/04 09:00</td>
+          <td class="ep">AB</td>
+          <td class="ab-b">B</td>
+          <td class="cal">9h30</td>
+          <td class="esc">AB &gt; GA(09:45) &gt; ED(09:15) &gt; DE(09:15) &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">PALERMO</td>
+          <td class="berco">AL 2 → FB</td>
+          <td class="dt">24/04 09:00</td>
+          <td class="ep">GM</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">GA(09:30) &gt; ED(09:30) &gt; DE(09:30) &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">ZIM BALTIMORE</td>
+          <td class="berco">TC 1.2 → FB</td>
+          <td class="dt">24/04 10:00</td>
+          <td class="ep">GA</td>
+          <td class="ab-b">B</td>
+          <td class="cal">9h15</td>
+          <td class="esc">GA &gt; ED &gt; DE &gt; GM(11:15) &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">MERCOSUL SANTOS</td>
+          <td class="berco">FB → TC 2</td>
+          <td class="dt">24/04 11:30</td>
+          <td class="ep">ED</td>
+          <td class="ab-b">B</td>
+          <td class="cal">8h15</td>
+          <td class="esc">ED &gt; DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">GAZ SYNERGY</td>
+          <td class="berco">FB → AL 2</td>
+          <td class="dt">24/04 11:30</td>
+          <td class="ep">DE</td>
+          <td class="ab-b">B</td>
+          <td class="cal">8h15</td>
+          <td class="esc">DE &gt; GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">XIN CHONG QING</td>
+          <td class="berco">FB → TC 1.2</td>
+          <td class="dt">24/04 12:30</td>
+          <td class="ep">GM</td>
+          <td class="ab-b">B</td>
+          <td class="cal">10h30</td>
+          <td class="esc">GM &gt; PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">EVA MASTER</td>
+          <td class="berco">FB → ULT</td>
+          <td class="dt">24/04 12:30</td>
+          <td class="ep">PR</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PR &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">MOYRA</td>
+          <td class="berco">31 → FB</td>
+          <td class="dt">24/04 13:00</td>
+          <td class="ep">ON</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PR(15:15) &gt; ON &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">IDA</td>
+          <td class="berco">16/17 → FB</td>
+          <td class="dt">24/04 14:00</td>
+          <td class="ep">CV</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PR(15:00) &gt; ON(14:45) &gt; CV &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">PRESIDENT I</td>
+          <td class="berco">AL 1 → FB</td>
+          <td class="dt">24/04 14:00</td>
+          <td class="ep">EV</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PR(15:00) &gt; ON(14:45) &gt; CV(16:15) &gt; EV &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">AFRICAN ROOK</td>
+          <td class="berco">COS 3 → FB</td>
+          <td class="dt">24/04 14:30</td>
+          <td class="ep">MC</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PR(14:45) &gt; ON(15:00) &gt; CV(16:15) &gt; EV(16:45) &gt; MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">DIADEMA</td>
+          <td class="berco">AL 4 → FB</td>
+          <td class="dt">24/04 15:30</td>
+          <td class="ep">PR</td>
+          <td class="ab-b">B</td>
+          <td class="cal">9h30</td>
+          <td class="esc">PR &gt; ON &gt; CV(16:15) &gt; EV(16:30) &gt; MC(17:15) &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">WF ARTEMIS</td>
+          <td class="berco">FB → 16/17</td>
+          <td class="dt">24/04 16:00</td>
+          <td class="ep">ON</td>
+          <td class="ab-b">B</td>
+          <td class="cal">7h30</td>
+          <td class="esc">ON &gt; CV &gt; EV &gt; MC(16:45) &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; PR(+2)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">IOANNIS ZAFIRAKIS</td>
+          <td class="berco">FB → AL 1</td>
+          <td class="dt">24/04 16:00</td>
+          <td class="ep">CV</td>
+          <td class="ab-b">B</td>
+          <td class="cal">9h</td>
+          <td class="esc">CV &gt; EV &gt; MC(16:45) &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; PR(+1)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">BOW CARDINAL</td>
+          <td class="berco">FB → AL 4</td>
+          <td class="dt">24/04 16:30</td>
+          <td class="ep">EV</td>
+          <td class="ab-b">B</td>
+          <td class="cal">13h</td>
+          <td class="esc">EV &gt; MC(16:45) &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">FL DATE</td>
+          <td class="berco">37.1 → FB</td>
+          <td class="dt">24/04 17:00</td>
+          <td class="ep">MC</td>
+          <td class="ab-b">B</td>
+          <td class="cal">12h30</td>
+          <td class="esc">MC &gt; LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; EV(+1)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">MDL KAMRAN</td>
+          <td class="berco">FB → 37.1</td>
+          <td class="dt">24/04 18:30</td>
+          <td class="ep">LG</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">BOW LYNX</td>
+          <td class="berco">AL 3 → FB</td>
+          <td class="dt">24/04 18:30</td>
+          <td class="ep">RD</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG(20:00) &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">SANTA BRISA</td>
+          <td class="berco">TIP-4 → FB</td>
+          <td class="dt">24/04 18:30</td>
+          <td class="ep">AB</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG(20:00) &gt; RD(21:00) &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">GOLDEN CITRUS</td>
+          <td class="berco">29 → FB</td>
+          <td class="dt">24/04 19:15</td>
+          <td class="ep">GA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG(19:45) &gt; RD(20:45) &gt; AB(21:15) &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">FB → EMBR.</td>
+          <td class="dt">24/04 19:45</td>
+          <td class="ep">ED</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG(20:00) &gt; RD(20:15) &gt; AB(20:45) &gt; GA(20:30) &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">CARLOS FISCHER</td>
+          <td class="berco">FB → 29</td>
+          <td class="dt">24/04 19:45</td>
+          <td class="ep">DE</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LG(20:00) &gt; RD(20:15) &gt; AB(20:45) &gt; GA(20:30) &gt; ED(21:30) &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">JAL DHVANI</td>
+          <td class="berco">FB → AL 3</td>
+          <td class="dt">24/04 21:30</td>
+          <td class="ep">LG</td>
+          <td class="ab-b">B</td>
+          <td class="cal">8h30</td>
+          <td class="esc">LG &gt; RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">IOLE R</td>
+          <td class="berco">FB → TIP-2</td>
+          <td class="dt">24/04 21:30</td>
+          <td class="ep">RD</td>
+          <td class="ab-b">B</td>
+          <td class="cal">14h30</td>
+          <td class="esc">RD &gt; AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">ASTRAKA</td>
+          <td class="berco">38 → FB</td>
+          <td class="dt">24/04 22:00</td>
+          <td class="ep">AB</td>
+          <td class="ab-b">B</td>
+          <td class="cal">8h30</td>
+          <td class="esc">AB &gt; GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; RD(+2)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">EMBR. → FB</td>
+          <td class="dt">24/04 22:15</td>
+          <td class="ep">GA</td>
+          <td class="ab-b">B</td>
+          <td class="cal">8h15</td>
+          <td class="esc">GA &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; RD(+1)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">SAN ANTONIO MAERSK</td>
+          <td class="berco">EMB-1 → FB</td>
+          <td class="dt">24/04 22:30</td>
+          <td class="ep">ED/DE</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">ED &gt; DE &gt; GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">CSPC SAPPHIRE</td>
+          <td class="berco">13/14 → FB</td>
+          <td class="dt">24/04 23:00</td>
+          <td class="ep">GM</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">GM &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">M</td>
+          <td class="vessel">PEDRO ALVARES CABRAL</td>
+          <td class="berco">BTP-1 → EMB-1</td>
+          <td class="dt">24/04 23:30</td>
+          <td class="ep">ON</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">GM(01:00) &gt; ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">MSC AVNI</td>
+          <td class="berco">BTP-3 → FB</td>
+          <td class="dt">25/04 01:00</td>
+          <td class="ep">GM/CV</td>
+          <td class="ab-b">B/A</td>
+          <td class="cal"></td>
+          <td class="esc">GM &gt; ON(01:15) &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">KEY SONORITY</td>
+          <td class="berco">FB → 38</td>
+          <td class="dt">25/04 01:00</td>
+          <td class="ep">PR</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">ON(01:30) &gt; CV(03:00) &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">FB → EMBR.</td>
+          <td class="dt">25/04 03:30</td>
+          <td class="ep">ON</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">ON &gt; CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">MAERSK LONDRINA</td>
+          <td class="berco">FB → BTP-3</td>
+          <td class="dt">25/04 03:30</td>
+          <td class="ep">CV</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">CV &gt; PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">ZHONG CHANG 528</td>
+          <td class="berco">FB → 20/21</td>
+          <td class="dt">25/04 04:00</td>
+          <td class="ep">PR</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">PR &gt; MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON &gt; CV(+1)</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">MSC MARA</td>
+          <td class="berco">FB → BTP-1</td>
+          <td class="dt">25/04 05:30</td>
+          <td class="ep">MC/EV</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC &gt; EV &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON &gt; PR &gt; CV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">MERCOSUL SANTOS</td>
+          <td class="berco">TC 2 → FB</td>
+          <td class="dt">25/04 06:00</td>
+          <td class="ep">LG</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC(07:45) &gt; EV(07:45) &gt; LG &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON &gt; PR &gt; CV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">GENTLE LEADER</td>
+          <td class="berco">TEV → FB</td>
+          <td class="dt">25/04 06:30</td>
+          <td class="ep">AB</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC(07:45) &gt; EV(07:45) &gt; LG(07:45) &gt; AB &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON &gt; PR &gt; CV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">HMM BANGKOK</td>
+          <td class="berco">EMB-2 → FB</td>
+          <td class="dt">25/04 06:30</td>
+          <td class="ep">GA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC(07:30) &gt; EV(07:30) &gt; LG(07:45) &gt; AB(08:15) &gt; GA &gt; RD &gt; ED &gt; DE &gt; GM &gt; ON &gt; PR &gt; CV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">M</td>
+          <td class="vessel">GRANDE COTONOU</td>
+          <td class="berco">VAL → TEV</td>
+          <td class="dt">25/04 07:30</td>
+          <td class="ep">PA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PA &gt; MC &gt; CM &gt; EV &gt; AG &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">XIN CHONG QING</td>
+          <td class="berco">TC 1.2 → FB</td>
+          <td class="dt">25/04 07:30</td>
+          <td class="ep">CM</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PA(09:00) &gt; MC(07:45) &gt; CM &gt; EV(07:45) &gt; AG &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">XANADU</td>
+          <td class="berco">TIP-3 → FB</td>
+          <td class="dt">25/04 07:30</td>
+          <td class="ep">AG</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">PA(09:15) &gt; MC(07:45) &gt; CM(09:30) &gt; EV(07:45) &gt; AG &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">EMBR. → FB</td>
+          <td class="dt">25/04 08:30</td>
+          <td class="ep">MC</td>
+          <td class="ab-b">B</td>
+          <td class="cal">4h30</td>
+          <td class="esc">PA(09:00) &gt; MC &gt; CM(09:15) &gt; EV &gt; AG(10:15) &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">MAERSK LEON</td>
+          <td class="berco">BTP-2 → FB</td>
+          <td class="dt">25/04 08:30</td>
+          <td class="ep">EV</td>
+          <td class="ab-b">B</td>
+          <td class="cal">4h30</td>
+          <td class="esc">PA(09:00) &gt; CM(09:15) &gt; EV &gt; AG(10:15) &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">CMA CGM KRYPTON</td>
+          <td class="berco">TC 3 → FB</td>
+          <td class="dt">25/04 09:30</td>
+          <td class="ep">PA/CM</td>
+          <td class="ab-b">B</td>
+          <td class="cal">4h</td>
+          <td class="esc">PA &gt; CM &gt; AG(10:00) &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">MAERSK MONTE ALEGRE</td>
+          <td class="berco">FB → EMB-2</td>
+          <td class="dt">25/04 11:30</td>
+          <td class="ep">AG</td>
+          <td class="ab-b">B</td>
+          <td class="cal">6h30</td>
+          <td class="esc">AG &gt; LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">ALCYONE I</td>
+          <td class="berco">FB → TIP-3</td>
+          <td class="dt">25/04 11:30</td>
+          <td class="ep">LC</td>
+          <td class="ab-b">B</td>
+          <td class="cal">7h</td>
+          <td class="esc">LC &gt; RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">EVER FAIR</td>
+          <td class="berco">FB → TC 3</td>
+          <td class="dt">25/04 12:00</td>
+          <td class="ep">RD/AY</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD &gt; AY &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC</td>
+        </tr><tr style="background:#ffcccc;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">LE HAVRE</td>
+          <td class="berco">FB → BTP-2</td>
+          <td class="dt">25/04 12:00</td>
+          <td class="ep">GO/LE</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO &gt; LE &gt; SP &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">TENCA ARROW</td>
+          <td class="berco">FB → EMB-3</td>
+          <td class="dt">25/04 12:30</td>
+          <td class="ep">SP</td>
+          <td class="ab-b">B</td>
+          <td class="cal">6h</td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; SP &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">FUGRO RESILIENCE</td>
+          <td class="berco">FB → CS 4</td>
+          <td class="dt">25/04 12:30</td>
+          <td class="ep">LB</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">FB → EMBR.</td>
+          <td class="dt">25/04 13:00</td>
+          <td class="ep">MC</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; LB(14:30) &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">COSTA RICA EXPRESS</td>
+          <td class="berco">FB → TC 1.2</td>
+          <td class="dt">25/04 13:00</td>
+          <td class="ep">EV</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; LB(14:30) &gt; MC(14:45) &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">SSI DOMINATOR</td>
+          <td class="berco">FB → 13/14</td>
+          <td class="dt">25/04 13:30</td>
+          <td class="ep">PA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; LB(14:30) &gt; MC(14:45) &gt; EV(14:30) &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">GRANDE AMBURGO</td>
+          <td class="berco">FB → VAL</td>
+          <td class="dt">25/04 13:30</td>
+          <td class="ep">CM</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:45) &gt; AY(13:45) &gt; GO(14:30) &gt; LE(14:30) &gt; LB(14:30) &gt; MC(14:45) &gt; EV(14:30) &gt; PA(15:30) &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="es">E</td>
+          <td class="vessel">CMA CGM LISA MARIE</td>
+          <td class="berco">FB → TC 2</td>
+          <td class="dt">25/04 14:00</td>
+          <td class="ep">RD/AY</td>
+          <td class="ab-b">B</td>
+          <td class="cal">4h30/5h</td>
+          <td class="esc">RD &gt; AY &gt; GO(14:30) &gt; LE(14:30) &gt; LB(14:30) &gt; MC(14:45) &gt; EV(14:30) &gt; PA(15:30) &gt; CM(15:30) &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="es">S</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">EMBR. → FB</td>
+          <td class="dt">25/04 14:30</td>
+          <td class="ep">GO</td>
+          <td class="ab-b">B</td>
+          <td class="cal">4h30</td>
+          <td class="esc">GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA(15:00) &gt; CM(15:15) &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">TIGER WEST</td>
+          <td class="berco">39 → FB</td>
+          <td class="dt">25/04 15:00</td>
+          <td class="ep">LE</td>
+          <td class="ab-b">B</td>
+          <td class="cal">11h</td>
+          <td class="esc">LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM(15:15) &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">GAZ SYNERGY</td>
+          <td class="berco">AL 2 → FB</td>
+          <td class="dt">25/04 15:00</td>
+          <td class="ep">LB</td>
+          <td class="ab-b">B</td>
+          <td class="cal">11h</td>
+          <td class="esc">LB &gt; MC &gt; EV &gt; PA &gt; CM(15:15) &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">WF FILIPPOS</td>
+          <td class="berco">FB → 39</td>
+          <td class="dt">25/04 15:30</td>
+          <td class="ep">MC</td>
+          <td class="ab-b">B</td>
+          <td class="cal">15h30</td>
+          <td class="esc">MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">FB → EMBR.</td>
+          <td class="dt">25/04 15:30</td>
+          <td class="ep">EV</td>
+          <td class="ab-b">B</td>
+          <td class="cal">15h30</td>
+          <td class="esc">EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">VORIAS</td>
+          <td class="berco">FB → AL 2</td>
+          <td class="dt">25/04 15:30</td>
+          <td class="ep">PA</td>
+          <td class="ab-b">B</td>
+          <td class="cal">19h30</td>
+          <td class="esc">PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">EMBR. → FB</td>
+          <td class="dt">25/04 17:00</td>
+          <td class="ep">CM</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">SCARLET FALCON</td>
+          <td class="berco">TGG → FB</td>
+          <td class="dt">25/04 18:00</td>
+          <td class="ep">AG</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">FB → EMBR.</td>
+          <td class="dt">25/04 18:30</td>
+          <td class="ep">LC</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG(19:15) &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">PANAGIA FORCE</td>
+          <td class="berco">FB → TGG</td>
+          <td class="dt">25/04 18:30</td>
+          <td class="ep">SP</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG(19:15) &gt; LC(20:15) &gt; SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">OSHIMA TRADER</td>
+          <td class="berco">12-A → FB</td>
+          <td class="dt">25/04 18:30</td>
+          <td class="ep">RD</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG(19:45) &gt; LC(19:45) &gt; SP(19:45) &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">BOCHEM CASABLANCA</td>
+          <td class="berco">IB BC → FB</td>
+          <td class="dt">25/04 19:00</td>
+          <td class="ep">AY</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG(19:45) &gt; LC(19:45) &gt; SP(19:45) &gt; RD(20:30) &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">PHOSPHOR</td>
+          <td class="berco">IB-OE → FB</td>
+          <td class="dt">25/04 19:00</td>
+          <td class="ep">GO</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">AG(19:45) &gt; LC(19:45) &gt; SP(19:45) &gt; RD(20:30) &gt; AY(21:00) &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">MTM AMAZON</td>
+          <td class="berco">FB → IB-OE</td>
+          <td class="dt">25/04 19:30</td>
+          <td class="ep">AG</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">AG &gt; LC(20:15) &gt; SP(20:00) &gt; RD(20:00) &gt; AY(20:30) &gt; GO(20:45) &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">HANG JUN 6009</td>
+          <td class="berco">EMBR. → FB</td>
+          <td class="dt">25/04 20:00</td>
+          <td class="ep">LC</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">LC &gt; SP &gt; RD(20:30) &gt; AY(21:00) &gt; GO(21:00) &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">COSTA RICA EXPRESS</td>
+          <td class="berco">TC 1.2 → FB</td>
+          <td class="dt">25/04 21:00</td>
+          <td class="ep">SP</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">SP &gt; RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">PRESTIGE</td>
+          <td class="berco">FB → TC 1.2</td>
+          <td class="dt">25/04 21:30</td>
+          <td class="ep">RD</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">RD &gt; AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">GRANDE COTONOU</td>
+          <td class="berco">TEV → FB</td>
+          <td class="dt">25/04 23:00</td>
+          <td class="ep">AY</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">AY &gt; GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">GREEN SHANGHAI</td>
+          <td class="berco">35.2 → FB</td>
+          <td class="dt">26/04 01:00</td>
+          <td class="ep">GO</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">GO &gt; LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">WF ARTEMIS</td>
+          <td class="berco">16/17 → FB</td>
+          <td class="dt">26/04 02:00</td>
+          <td class="ep">LE</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LE &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">CASTILLO DE TEBRA</td>
+          <td class="berco">FB → IB BC</td>
+          <td class="dt">26/04 02:00</td>
+          <td class="ep">LB</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LE(03:45) &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">PEDRO ALVARES CABRAL</td>
+          <td class="berco">EMB-1 → FB</td>
+          <td class="dt">26/04 03:30</td>
+          <td class="ep">LB</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">LE(04:00) &gt; LB &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">HOS TAURUS</td>
+          <td class="berco">FB → SAIPEM 3</td>
+          <td class="dt">26/04 06:00</td>
+          <td class="ep">LE</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">LE &gt; MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LB</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">MSC MARA</td>
+          <td class="berco">BTP-1 → FB</td>
+          <td class="dt">26/04 07:00</td>
+          <td class="ep">MC/EV</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC &gt; EV &gt; PA &gt; CM &gt; AG &gt; LC &gt; SP &gt; RD &gt; AY &gt; GO &gt; LB &gt; LE</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">MAERSK LONDRINA</td>
+          <td class="berco">BTP-3 → FB</td>
+          <td class="dt">26/04 08:00</td>
+          <td class="ep">TK</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">MC(09:30) &gt; EV(09:30) &gt; TK &gt; PA &gt; AB &gt; CF &gt; LC &gt; SP &gt; RD &gt; SN &gt; GO &gt; LB</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">E</td>
+          <td class="vessel">MAERSK SAN VINCENT</td>
+          <td class="berco">FB → EMB-1</td>
+          <td class="dt">26/04 09:00</td>
+          <td class="ep">MC/EV</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">MC &gt; EV &gt; TK(10:00) &gt; PA &gt; AB &gt; CF &gt; LC &gt; SP &gt; RD &gt; SN &gt; GO &gt; LB</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="es">S</td>
+          <td class="vessel">JSD6000</td>
+          <td class="berco">SAIPEM 1 → FB</td>
+          <td class="dt">26/04 11:00</td>
+          <td class="ep">TK/PA</td>
+          <td class="ab-b">B/A</td>
+          <td class="cal"></td>
+          <td class="esc">TK &gt; PA &gt; AB &gt; CF &gt; LC &gt; SP &gt; RD &gt; SN &gt; GO &gt; LB &gt; MC &gt; EV</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Tabela "Historico - Dia Operacional Atual" removida.
+     Manobras finalizadas (do dia operacional vigente, anteriores a primeira
+     da pauta) ja estao integradas na tabela principal "Manobras - Projecao EP",
+     em ordem cronologica, com visual de manobra executada (vermelho). -->
+
+<!-- Botao "Atualizar Pauta SPPILOTS" removido (nao funcionava na pratica).
+     Para atualizar a pauta: clique no favorito "EP Salvar Pauta" no Chrome
+     com SPPILOTS aberto, depois rode python ep_atualizar.py no terminal. -->
+
+</body>
+</html>
