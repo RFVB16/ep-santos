@@ -109,9 +109,9 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>02:12</b> (21/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 02:09</span><br>
-    Ontem: <b>32</b> manobras | Hoje: <b>48</b> manobras | Média do ano: <b>38.4</b>/dia<br>
+    <span style="font-size:15px">Atualizado às <b>02:27</b> (21/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 02:25</span><br>
+    Ontem: <b>32</b> manobras | Hoje: <b>49</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>6</b> | Descanso médio efetivo (Δt): <b>8h10</b> | Posições médias após B: <b>19.2</b>
   </div>
 </div>
@@ -123,7 +123,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-21T02:12:35-03:00');
+  const gen = new Date('2026-10-21T02:27:34-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -805,7 +805,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">BR &gt; LG &gt; AR &gt; EV &gt; RD &gt; RG &gt; CV &gt; CM &gt; AN &gt; MM &gt; GU &gt; AY</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="es">S</td>
           <td class="vessel">ECO WILDFIRE</td>
           <td class="berco">CS 2 → FB</td>
@@ -823,7 +823,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">AR &gt; EV &gt; RD &gt; RG &gt; CV &gt; CM &gt; AN &gt; MM &gt; GU &gt; AY &gt; BR &gt; LG</td>
-        </tr><tr style="background:#ffffff;color:#444">
+        </tr><tr style="background:#ffffff;color:#000000">
           <td class="es">S</td>
           <td class="vessel">KIRRIBILLI</td>
           <td class="berco">38 → FB</td>
@@ -850,7 +850,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">RD(06:00) &gt; RG &gt; CV &gt; CM &gt; AN &gt; MM &gt; GU &gt; AY &gt; BR &gt; LG &gt; AR &gt; EV</td>
-        </tr><tr style="background:#ffffff;color:#444">
+        </tr><tr style="background:#ffffff;color:#000000">
           <td class="es">E</td>
           <td class="vessel">CASTILLO DE TEBRA</td>
           <td class="berco">FB → IB BC</td>
