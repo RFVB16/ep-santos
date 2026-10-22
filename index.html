@@ -112,8 +112,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>04:41</b> (22/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 04:40</span><br>
+    <span style="font-size:15px">Atualizado às <b>04:56</b> (22/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 04:55</span><br>
     Ontem: <b>51</b> manobras | Hoje: <b>42</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>6</b> | Descanso médio efetivo (Δt): <b>8h27</b> | Posições médias após B: <b>19.1</b>
   </div>
@@ -126,7 +126,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-22T04:41:49-03:00');
+  const gen = new Date('2026-10-22T04:56:45-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
