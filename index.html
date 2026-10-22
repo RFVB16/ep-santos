@@ -112,8 +112,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>23:56</b> (21/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 23:55</span><br>
+    <span style="font-size:15px">Atualizado às <b>00:11</b> (22/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 00:11</span><br>
     Ontem: <b>51</b> manobras | Hoje: <b>30</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>6</b> | Descanso médio efetivo (Δt): <b>8h20</b> | Posições médias após B: <b>18.9</b>
   </div>
@@ -126,7 +126,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-21T23:56:49-03:00');
+  const gen = new Date('2026-10-22T00:11:52-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -706,7 +706,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal">5h50</td>
           <td class="esc">EV(23:30) &gt; RD(00:15) &gt; PA(23:45) &gt; RG(23:45) &gt; CM(00:15) &gt; AN &gt; MM &gt; GU &gt; AY &gt; LG &gt; BZ &gt; AR</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">MSC PERLE</td>
           <td class="berco">E TC 3</td>
           <td class="dt">22/10 00:15</td>
@@ -994,6 +994,14 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">AR &gt; PR &gt; EV &gt; RD &gt; PA &gt; SF &gt; LB &gt; DE &gt; AY &gt; CL &gt; FL &gt; BZ</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">SOPHIE</td>
+          <td class="berco">E LARGO</td>
+          <td class="dt">23/10 12:00</td>
+          <td class="ep">AR</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">PR &gt; EV &gt; RD &gt; PA &gt; SF &gt; LB &gt; DE &gt; AY &gt; CL &gt; FL &gt; BZ &gt; AR</td>
         </tr></tbody>
       </table>
     </div>
