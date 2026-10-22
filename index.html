@@ -112,8 +112,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>14:11</b> (22/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 14:07</span><br>
+    <span style="font-size:15px">Atualizado às <b>14:26</b> (22/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 14:23</span><br>
     Ontem: <b>41</b> manobras | Hoje: <b>6</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt): <b>9h26</b> | Posições médias após B: <b>20.4</b>
   </div>
@@ -126,7 +126,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-22T14:11:48-03:00');
+  const gen = new Date('2026-10-22T14:26:49-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -167,7 +167,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
-      <div class="side-scroll"><table><tbody><tr><td class="prat">EV</td><td class="st"><span class="tE">E 16:45</span><br><span class="tS">S 16:45</span></td></tr><tr><td class="prat">PR</td><td class="st"><span class="tE">E 16:45</span><br><span class="tS">S 16:45</span></td></tr></tbody></table></div>
+      <div class="side-scroll"><table><tbody><tr><td class="prat">EV</td><td class="st"><span class="tE">E 16:45</span><br><span class="tS">S 17:00</span></td></tr><tr><td class="prat">PR</td><td class="st"><span class="tE">E 16:45</span><br><span class="tS">S 17:00</span></td></tr></tbody></table></div>
     </div>
   </div>
   <div class="panel proj">
@@ -482,7 +482,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">FL(16:00) &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG</td>
-        </tr><tr style="background:#33ccff;color:#000">
+        </tr><tr style="background:#ffcccc;color:#000">
           <td class="vessel">NC BRISA</td>
           <td class="berco">S EMB-3</td>
           <td class="dt">22/10 13:45</td>
@@ -490,7 +490,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal">15h10</td>
           <td class="esc">FL(15:15) &gt; AR(16:00) &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">BBG HONG KONG</td>
           <td class="berco">S TIP-2</td>
           <td class="dt">22/10 14:00</td>
@@ -547,29 +547,29 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="cal"></td>
           <td class="esc">LE(19:30) &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">MSC PERLE</td>
-          <td class="berco">S TC 3</td>
-          <td class="dt">22/10 18:00</td>
-          <td class="ep">RD/PA</td>
-          <td class="ab-a">A</td>
-          <td class="cal"></td>
-          <td class="esc">LE(19:00) &gt; RD(19:45) &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
-        </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">BOW TITANIUM</td>
           <td class="berco">S AL 3</td>
           <td class="dt">22/10 18:00</td>
-          <td class="ep">LB</td>
+          <td class="ep">RD</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">LE(19:00) &gt; RD(20:00) &gt; PA(20:00) &gt; LB(20:30) &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
+          <td class="esc">LE(19:00) &gt; RD(20:30) &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">GH HARVEST</td>
           <td class="berco">S ULT</td>
           <td class="dt">22/10 18:00</td>
-          <td class="ep">MM</td>
+          <td class="ep">PA</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">LE(19:15) &gt; RD(20:15) &gt; PA(20:15) &gt; LB(20:45) &gt; MM(21:15) &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
+          <td class="esc">LE(19:15) &gt; RD(20:45) &gt; PA(21:15) &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">MSC PERLE</td>
+          <td class="berco">S TC 3</td>
+          <td class="dt">22/10 18:30</td>
+          <td class="ep">LB/MM</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">LE(19:00) &gt; RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">APOLLON</td>
           <td class="berco">S TEG</td>
@@ -577,7 +577,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">GU</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">LE(19:00) &gt; RD(19:45) &gt; PA(19:45) &gt; LB(20:15) &gt; MM(20:45) &gt; GU(20:15) &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
+          <td class="esc">LE(19:00) &gt; RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM(20:15) &gt; GU(20:15) &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SAKURA ADVANCE</td>
           <td class="berco">E AL 3</td>
@@ -585,7 +585,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">AY</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">LE(19:30) &gt; RD(19:45) &gt; PA(19:45) &gt; LB(20:15) &gt; MM(20:45) &gt; GU(20:15) &gt; AY(21:15) &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
+          <td class="esc">LE(19:30) &gt; RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM(20:15) &gt; GU(20:15) &gt; AY(21:15) &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MERCOSUL GUARUJA</td>
           <td class="berco">S TC 2</td>
@@ -593,7 +593,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">LE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">RD(19:45) &gt; PA(19:45) &gt; LB(20:15) &gt; MM(20:45) &gt; GU(20:15) &gt; AY(20:45) &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE</td>
+          <td class="esc">RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM(20:15) &gt; GU(20:15) &gt; AY(20:45) &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">COSCO SHIPPING BRAZIL</td>
           <td class="berco">E TC 3</td>
@@ -601,7 +601,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">AG/PR</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">RD(19:45) &gt; PA(19:45) &gt; LB(20:15) &gt; MM(20:45) &gt; GU(20:15) &gt; AY(21:15) &gt; AG(21:15) &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE</td>
+          <td class="esc">RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM(20:15) &gt; GU(20:15) &gt; AY(21:15) &gt; AG(21:15) &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">LANGLOIS FUJIMARU</td>
           <td class="berco">S TIP-4</td>
@@ -609,7 +609,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">FL</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">RD(20:15) &gt; PA(20:15) &gt; LB(20:45) &gt; MM(21:15) &gt; GU(20:30) &gt; AY(20:45) &gt; AG(20:45) &gt; FL(22:15) &gt; AR &gt; PR(20:45) &gt; EV &gt; LE</td>
+          <td class="esc">RD(20:45) &gt; PA(21:15) &gt; LB(20:45) &gt; MM(20:45) &gt; GU(20:30) &gt; AY(20:45) &gt; AG(20:45) &gt; FL(22:15) &gt; AR &gt; PR(20:45) &gt; EV &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">NAVIOS AMARILLO</td>
           <td class="berco">E TC 2</td>
@@ -617,99 +617,115 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ep">EV</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">RD(19:45) &gt; PA(19:45) &gt; LB(20:15) &gt; MM(20:45) &gt; GU(20:15) &gt; AY(21:15) &gt; AG(21:15) &gt; FL(21:45) &gt; AR &gt; PR(21:15) &gt; EV(21:45) &gt; LE</td>
+          <td class="esc">RD(20:15) &gt; PA(20:45) &gt; LB(20:15) &gt; MM(20:15) &gt; GU(20:15) &gt; AY(21:15) &gt; AG(21:15) &gt; FL(21:45) &gt; AR &gt; PR(21:15) &gt; EV(21:45) &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">EMERALD DAISHAN</td>
           <td class="berco">S 19</td>
           <td class="dt">22/10 20:00</td>
-          <td class="ep">RD</td>
-          <td class="ab-b">B</td>
+          <td class="ep">AR</td>
+          <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">PA &gt; LB(20:30) &gt; MM(21:00) &gt; GU(20:15) &gt; AY(20:30) &gt; AG(20:30) &gt; FL(22:00) &gt; AR &gt; PR(20:30) &gt; EV(21:00) &gt; LE &gt; RD</td>
+          <td class="esc">RD(20:30) &gt; PA(21:00) &gt; LB(20:30) &gt; MM(20:30) &gt; GU(20:15) &gt; AY(20:30) &gt; AG(20:30) &gt; FL(22:00) &gt; AR(22:00) &gt; PR(20:30) &gt; EV(21:00) &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">PERSEAS</td>
           <td class="berco">S TGG</td>
+          <td class="dt">22/10 22:00</td>
+          <td class="ep">RD</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">STAR DESPOINA</td>
+          <td class="berco">S OUT 2/3</td>
           <td class="dt">22/10 22:00</td>
           <td class="ep">PA</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA</td>
         </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">STAR DESPOINA</td>
-          <td class="berco">S OUT 2/3</td>
-          <td class="dt">22/10 22:00</td>
+          <td class="vessel">MSXT ARTEMIS</td>
+          <td class="berco">E TGG</td>
+          <td class="dt">22/10 22:30</td>
           <td class="ep">LB</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB</td>
         </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">MSXT ARTEMIS</td>
-          <td class="berco">E TGG</td>
-          <td class="dt">22/10 22:30</td>
+          <td class="vessel">VORIAS</td>
+          <td class="berco">S AL 2</td>
+          <td class="dt">22/10 23:00</td>
           <td class="ep">MM</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM</td>
         </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">CZECH</td>
-          <td class="berco">S BTP-1</td>
+          <td class="vessel">MAERSK CALLAO</td>
+          <td class="berco">E AL 2</td>
           <td class="dt">22/10 23:30</td>
-          <td class="ep">GU/AY</td>
+          <td class="ep">GU</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">AY &gt; AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU</td>
         </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">CZECH</td>
+          <td class="berco">S BTP-1</td>
+          <td class="dt">22/10 23:30</td>
+          <td class="ep">AY/AG</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">AG &gt; FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY</td>
+        </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MSC MADHU B</td>
           <td class="berco">S BTP-2</td>
           <td class="dt">23/10 00:00</td>
-          <td class="ep">AG/FL</td>
+          <td class="ep">FL/AR</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">FL &gt; AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG</td>
+          <td class="esc">AR &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">LOG-IN PANTANAL</td>
           <td class="berco">S TC 1.1</td>
           <td class="dt">23/10 02:00</td>
-          <td class="ep">AR</td>
-          <td class="ab-a">A</td>
+          <td class="ep">PR</td>
+          <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">AR(03:45) &gt; PR &gt; EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL</td>
+          <td class="esc">EV &gt; LE &gt; RD &gt; PA &gt; LB &gt; MM &gt; GU &gt; AY &gt; AG &gt; FL &gt; AR &gt; PR</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">FRAGATA DEFENSORA</td>
           <td class="berco">S OUT-2</td>
           <td class="dt">23/10 07:30</td>
-          <td class="ep">AR</td>
-          <td class="ab-b">B</td>
-          <td class="cal"></td>
-          <td class="esc">PR &gt; EV &gt; BZ &gt; RD &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR</td>
-        </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">CF ANJA</td>
-          <td class="berco">E LARGO</td>
-          <td class="dt">23/10 11:00</td>
-          <td class="ep">PR</td>
-          <td class="ab-b">B</td>
-          <td class="cal"></td>
-          <td class="esc">EV &gt; BZ &gt; RD &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR</td>
-        </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">CAP SAN ARTEMISSIO</td>
-          <td class="berco">S EMB-2</td>
-          <td class="dt">23/10 11:00</td>
-          <td class="ep">EV/BZ</td>
+          <td class="ep">EV</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">BZ &gt; RD &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">CF ANJA</td>
+          <td class="berco">E LARGO</td>
+          <td class="dt">23/10 11:00</td>
+          <td class="ep">BZ</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">RD &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">CAP SAN ARTEMISSIO</td>
+          <td class="berco">S EMB-2</td>
+          <td class="dt">23/10 11:00</td>
+          <td class="ep">RD/PA</td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">RD(13:15) &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ</td>
+        </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SOPHIE</td>
           <td class="berco">E LARGO</td>
           <td class="dt">23/10 12:00</td>
-          <td class="ep">RD</td>
+          <td class="ep">LB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">RD(14:00) &gt; PA &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ</td>
+          <td class="esc">RD(13:15) &gt; PA(13:15) &gt; LB(14:00) &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">APL NEW JERSEY</td>
           <td class="berco">S TC 1.2</td>
-          <td class="dt">23/10 17:00</td>
+          <td class="dt">23/10 16:30</td>
           <td class="ep">RD</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
@@ -717,11 +733,11 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MERCOSUL SANTOS</td>
           <td class="berco">E TC 1.2</td>
-          <td class="dt">23/10 17:30</td>
+          <td class="dt">23/10 17:00</td>
           <td class="ep">PA</td>
-          <td class="ab-a">A</td>
+          <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">PA(19:30) &gt; LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ &gt; RD</td>
+          <td class="esc">LB &gt; SF &gt; DE &gt; AY &gt; CL &gt; FL &gt; AR &gt; PR &gt; EV &gt; BZ &gt; RD &gt; PA</td>
         </tr></tbody>
       </table>
     </div>
