@@ -114,7 +114,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>21:26</b> (22/10) · <b id="idade"></b></span>
+    <span style="font-size:15px">Atualizado às <b>21:47</b> (22/10) · <b id="idade"></b></span>
     <span style="opacity:.8"> · pauta do SPPilots lida às 18:01</span><br>
     Ontem: <b>41</b> manobras | Hoje: <b>14</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt): <b>10h53</b> | Posições médias após B: <b>20.4</b>
@@ -128,7 +128,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-22T21:26:49-03:00');
+  const gen = new Date('2026-10-22T21:47:52-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -700,7 +700,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">ON(22:15) &gt; MM(22:00) &gt; AN(22:15) &gt; GU(n/a) &gt; RO &gt; BZ &gt; FL &gt; AR &gt; PR &gt; EV &gt; RD &gt; LE</td>
-        </tr><tr style="background:#ffffff;color:#444">
+        </tr><tr style="background:#ffcccc;color:#000">
           <td class="vessel">NAVIOS AMARILLO</td>
           <td class="berco">E TC 2</td>
           <td class="dt">22/10 21:00</td>
