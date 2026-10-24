@@ -114,8 +114,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>17:48</b> (24/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 17:44</span><br>
+    <span style="font-size:15px">Atualizado às <b>17:56</b> (24/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 17:50</span><br>
     Ontem: <b>40</b> manobras | Hoje: <b>13</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt): <b>8h31</b> | Posições médias após B: <b>17.8</b>
   </div>
@@ -128,7 +128,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-24T17:48:01-03:00');
+  const gen = new Date('2026-10-24T17:56:37-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -630,7 +630,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">CORAL</td>
           <td class="berco">S 37.1</td>
           <td class="dt">24/10 18:00</td>
@@ -640,7 +640,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">CV(n/a) &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">BOW LUNA</td>
           <td class="berco">S AL 4</td>
           <td class="dt">24/10 18:00</td>
