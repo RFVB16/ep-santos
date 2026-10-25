@@ -114,8 +114,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>22:11</b> (24/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 22:08</span><br>
+    <span style="font-size:15px">Atualizado às <b>22:26</b> (24/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 22:24</span><br>
     Ontem: <b>40</b> manobras | Hoje: <b>21</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt): <b>9h30</b> | Posições médias após B: <b>17.8</b>
   </div>
@@ -128,7 +128,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-24T22:11:46-03:00');
+  const gen = new Date('2026-10-24T22:26:47-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -164,12 +164,12 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
       </div>
     </div>
     <div class="panel side disp">
-      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (24/10 23:15), considerando quem estará livre na hora prevista da próxima manobra não confirmada (23:45)">Disponíveis · 23:45 (S/M)</div>
-      <div class="side-scroll"><table><tbody><tr class=""><td class="pos">1</td><td class="prat">SN</td><td class="st"></td></tr><tr class=""><td class="pos">2</td><td class="prat">MM</td><td class="st"></td></tr><tr class=""><td class="pos">3</td><td class="prat">AR</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">PR</td><td class="st"></td></tr><tr class=""><td class="pos">5</td><td class="prat">CV</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">BZ</td><td class="st"></td></tr><tr class=""><td class="pos">7</td><td class="prat">RO</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">AY</td><td class="st"></td></tr></tbody></table></div>
+      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (24/10 23:15), considerando quem estará livre na hora prevista da próxima manobra não confirmada (01:30)">Disponíveis · 01:30 (E)</div>
+      <div class="side-scroll"><table><tbody><tr class=""><td class="pos">1</td><td class="prat">SB</td><td class="st"></td></tr><tr class=""><td class="pos">2</td><td class="prat">GU</td><td class="st"></td></tr><tr class=""><td class="pos">3</td><td class="prat">LE</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">LT</td><td class="st"><span class="so" title="Livre para a próxima manobra; para saída/mudança só a partir de 01:45">saída só 01:45</span></td></tr><tr class=""><td class="pos">5</td><td class="prat">SN</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">MM</td><td class="st"></td></tr><tr class=""><td class="pos">7</td><td class="prat">AR</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">PR</td><td class="st"></td></tr><tr class=""><td class="pos">9</td><td class="prat">CV</td><td class="st"></td></tr><tr class=""><td class="pos">10</td><td class="prat">BZ</td><td class="st"></td></tr><tr class=""><td class="pos">11</td><td class="prat">RO</td><td class="st"></td></tr><tr class=""><td class="pos">12</td><td class="prat">AY</td><td class="st"></td></tr></tbody></table></div>
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
-      <div class="side-scroll"><table><tbody><tr><td class="prat">SB</td><td class="st"><span class="tE">E 00:15</span><br><span class="tS">S 00:15</span></td></tr><tr><td class="prat">GU</td><td class="st"><span class="tE">E 00:30</span><br><span class="tS">S 00:30</span></td></tr><tr><td class="prat">LE</td><td class="st"><span class="tE">E 01:00</span><br><span class="tS">S 01:00</span></td></tr><tr><td class="prat">LT</td><td class="st"><span class="tE">E 01:30</span><br><span class="tS">S 01:30</span></td></tr></tbody></table></div>
+      <div class="side-scroll"><table><tbody><tr><td colspan="2" class="vazio">— nenhum —</td></tr></tbody></table></div>
     </div>
   </div>
   <div class="panel proj">
@@ -721,25 +721,25 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="cal">16h</td>
           <td class="esc">SB(n/a) &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
         </tr><tr style="background:#b7b7ff;color:#000">
-          <td class="vessel">CASTILLO DE TEBRA</td>
-          <td class="berco">S IB BC</td>
-          <td class="dt">24/10 22:30</td>
-          <td class="ep">GU</td>
-          <td class="calado">7,20</td>
-          <td class="brd">BE</td>
-          <td class="ab-a">A</td>
-          <td class="cal">14h30</td>
-          <td class="esc">SB(00:30) &gt; GU(n/a) &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
           <td class="vessel">AEOLIAN ARROW</td>
           <td class="berco">S 38</td>
           <td class="dt">24/10 23:15</td>
-          <td class="ep">LE</td>
+          <td class="ep">GU</td>
           <td class="calado">12,52</td>
           <td class="brd">BE</td>
           <td class="ab-a">A</td>
+          <td class="cal">15h20</td>
+          <td class="esc">SB(00:15) &gt; GU(n/a) &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="vessel">GRACEFUL LEADER</td>
+          <td class="berco">S TEV</td>
+          <td class="dt">24/10 23:15</td>
+          <td class="ep">LE</td>
+          <td class="calado">8,80</td>
+          <td class="brd">BE</td>
+          <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">SB(00:15) &gt; GU(00:30) &gt; LE(n/a) &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
+          <td class="esc">SB(00:15) &gt; GU(01:00) &gt; LE(n/a) &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
         </tr><tr style="background:#b7b7ff;color:#000">
           <td class="vessel">SANTA VANESSA</td>
           <td class="berco">S EMB-1</td>
@@ -749,77 +749,67 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BE</td>
           <td class="ab-a">A</td>
           <td class="cal">14h30</td>
-          <td class="esc">SB(00:30) &gt; GU(00:30) &gt; LE(01:00) &gt; LT(n/a) &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
-        </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">GRACEFUL LEADER</td>
-          <td class="berco">S TEV</td>
-          <td class="dt">24/10 23:45</td>
-          <td class="ep">SN</td>
-          <td class="calado">8,80</td>
-          <td class="brd">BE</td>
-          <td class="ab-a">A</td>
-          <td class="cal"></td>
-          <td class="esc">SB(00:15) &gt; GU(00:30) &gt; LE(01:00) &gt; LT(01:30) &gt; SN(n/a) &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
-        </tr><tr style="background:#ffffff;color:#444">
-          <td class="vessel">BOW FIGHTER</td>
-          <td class="berco">E IB SP</td>
-          <td class="dt">25/10 01:30</td>
-          <td class="ep">SB</td>
-          <td class="calado">8,20</td>
-          <td class="brd"></td>
-          <td class="ab-b">B</td>
-          <td class="cal"></td>
-          <td class="esc">GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB</td>
+          <td class="esc">SB(00:30) &gt; GU(01:00) &gt; LE(01:00) &gt; LT(n/a) &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">CMA CGM IRON</td>
           <td class="berco">E TC 2</td>
           <td class="dt">25/10 01:30</td>
-          <td class="ep">GU/LE</td>
+          <td class="ep">SB/GU</td>
           <td class="calado">10,30</td>
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU</td>
+          <td class="esc">GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">EVER FAR</td>
           <td class="berco">E TC 3</td>
           <td class="dt">25/10 02:30</td>
-          <td class="ep">LT/SN</td>
+          <td class="ep">LE/LT</td>
           <td class="calado">12,90</td>
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
+          <td class="esc">LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MUSALA</td>
           <td class="berco">E TEAG</td>
           <td class="dt">25/10 02:30</td>
-          <td class="ep">MM</td>
+          <td class="ep">SN</td>
           <td class="calado">6,80</td>
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">MM(n/a) &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
+          <td class="esc">SN(n/a) &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SUPER TOMIYASU</td>
           <td class="berco">E 38</td>
           <td class="dt">25/10 03:00</td>
-          <td class="ep">AR</td>
+          <td class="ep">MM</td>
           <td class="calado">7,00</td>
           <td class="brd">BE</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">MM(04:30) &gt; AR(n/a) &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
+          <td class="esc">SN(04:30) &gt; MM(n/a) &gt; AR &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">VIYADA NAREE</td>
           <td class="berco">S TIP-2</td>
           <td class="dt">25/10 03:00</td>
-          <td class="ep">PR/CV</td>
+          <td class="ep">AR/PR</td>
           <td class="calado">9,95</td>
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">MM(04:15) &gt; AR(04:45) &gt; PR(n/a) &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
+          <td class="esc">SN(04:15) &gt; MM(04:45) &gt; AR(n/a) &gt; PR &gt; CV &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
+        </tr><tr style="background:#ffffff;color:#000000">
+          <td class="vessel">BOW FIGHTER</td>
+          <td class="berco">E IB SP</td>
+          <td class="dt">25/10 03:30</td>
+          <td class="ep">CV</td>
+          <td class="calado"></td>
+          <td class="brd"></td>
+          <td class="ab-a">A</td>
+          <td class="cal"></td>
+          <td class="esc">SN(04:30) &gt; MM(05:00) &gt; AR(05:45) &gt; PR(05:45) &gt; CV(n/a) &gt; BZ &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">BOW GLORY</td>
           <td class="berco">S IB-OE</td>
@@ -829,7 +819,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BE</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">MM(04:00) &gt; AR(04:30) &gt; PR(06:00) &gt; CV(06:00) &gt; BZ(n/a) &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
+          <td class="esc">SN(04:00) &gt; MM(04:30) &gt; AR(06:00) &gt; PR(06:00) &gt; CV(05:15) &gt; BZ(n/a) &gt; RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">TAI STAMINA</td>
           <td class="berco">E TIP-2</td>
@@ -839,17 +829,17 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">MM(04:30) &gt; AR(05:00) &gt; PR(05:45) &gt; CV(05:45) &gt; BZ(05:45) &gt; RO(n/a) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
+          <td class="esc">SN(04:30) &gt; MM(05:00) &gt; AR(05:45) &gt; PR(05:45) &gt; CV(06:00) &gt; BZ(05:45) &gt; RO(n/a) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">FL DATE</td>
           <td class="berco">S 39</td>
           <td class="dt">25/10 04:00</td>
-          <td class="ep">MM</td>
+          <td class="ep">SN</td>
           <td class="calado">12,80</td>
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">AR(04:30) &gt; PR(05:45) &gt; CV(05:45) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM</td>
+          <td class="esc">MM(04:30) &gt; AR(05:45) &gt; PR(05:45) &gt; CV(05:15) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MTM AMAZON</td>
           <td class="berco">E IB?</td>
@@ -859,7 +849,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd"></td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">AR(05:00) &gt; PR(05:45) &gt; CV(05:45) &gt; BZ(05:45) &gt; RO(07:00) &gt; AY(n/a) &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM</td>
+          <td class="esc">MM(05:00) &gt; AR(05:45) &gt; PR(05:45) &gt; CV(06:00) &gt; BZ(05:45) &gt; RO(07:00) &gt; AY(n/a) &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">COSCO SHIPPING WISDOM</td>
           <td class="berco">S 35.2</td>
@@ -869,17 +859,17 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">AR(04:30) &gt; PR(05:45) &gt; CV(05:45) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY(05:30) &gt; SB(n/a) &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM</td>
+          <td class="esc">MM(04:30) &gt; AR(05:45) &gt; PR(05:45) &gt; CV(05:15) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY(05:30) &gt; SB(n/a) &gt; GU &gt; LE &gt; LT &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MSC SHREYA B</td>
           <td class="berco">S BTP-2</td>
-          <td class="dt">25/10 04:00</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 04:15 (provavelmente o horário ainda não foi atualizado)">25/10 04:00<br><span class="invi">⚠ livre 04:15</span></td>
           <td class="ep">GU/LE</td>
           <td class="calado">13,90</td>
           <td class="brd">BE</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">AR(04:30) &gt; PR(06:00) &gt; CV(06:00) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY(05:30) &gt; SB(06:00) &gt; GU(n/a) &gt; LE &gt; LT &gt; SN &gt; MM</td>
+          <td class="esc">MM(04:30) &gt; AR(06:00) &gt; PR(06:00) &gt; CV(05:15) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY(05:30) &gt; SB(06:00) &gt; GU(n/a) &gt; LE &gt; LT &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">AMIS FORTUNE</td>
           <td class="berco">S TIP-3</td>
@@ -889,17 +879,27 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">AR(04:45) &gt; PR(06:15) &gt; CV(06:15) &gt; BZ(06:00) &gt; RO(06:00) &gt; AY(05:45) &gt; SB(06:00) &gt; GU(06:45) &gt; LE(06:45) &gt; LT(n/a) &gt; SN &gt; MM</td>
+          <td class="esc">MM(04:45) &gt; AR(06:15) &gt; PR(06:15) &gt; CV(05:30) &gt; BZ(06:00) &gt; RO(06:00) &gt; AY(05:45) &gt; SB(06:00) &gt; GU(06:45) &gt; LE(06:45) &gt; LT(n/a) &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">TAI HONOR</td>
           <td class="berco">E 39</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 04:45 (provavelmente o horário ainda não foi atualizado)">25/10 04:30<br><span class="invi">⚠ livre 04:45</span></td>
-          <td class="ep">SN</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 05:00 (provavelmente o horário ainda não foi atualizado)">25/10 04:30<br><span class="invi">⚠ livre 05:00</span></td>
+          <td class="ep">MM</td>
           <td class="calado">6,40</td>
           <td class="brd">BE</td>
-          <td class="ab-a">A</td>
+          <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">AR(05:00) &gt; PR(05:45) &gt; CV(05:45) &gt; BZ(05:45) &gt; RO(07:00) &gt; AY(06:00) &gt; SB(05:45) &gt; GU(06:30) &gt; LE(06:30) &gt; LT(06:45) &gt; SN(n/a) &gt; MM</td>
+          <td class="esc">AR(05:45) &gt; PR(05:45) &gt; CV(06:00) &gt; BZ(05:45) &gt; RO(07:00) &gt; AY(06:00) &gt; SB(05:45) &gt; GU(06:30) &gt; LE(06:30) &gt; LT(06:45) &gt; SN &gt; MM</td>
+        </tr><tr style="background:#ffffff;color:#444">
+          <td class="vessel">CASTILLO DE TEBRA</td>
+          <td class="berco">S IB BC</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 05:15 (provavelmente o horário ainda não foi atualizado)">25/10 05:00<br><span class="invi">⚠ livre 05:15</span></td>
+          <td class="ep">CV</td>
+          <td class="calado">7,20</td>
+          <td class="brd">BE</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc">AR(06:00) &gt; PR(06:00) &gt; BZ(05:45) &gt; RO(06:15) &gt; AY(05:30) &gt; SB(05:45) &gt; GU(06:30) &gt; LE(06:30) &gt; LT(06:45) &gt; SN &gt; MM &gt; CV</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">AMERICO VESPUCIO</td>
           <td class="berco">E EMB-1</td>
@@ -909,27 +909,27 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">PR &gt; CV &gt; BZ &gt; RO(07:00) &gt; AY &gt; SB &gt; GU(06:30) &gt; LE(06:30) &gt; LT(06:45) &gt; SN(06:30) &gt; MM &gt; AR</td>
+          <td class="esc">PR &gt; BZ &gt; RO(07:00) &gt; AY &gt; SB &gt; GU(06:30) &gt; LE(06:30) &gt; LT(06:45) &gt; SN &gt; MM &gt; CV &gt; AR</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SAN RAPHAEL MAERSK</td>
           <td class="berco">E BTP-2</td>
           <td class="dt">25/10 06:30</td>
-          <td class="ep">PR/CV</td>
+          <td class="ep">PR/BZ</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">CV &gt; BZ &gt; RO(07:00) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT(06:45) &gt; SN &gt; MM &gt; AR &gt; PR</td>
+          <td class="esc">BZ &gt; RO(07:00) &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT(06:45) &gt; SN &gt; MM &gt; CV &gt; AR &gt; PR</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SAKURA ADVANCE</td>
           <td class="berco">S AL 3</td>
           <td class="dt">25/10 07:00</td>
-          <td class="ep">BZ</td>
+          <td class="ep">RO</td>
           <td class="calado">6,00</td>
           <td class="brd">BB</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">RO &gt; AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; AR &gt; PR &gt; CV &gt; BZ</td>
+          <td class="esc">AY &gt; SB &gt; GU &gt; LE &gt; LT &gt; SN &gt; MM &gt; CV &gt; AR &gt; PR &gt; BZ &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">GLEN COVE</td>
           <td class="berco">E ALA</td>
@@ -939,7 +939,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd"></td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">LE &gt; LT &gt; CM &gt; LB &gt; AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY</td>
+          <td class="esc">LE &gt; LT &gt; CM &gt; AC &gt; AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MAERSK LAGUNA</td>
           <td class="berco">S BTP-1</td>
@@ -949,7 +949,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">LT &gt; CM &gt; LB &gt; AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE</td>
+          <td class="esc">LT &gt; CM &gt; AC &gt; AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SOPHIE</td>
           <td class="berco">S LARGO</td>
@@ -959,7 +959,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd"></td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">CM &gt; LB &gt; AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE &gt; LT</td>
+          <td class="esc">CM &gt; AC &gt; AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE &gt; LT</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">INDEPENDENT</td>
           <td class="berco">E ULT</td>
@@ -969,37 +969,37 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">LB &gt; AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE &gt; LT &gt; CM</td>
+          <td class="esc">AC &gt; AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE &gt; LT &gt; CM</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">HEEMSKERKGRACHT</td>
           <td class="berco">M CORTE → SAIPEM 1</td>
           <td class="dt">25/10 15:00</td>
-          <td class="ep">LB</td>
+          <td class="ep">AC</td>
           <td class="calado"></td>
           <td class="brd">BB</td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">LB(n/a) &gt; AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE &gt; LT &gt; CM</td>
+          <td class="esc">AC(n/a) &gt; AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE &gt; LT &gt; CM</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">MSC MARIA MARILYN X</td>
           <td class="berco">E BTP-1</td>
           <td class="dt">25/10 17:30</td>
-          <td class="ep">LB</td>
+          <td class="ep">AC</td>
           <td class="calado">11,50</td>
           <td class="brd">BE</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc">AC &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE &gt; LT &gt; CM &gt; LB</td>
+          <td class="esc">AB &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE &gt; LT &gt; CM &gt; AC</td>
         </tr><tr style="background:#ffffff;color:#444">
           <td class="vessel">SOPHIE</td>
           <td class="berco">E LARGO</td>
           <td class="dt">26/10 06:00</td>
-          <td class="ep">AC</td>
+          <td class="ep">AB</td>
           <td class="calado"></td>
           <td class="brd"></td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc">AC(n/a) &gt; AB &gt; PI &gt; HB &gt; PR &gt; CV &gt; BZ &gt; AY &gt; LE &gt; LT &gt; CM &gt; LB</td>
+          <td class="esc">AB(n/a) &gt; PI &gt; CV &gt; HB &gt; PR &gt; BZ &gt; LB &gt; AY &gt; LE &gt; LT &gt; CM &gt; AC</td>
         </tr></tbody>
       </table>
     </div>
@@ -1029,7 +1029,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <th style="padding:8px;border-bottom:1px solid #ccc">Pos. média após B</th>
         </tr></thead>
         <tbody>
-          <tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">1</td><td style="white-space:nowrap;padding:4px 8px">01/01/2026 → 08/01/2026</td><td style="text-align:center;padding:4px 8px">242 (34.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">2</td><td style="white-space:nowrap;padding:4px 8px">08/01/2026 → 15/01/2026</td><td style="text-align:center;padding:4px 8px">249 (35.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">20.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">3</td><td style="white-space:nowrap;padding:4px 8px">15/01/2026 → 22/01/2026</td><td style="text-align:center;padding:4px 8px">226 (32.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h18</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">4</td><td style="white-space:nowrap;padding:4px 8px">22/01/2026 → 29/01/2026</td><td style="text-align:center;padding:4px 8px">275 (39.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h34</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">5</td><td style="white-space:nowrap;padding:4px 8px">29/01/2026 → 05/02/2026</td><td style="text-align:center;padding:4px 8px">270 (38.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h55</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">6</td><td style="white-space:nowrap;padding:4px 8px">05/02/2026 → 12/02/2026</td><td style="text-align:center;padding:4px 8px">252 (36.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h41</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">7</td><td style="white-space:nowrap;padding:4px 8px">12/02/2026 → 19/02/2026</td><td style="text-align:center;padding:4px 8px">268 (38.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h14</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">8</td><td style="white-space:nowrap;padding:4px 8px">19/02/2026 → 26/02/2026</td><td style="text-align:center;padding:4px 8px">285 (40.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h22</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">9</td><td style="white-space:nowrap;padding:4px 8px">26/02/2026 → 05/03/2026</td><td style="text-align:center;padding:4px 8px">282 (40.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h24</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">10</td><td style="white-space:nowrap;padding:4px 8px">05/03/2026 → 12/03/2026</td><td style="text-align:center;padding:4px 8px">249 (35.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h56</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">11</td><td style="white-space:nowrap;padding:4px 8px">12/03/2026 → 19/03/2026</td><td style="text-align:center;padding:4px 8px">314 (44.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">7h58</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">12</td><td style="white-space:nowrap;padding:4px 8px">19/03/2026 → 26/03/2026</td><td style="text-align:center;padding:4px 8px">298 (42.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h15</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">13</td><td style="white-space:nowrap;padding:4px 8px">26/03/2026 → 02/04/2026</td><td style="text-align:center;padding:4px 8px">297 (42.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">14</td><td style="white-space:nowrap;padding:4px 8px">02/04/2026 → 09/04/2026</td><td style="text-align:center;padding:4px 8px">275 (39.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h14</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">15</td><td style="white-space:nowrap;padding:4px 8px">09/04/2026 → 16/04/2026</td><td style="text-align:center;padding:4px 8px">253 (36.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">16</td><td style="white-space:nowrap;padding:4px 8px">16/04/2026 → 23/04/2026</td><td style="text-align:center;padding:4px 8px">282 (40.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h23</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">17</td><td style="white-space:nowrap;padding:4px 8px">23/04/2026 → 30/04/2026</td><td style="text-align:center;padding:4px 8px">287 (41.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h09</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">18</td><td style="white-space:nowrap;padding:4px 8px">30/04/2026 → 07/05/2026</td><td style="text-align:center;padding:4px 8px">259 (37.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h36</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">19</td><td style="white-space:nowrap;padding:4px 8px">07/05/2026 → 14/05/2026</td><td style="text-align:center;padding:4px 8px">257 (36.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h43</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">20</td><td style="white-space:nowrap;padding:4px 8px">14/05/2026 → 21/05/2026</td><td style="text-align:center;padding:4px 8px">267 (38.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h39</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">21</td><td style="white-space:nowrap;padding:4px 8px">21/05/2026 → 28/05/2026</td><td style="text-align:center;padding:4px 8px">259 (37.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">22</td><td style="white-space:nowrap;padding:4px 8px">28/05/2026 → 04/06/2026</td><td style="text-align:center;padding:4px 8px">276 (39.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h55</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">23</td><td style="white-space:nowrap;padding:4px 8px">04/06/2026 → 11/06/2026</td><td style="text-align:center;padding:4px 8px">295 (42.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h52</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">24</td><td style="white-space:nowrap;padding:4px 8px">11/06/2026 → 18/06/2026</td><td style="text-align:center;padding:4px 8px">276 (39.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">25</td><td style="white-space:nowrap;padding:4px 8px">18/06/2026 → 25/06/2026</td><td style="text-align:center;padding:4px 8px">269 (38.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">26</td><td style="white-space:nowrap;padding:4px 8px">25/06/2026 → 02/07/2026</td><td style="text-align:center;padding:4px 8px">287 (41.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h57</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">27</td><td style="white-space:nowrap;padding:4px 8px">02/07/2026 → 09/07/2026</td><td style="text-align:center;padding:4px 8px">231 (33.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h53</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">28</td><td style="white-space:nowrap;padding:4px 8px">09/07/2026 → 16/07/2026</td><td style="text-align:center;padding:4px 8px">305 (43.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h08</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">29</td><td style="white-space:nowrap;padding:4px 8px">16/07/2026 → 23/07/2026</td><td style="text-align:center;padding:4px 8px">295 (42.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">30</td><td style="white-space:nowrap;padding:4px 8px">23/07/2026 → 30/07/2026</td><td style="text-align:center;padding:4px 8px">266 (38.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h21</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">31</td><td style="white-space:nowrap;padding:4px 8px">30/07/2026 → 06/08/2026</td><td style="text-align:center;padding:4px 8px">267 (38.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h30</td><td style="text-align:center;font-weight:600;padding:4px 8px">20.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">32</td><td style="white-space:nowrap;padding:4px 8px">06/08/2026 → 13/08/2026</td><td style="text-align:center;padding:4px 8px">214 (30.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">12h25</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">33</td><td style="white-space:nowrap;padding:4px 8px">13/08/2026 → 20/08/2026</td><td style="text-align:center;padding:4px 8px">279 (39.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h08</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">34</td><td style="white-space:nowrap;padding:4px 8px">20/08/2026 → 27/08/2026</td><td style="text-align:center;padding:4px 8px">245 (35.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h44</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">35</td><td style="white-space:nowrap;padding:4px 8px">27/08/2026 → 03/09/2026</td><td style="text-align:center;padding:4px 8px">280 (40.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h54</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">36</td><td style="white-space:nowrap;padding:4px 8px">03/09/2026 → 10/09/2026</td><td style="text-align:center;padding:4px 8px">260 (37.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h22</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">37</td><td style="white-space:nowrap;padding:4px 8px">10/09/2026 → 17/09/2026</td><td style="text-align:center;padding:4px 8px">255 (36.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h09</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">38</td><td style="white-space:nowrap;padding:4px 8px">17/09/2026 → 24/09/2026</td><td style="text-align:center;padding:4px 8px">272 (38.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h13</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">39</td><td style="white-space:nowrap;padding:4px 8px">24/09/2026 → 01/10/2026</td><td style="text-align:center;padding:4px 8px">307 (43.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h11</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">40</td><td style="white-space:nowrap;padding:4px 8px">01/10/2026 → 08/10/2026</td><td style="text-align:center;padding:4px 8px">246 (35.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h48</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">41</td><td style="white-space:nowrap;padding:4px 8px">08/10/2026 → 15/10/2026</td><td style="text-align:center;padding:4px 8px">281 (40.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h28</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">42</td><td style="white-space:nowrap;padding:4px 8px">15/10/2026 → 22/10/2026</td><td style="text-align:center;padding:4px 8px">260 (37.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h03</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style="background:#fff8dc"><td style="text-align:center;font-weight:600;padding:4px 8px">43 <span style="color:#aaa;font-weight:400">(parcial)</span></td><td style="white-space:nowrap;padding:4px 8px">22/10/2026 → 29/10/2026</td><td style="text-align:center;padding:4px 8px">88 (33.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h30</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.8</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">44</td><td style="white-space:nowrap;padding:4px 8px">29/10/2026 → 05/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">45</td><td style="white-space:nowrap;padding:4px 8px">05/11/2026 → 12/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">46</td><td style="white-space:nowrap;padding:4px 8px">12/11/2026 → 19/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">47</td><td style="white-space:nowrap;padding:4px 8px">19/11/2026 → 26/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">48</td><td style="white-space:nowrap;padding:4px 8px">26/11/2026 → 03/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">49</td><td style="white-space:nowrap;padding:4px 8px">03/12/2026 → 10/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">50</td><td style="white-space:nowrap;padding:4px 8px">10/12/2026 → 17/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">51</td><td style="white-space:nowrap;padding:4px 8px">17/12/2026 → 24/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">52</td><td style="white-space:nowrap;padding:4px 8px">24/12/2026 → 31/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr>
+          <tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">1</td><td style="white-space:nowrap;padding:4px 8px">01/01/2026 → 08/01/2026</td><td style="text-align:center;padding:4px 8px">242 (34.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">2</td><td style="white-space:nowrap;padding:4px 8px">08/01/2026 → 15/01/2026</td><td style="text-align:center;padding:4px 8px">249 (35.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">20.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">3</td><td style="white-space:nowrap;padding:4px 8px">15/01/2026 → 22/01/2026</td><td style="text-align:center;padding:4px 8px">226 (32.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h18</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">4</td><td style="white-space:nowrap;padding:4px 8px">22/01/2026 → 29/01/2026</td><td style="text-align:center;padding:4px 8px">275 (39.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h34</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">5</td><td style="white-space:nowrap;padding:4px 8px">29/01/2026 → 05/02/2026</td><td style="text-align:center;padding:4px 8px">270 (38.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h55</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">6</td><td style="white-space:nowrap;padding:4px 8px">05/02/2026 → 12/02/2026</td><td style="text-align:center;padding:4px 8px">252 (36.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h41</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">7</td><td style="white-space:nowrap;padding:4px 8px">12/02/2026 → 19/02/2026</td><td style="text-align:center;padding:4px 8px">268 (38.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h14</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">8</td><td style="white-space:nowrap;padding:4px 8px">19/02/2026 → 26/02/2026</td><td style="text-align:center;padding:4px 8px">285 (40.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h22</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">9</td><td style="white-space:nowrap;padding:4px 8px">26/02/2026 → 05/03/2026</td><td style="text-align:center;padding:4px 8px">282 (40.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h24</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">10</td><td style="white-space:nowrap;padding:4px 8px">05/03/2026 → 12/03/2026</td><td style="text-align:center;padding:4px 8px">249 (35.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h56</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">11</td><td style="white-space:nowrap;padding:4px 8px">12/03/2026 → 19/03/2026</td><td style="text-align:center;padding:4px 8px">314 (44.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">7h58</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">12</td><td style="white-space:nowrap;padding:4px 8px">19/03/2026 → 26/03/2026</td><td style="text-align:center;padding:4px 8px">298 (42.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h15</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">13</td><td style="white-space:nowrap;padding:4px 8px">26/03/2026 → 02/04/2026</td><td style="text-align:center;padding:4px 8px">297 (42.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">14</td><td style="white-space:nowrap;padding:4px 8px">02/04/2026 → 09/04/2026</td><td style="text-align:center;padding:4px 8px">275 (39.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h14</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">15</td><td style="white-space:nowrap;padding:4px 8px">09/04/2026 → 16/04/2026</td><td style="text-align:center;padding:4px 8px">253 (36.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">11h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">16</td><td style="white-space:nowrap;padding:4px 8px">16/04/2026 → 23/04/2026</td><td style="text-align:center;padding:4px 8px">282 (40.3/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h23</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">17</td><td style="white-space:nowrap;padding:4px 8px">23/04/2026 → 30/04/2026</td><td style="text-align:center;padding:4px 8px">287 (41.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h09</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">18</td><td style="white-space:nowrap;padding:4px 8px">30/04/2026 → 07/05/2026</td><td style="text-align:center;padding:4px 8px">259 (37.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h36</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">19</td><td style="white-space:nowrap;padding:4px 8px">07/05/2026 → 14/05/2026</td><td style="text-align:center;padding:4px 8px">257 (36.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h43</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">20</td><td style="white-space:nowrap;padding:4px 8px">14/05/2026 → 21/05/2026</td><td style="text-align:center;padding:4px 8px">267 (38.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h39</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">21</td><td style="white-space:nowrap;padding:4px 8px">21/05/2026 → 28/05/2026</td><td style="text-align:center;padding:4px 8px">259 (37.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h49</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">22</td><td style="white-space:nowrap;padding:4px 8px">28/05/2026 → 04/06/2026</td><td style="text-align:center;padding:4px 8px">276 (39.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h55</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">23</td><td style="white-space:nowrap;padding:4px 8px">04/06/2026 → 11/06/2026</td><td style="text-align:center;padding:4px 8px">295 (42.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h52</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">24</td><td style="white-space:nowrap;padding:4px 8px">11/06/2026 → 18/06/2026</td><td style="text-align:center;padding:4px 8px">276 (39.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">25</td><td style="white-space:nowrap;padding:4px 8px">18/06/2026 → 25/06/2026</td><td style="text-align:center;padding:4px 8px">269 (38.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h38</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">26</td><td style="white-space:nowrap;padding:4px 8px">25/06/2026 → 02/07/2026</td><td style="text-align:center;padding:4px 8px">287 (41.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h57</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">27</td><td style="white-space:nowrap;padding:4px 8px">02/07/2026 → 09/07/2026</td><td style="text-align:center;padding:4px 8px">231 (33.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h53</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">28</td><td style="white-space:nowrap;padding:4px 8px">09/07/2026 → 16/07/2026</td><td style="text-align:center;padding:4px 8px">305 (43.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h08</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">29</td><td style="white-space:nowrap;padding:4px 8px">16/07/2026 → 23/07/2026</td><td style="text-align:center;padding:4px 8px">295 (42.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">30</td><td style="white-space:nowrap;padding:4px 8px">23/07/2026 → 30/07/2026</td><td style="text-align:center;padding:4px 8px">266 (38.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h21</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.3</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">31</td><td style="white-space:nowrap;padding:4px 8px">30/07/2026 → 06/08/2026</td><td style="text-align:center;padding:4px 8px">267 (38.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h30</td><td style="text-align:center;font-weight:600;padding:4px 8px">20.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">32</td><td style="white-space:nowrap;padding:4px 8px">06/08/2026 → 13/08/2026</td><td style="text-align:center;padding:4px 8px">214 (30.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">12h25</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.0</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">33</td><td style="white-space:nowrap;padding:4px 8px">13/08/2026 → 20/08/2026</td><td style="text-align:center;padding:4px 8px">279 (39.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h08</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.7</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">34</td><td style="white-space:nowrap;padding:4px 8px">20/08/2026 → 27/08/2026</td><td style="text-align:center;padding:4px 8px">245 (35.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h44</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">35</td><td style="white-space:nowrap;padding:4px 8px">27/08/2026 → 03/09/2026</td><td style="text-align:center;padding:4px 8px">280 (40.0/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h54</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.4</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">36</td><td style="white-space:nowrap;padding:4px 8px">03/09/2026 → 10/09/2026</td><td style="text-align:center;padding:4px 8px">260 (37.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h22</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">37</td><td style="white-space:nowrap;padding:4px 8px">10/09/2026 → 17/09/2026</td><td style="text-align:center;padding:4px 8px">255 (36.4/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h09</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.6</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">38</td><td style="white-space:nowrap;padding:4px 8px">17/09/2026 → 24/09/2026</td><td style="text-align:center;padding:4px 8px">272 (38.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h13</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.5</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">39</td><td style="white-space:nowrap;padding:4px 8px">24/09/2026 → 01/10/2026</td><td style="text-align:center;padding:4px 8px">307 (43.9/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">8h11</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.8</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">40</td><td style="white-space:nowrap;padding:4px 8px">01/10/2026 → 08/10/2026</td><td style="text-align:center;padding:4px 8px">246 (35.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h48</td><td style="text-align:center;font-weight:600;padding:4px 8px">18.9</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">41</td><td style="white-space:nowrap;padding:4px 8px">08/10/2026 → 15/10/2026</td><td style="text-align:center;padding:4px 8px">281 (40.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h28</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">42</td><td style="white-space:nowrap;padding:4px 8px">15/10/2026 → 22/10/2026</td><td style="text-align:center;padding:4px 8px">260 (37.1/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">10h03</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.1</td></tr><tr style="background:#fff8dc"><td style="text-align:center;font-weight:600;padding:4px 8px">43 <span style="color:#aaa;font-weight:400">(parcial)</span></td><td style="white-space:nowrap;padding:4px 8px">22/10/2026 → 29/10/2026</td><td style="text-align:center;padding:4px 8px">88 (33.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h30</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.8</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">44</td><td style="white-space:nowrap;padding:4px 8px">29/10/2026 → 05/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">45</td><td style="white-space:nowrap;padding:4px 8px">05/11/2026 → 12/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">46</td><td style="white-space:nowrap;padding:4px 8px">12/11/2026 → 19/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">47</td><td style="white-space:nowrap;padding:4px 8px">19/11/2026 → 26/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">48</td><td style="white-space:nowrap;padding:4px 8px">26/11/2026 → 03/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">49</td><td style="white-space:nowrap;padding:4px 8px">03/12/2026 → 10/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">50</td><td style="white-space:nowrap;padding:4px 8px">10/12/2026 → 17/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">51</td><td style="white-space:nowrap;padding:4px 8px">17/12/2026 → 24/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">52</td><td style="white-space:nowrap;padding:4px 8px">24/12/2026 → 31/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr>
         </tbody>
       </table>
     </div>
