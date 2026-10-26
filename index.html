@@ -115,8 +115,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>00:55</b> (26/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 00:52</span><br>
+    <span style="font-size:15px">Atualizado às <b>01:10</b> (26/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 01:08</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>20</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt): <b>11h45</b> | Posições médias após B: <b>20.2</b>
   </div>
@@ -129,7 +129,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-26T00:55:31-03:00');
+  const gen = new Date('2026-10-26T01:10:26-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -641,7 +641,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal">18h50</td>
           <td class="esc">SN(n/a) &gt; SF &gt; MM &gt; BZ &gt; AY &gt; LZ &gt; PA &gt; GM &gt; CV &gt; LT &gt; GU &gt; BR</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">ASTRO DENEBOLA</td>
           <td class="berco">E CS 3</td>
           <td class="dt">26/10 01:30</td>
@@ -651,7 +651,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc">SF &gt; MM &gt; BZ &gt; AY &gt; LZ &gt; PA &gt; GM &gt; CV &gt; LT &gt; GU &gt; BR &gt; SN</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">MSC MARIA MARILYN X</td>
           <td class="berco">E BTP-3</td>
           <td class="dt">26/10 01:30</td>
