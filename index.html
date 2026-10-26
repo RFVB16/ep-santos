@@ -115,7 +115,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>05:25</b> (26/10) · <b id="idade"></b></span>
+    <span style="font-size:15px">Atualizado às <b>05:40</b> (26/10) · <b id="idade"></b></span>
     <span style="opacity:.8"> · pauta do SPPilots lida às 02:26</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>21</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt): <b>12h59</b> | Posições médias após B: <b>20.2</b>
@@ -129,7 +129,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-26T05:25:23-03:00');
+  const gen = new Date('2026-10-26T05:40:27-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -681,7 +681,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">MM(n/a) &gt; BZ &gt; AY &gt; LZ &gt; PA &gt; GM &gt; CV &gt; LT &gt; GU &gt; BR &gt; SN &gt; SF</td>
-        </tr><tr style="background:#ffffff;color:#444">
+        </tr><tr style="background:#ffcccc;color:#000">
           <td class="vessel">FL DATE</td>
           <td class="berco">S 39</td>
           <td class="dt">26/10 05:00</td>
@@ -691,7 +691,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
           <td class="ab-a">A</td>
           <td class="cal"></td>
           <td class="esc">MM(06:15) &gt; BZ(n/a) &gt; AY &gt; LZ &gt; PA &gt; GM &gt; CV &gt; LT &gt; GU &gt; BR &gt; SN &gt; SF</td>
-        </tr><tr style="background:#ffffff;color:#444">
+        </tr><tr style="background:#ffcccc;color:#000">
           <td class="vessel">AMERICO VESPUCIO</td>
           <td class="berco">S EMB-1</td>
           <td class="dt">26/10 05:00</td>
