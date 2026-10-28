@@ -124,8 +124,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>10:26</b> (28/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 10:23</span><br>
+    <span style="font-size:15px">Atualizado às <b>10:41</b> (28/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 10:38</span><br>
     Ontem: <b>48</b> manobras | Hoje: <b>8</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h38</b> | Posições médias após B: <b>19.4</b>
   </div>
@@ -142,7 +142,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-28T10:26:14-03:00');
+  const gen = new Date('2026-10-28T10:41:14-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -440,7 +440,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">27/10 22:30</td>
           <td class="ep">LG</td>
           <td class="calado">10,20</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b">B</td>
           <td class="cal">3h30</td>
           <td class="esc esc-col">BZ(22:45) &gt; SP &gt; GO &gt; ON &gt; FX &gt; GM &gt; GL &gt; FL &gt; NI &gt; LT &gt; ED &gt; LG</td>
@@ -450,7 +450,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">27/10 22:30</td>
           <td class="ep">SP</td>
           <td class="calado">6,90</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-a">A</td>
           <td class="cal">9h00</td>
           <td class="esc esc-col">BZ(22:45) &gt; SP(n/a) &gt; GO &gt; ON &gt; FX &gt; GM &gt; GL &gt; FL &gt; NI &gt; LT &gt; ED &gt; LG</td>
