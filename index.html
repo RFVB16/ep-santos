@@ -67,15 +67,15 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 .proj-scroll::-webkit-scrollbar-thumb { background: #2E86C1; border-radius: 4px; }
 .proj-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
 .proj table { min-width: 100%; border-collapse: collapse; table-layout: auto;
-               font-family: Tahoma, Verdana, "Segoe UI", sans-serif; font-size: 14px; }
-/* visual igual à pauta do SPPilots: Tahoma 14px, cabeçalho cinza, linhas separadas por traço preto */
-.proj th { background: #cccccc; color: #000; padding: 4px 6px; border-bottom: 1px solid #000;
-            font-size: 14px; font-weight: 700; text-align: left; position: sticky; top: 0; z-index: 1;
+               font-family: Tahoma, Verdana, "Segoe UI", sans-serif; font-size: 11px; }
+/* visual igual à pauta do SPPilots: Tahoma 11px (medido com os dois em 100%), cabeçalho cinza, linhas separadas por traço preto */
+.proj th { background: #cccccc; color: #000; padding: 3px 6px; border-bottom: 1px solid #000;
+            font-size: 11px; font-weight: 700; text-align: left; position: sticky; top: 0; z-index: 1;
             white-space: nowrap; }
-.proj td { padding: 3px 6px; border-bottom: 1px solid #000; font-size: 14px; line-height: 17px; }
+.proj td { padding: 2px 6px; border-bottom: 1px solid #000; font-size: 11px; line-height: 14px; }
 .proj td.vessel, .proj td.berco, .proj td.dt, .proj td.ep, .proj td.calado, .proj td.brd,
-.proj td.cal, .proj td.esc, .proj td.ab-a, .proj td.ab-b { color: inherit; font-size: 14px; font-weight: 400; letter-spacing: 0; }
-.proj td.esc { font-size: 12px; }
+.proj td.cal, .proj td.esc, .proj td.ab-a, .proj td.ab-b { color: inherit; font-size: 11px; font-weight: 400; letter-spacing: 0; }
+.proj td.esc { font-size: 10px; }
 .p2 { background: #ffff00; color: #0000ff; }
 .es { width: 28px; text-align: center; font-weight: 700; white-space: nowrap; }
 .star2 { font-size: 9px; color: #d4a017; margin-left: 2px; }
@@ -84,7 +84,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 .brd { font-size: 11px; text-align: center; width: 36px; }
 .calado { font-size: 11px; white-space: nowrap; color: #333; }
 .dt { width: 85px; white-space: nowrap; }
-.invi { background: #ffff00; color: #c00000; font-weight: 700; font-size: 11px; padding: 0 2px; }
+.invi { background: #ffff00; color: #c00000; font-weight: 700; font-size: 10px; padding: 0 2px; }
 .obsx { background: #ffff00; color: #c00000; font-weight: 800; margin-left: 2px; padding: 0 2px; cursor: help; }
 .ep { font-weight: 700; font-size: 14px; color: #1B4F72; letter-spacing: .5px; white-space: nowrap; }
 .cal, .brd { font-size: 10.5px; color: #666; white-space: nowrap; }
@@ -121,7 +121,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>21:56</b> (27/10) · <b id="idade"></b></span>
+    <span style="font-size:15px">Atualizado às <b>21:59</b> (27/10) · <b id="idade"></b></span>
     <span style="opacity:.8"> · pauta do SPPilots lida às 21:53</span><br>
     Ontem: <b>37</b> manobras | Hoje: <b>33</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>5</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h46</b> | Posições médias após B: <b>19.5</b>
@@ -135,7 +135,7 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <script>
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-27T21:56:05-03:00');
+  const gen = new Date('2026-10-27T21:59:22-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
