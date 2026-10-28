@@ -122,8 +122,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>23:05</b> (27/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 22:55</span><br>
+    <span style="font-size:15px">Atualizado às <b>23:11</b> (27/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 23:06</span><br>
     Ontem: <b>37</b> manobras | Hoje: <b>36</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>5</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h42</b> | Posições médias após B: <b>19.5</b>
   </div>
@@ -140,7 +140,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-27T23:05:55-03:00');
+  const gen = new Date('2026-10-27T23:11:14-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">27/10 11:00</td>
           <td class="ep">NI</td>
           <td class="calado">6,63</td>
-          <td class="brd">BB</td>
+          <td class="brd"></td>
           <td class="ab-b">B</td>
           <td class="cal">2h00</td>
           <td class="esc esc-col">LT &gt; GO &gt; LG &gt; FL &gt; ED &gt; BZ &gt; ON &gt; SP &gt; GL &gt; GM &gt; FX &gt; NI</td>
@@ -558,7 +558,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">27/10 11:00</td>
           <td class="ep">LT</td>
           <td class="calado">5,40</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-a">A</td>
           <td class="cal">15h30</td>
           <td class="esc esc-col">LT(n/a) &gt; GO &gt; LG &gt; FL &gt; ED &gt; BZ &gt; ON &gt; SP &gt; GL &gt; GM &gt; FX &gt; NI</td>
@@ -1023,75 +1023,85 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal"></td>
           <td class="esc esc-col">GO(05:30) &gt; LG(05:30) &gt; ED(n/a) &gt; ON &gt; BZ &gt; SP &gt; GM &gt; GL &gt; FX &gt; NI &gt; LT &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">CHEMROAD ORCHID</td>
-          <td class="berco">S AL 4</td>
+          <td class="vessel">LOG-IN JATOBA</td>
+          <td class="berco">S TC 1.2</td>
           <td class="dt">28/10 06:00</td>
           <td class="ep">GO</td>
-          <td class="calado">11,30</td>
-          <td class="brd">BE</td>
+          <td class="calado">11,50</td>
+          <td class="brd">BB</td>
           <td class="ab-b">B</td>
           <td class="cal"></td>
           <td class="esc esc-col">LG &gt; ED &gt; ON &gt; BZ &gt; SP &gt; GM &gt; GL &gt; FX &gt; NI &gt; LT &gt; FL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">CHEMROAD ORCHID</td>
+          <td class="berco">S AL 4</td>
+          <td class="dt">28/10 06:00</td>
+          <td class="ep">LG</td>
+          <td class="calado">11,30</td>
+          <td class="brd">BE</td>
+          <td class="ab-b">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">ED &gt; ON &gt; BZ &gt; SP &gt; GM &gt; GL &gt; FX &gt; NI &gt; LT &gt; FL &gt; GO &gt; LG</td>
+        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">HEEMSKERKGRACHT</td>
           <td class="berco">S SAIPEM 1</td>
           <td class="dt">28/10 12:00</td>
-          <td class="ep">PA</td>
+          <td class="ep" style="background:#2e7d32;color:#fff;font-weight:bold">SI</td>
           <td class="calado"></td>
           <td class="brd">BB</td>
-          <td class="ab-b">B</td>
+          <td class="ab-a"></td>
           <td class="cal"></td>
-          <td class="esc esc-col">SI(1) &gt; AG &gt; JA(3) &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; PA</td>
+          <td class="esc esc-col">PA &gt; JA(2) &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; AG &gt; SI(12)</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ASL GALAXY</td>
           <td class="berco">S CTRLE</td>
           <td class="dt">28/10 13:00</td>
-          <td class="ep" style="background:#2e7d32;color:#fff;font-weight:bold">SI</td>
+          <td class="ep">PA</td>
           <td class="calado">13,62</td>
           <td class="brd">BB</td>
-          <td class="ab-a"></td>
+          <td class="ab-b">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AG &gt; JA(2) &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; PA &gt; SI(12)</td>
+          <td class="esc esc-col">JA(1) &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; AG &gt; SI(11) &gt; PA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BUENAVISTA</td>
           <td class="berco">E 25</td>
           <td class="dt">28/10 16:30</td>
-          <td class="ep">AG</td>
+          <td class="ep" style="background:#2e7d32;color:#fff;font-weight:bold">JA</td>
           <td class="calado">8,30</td>
           <td class="brd">BE</td>
-          <td class="ab-a">A</td>
+          <td class="ab-a"></td>
           <td class="cal"></td>
-          <td class="esc esc-col">JA(1) &gt; AG(n/a) &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; SI(11) &gt; PA</td>
+          <td class="esc esc-col">LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; AG &gt; SI(10) &gt; PA &gt; JA(12)</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SHINE PEARL</td>
           <td class="berco">S TGG</td>
           <td class="dt">28/10 19:00</td>
-          <td class="ep" style="background:#2e7d32;color:#fff;font-weight:bold">JA</td>
+          <td class="ep">LE</td>
           <td class="calado">13,40</td>
           <td class="brd">BB</td>
-          <td class="ab-a"></td>
+          <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AG &gt; LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; SI(10) &gt; PA &gt; JA(12)</td>
+          <td class="esc esc-col">LE(n/a) &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; SI(9) &gt; AG &gt; JA(11) &gt; PA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">GRANDE TEMA</td>
           <td class="berco">S VAL</td>
           <td class="dt">28/10 19:00</td>
-          <td class="ep">AG</td>
+          <td class="ep">BZ</td>
           <td class="calado">9,50</td>
           <td class="brd">BE</td>
-          <td class="ab-b">B</td>
+          <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LE &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; GO &gt; SI(9) &gt; PA &gt; JA(11) &gt; AG</td>
+          <td class="esc esc-col">LE(20:45) &gt; BZ(n/a) &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; SI(8) &gt; GO &gt; JA(10) &gt; AG &gt; PA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">GRANDE FRANCIA</td>
           <td class="berco">E VAL</td>
           <td class="dt">28/10 19:30</td>
-          <td class="ep">LE</td>
+          <td class="ep">SP</td>
           <td class="calado">8,50</td>
           <td class="brd"></td>
           <td class="ab-a">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LE(n/a) &gt; BZ &gt; SP &gt; GL &gt; GA &gt; LT &gt; RO &gt; SI(8) &gt; GO &gt; JA(10) &gt; PA &gt; AG</td>
+          <td class="esc esc-col">LE(20:45) &gt; BZ(21:15) &gt; SP(n/a) &gt; GL &gt; GA &gt; LT &gt; SI(7) &gt; RO &gt; JA(9) &gt; GO &gt; AG &gt; PA</td>
         </tr></tbody>
       </table>
     </div>
