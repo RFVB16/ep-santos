@@ -124,8 +124,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>11:41</b> (28/10) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 11:40</span><br>
+    <span style="font-size:15px">Atualizado às <b>11:56</b> (28/10) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 11:56</span><br>
     Ontem: <b>48</b> manobras | Hoje: <b>9</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h38</b> | Posições médias após B: <b>19.4</b>
   </div>
@@ -142,7 +142,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-10-28T11:41:28-03:00');
+  const gen = new Date('2026-10-28T11:56:22-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a"></td>
           <td class="cal"></td>
           <td class="esc esc-col">AG &gt; BZ &gt; SP &gt; GO(11:30) &gt; LE &gt; SI(6) &gt; PA &gt; GL &gt; RO &gt; LT &gt; GA &gt; JA(12)</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">TEAL ARROW</td>
           <td class="berco">E 31</td>
           <td class="dt">28/10 12:00</td>
@@ -674,7 +674,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-b">B</td>
           <td class="cal">4h00</td>
           <td class="esc esc-col">BZ &gt; SP &gt; GO &gt; LE &gt; SI(5) &gt; PA &gt; GL &gt; RO &gt; LT &gt; GA &gt; JA(11) &gt; AG</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">AS SABINE</td>
           <td class="berco">E BTP-1</td>
           <td class="dt">28/10 12:00</td>
