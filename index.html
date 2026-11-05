@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>06:15</b> (05/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 06:12</span><br>
+    <span style="font-size:15px">Atualizado às <b>06:25</b> (05/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 06:22</span><br>
     Ontem: <b>50</b> manobras | Hoje: <b>44</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>5</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h34</b> | Posições médias após B: <b>18.7</b>
   </div>
@@ -159,7 +159,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-05T06:15:39-03:00');
+  const gen = new Date('2026-11-05T06:25:34-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -1021,7 +1021,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="LB" data-d="2026-11-04">A</td>
           <td class="cal"><b class="dl-a">11h48</b></td>
           <td class="esc esc-col">MM(06:15) &gt; MC(06:45) &gt; MS(06:45) &gt; LB(n/a) &gt; AD &gt; NI &gt; AR &gt; LE &gt; GE &gt; FL &gt; AB &gt; LC &gt; PA</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">NSS GUILLOBEL</td>
           <td class="berco">E OUT-2</td>
           <td class="dt">05/11 06:00</td>
@@ -1031,7 +1031,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="AD" data-d="2026-11-04">A</td>
           <td class="cal"><b class="dl-a">11h53</b></td>
           <td class="esc esc-col">MM(06:15) &gt; MC(06:45) &gt; MS(06:45) &gt; LB(07:30) &gt; AD(n/a) &gt; NI &gt; AR &gt; LE &gt; GE &gt; FL &gt; AB &gt; LC &gt; PA</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">FARMER</td>
           <td class="berco">E 37.1</td>
           <td class="dt">05/11 06:00</td>
