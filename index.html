@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>09:55</b> (05/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 09:53</span><br>
+    <span style="font-size:15px">Atualizado às <b>10:05</b> (05/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 10:04</span><br>
     Ontem: <b>44</b> manobras | Hoje: <b>12</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h00</b> | Posições médias após B: <b>19.4</b>
   </div>
@@ -159,7 +159,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-05T09:55:36-03:00');
+  const gen = new Date('2026-11-05T10:05:41-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -487,7 +487,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">04/11 22:00</td>
           <td class="ep relx" data-p="GE" data-d="2026-11-04">GE<span class="obsx" tabindex="0" title="Escalado ainda em manobra (GE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (PALENA 20:00)" onclick="this.classList.toggle('open')">⚠<span class="obsx-txt">Escalado ainda em manobra (GE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (PALENA 20:00)</span></span></td>
           <td class="calado">12,10</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="GE" data-d="2026-11-04">B</td>
           <td class="cal">31min</td>
           <td class="esc esc-col">LC &gt; FL &gt; AB &gt; PA &gt; MM &gt; MC &gt; MS &gt; LB &gt; AD &gt; NI &gt; AR &gt; LE &gt; GE</td>
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">04/11 22:00</td>
           <td class="ep relx" data-p="FL" data-d="2026-11-04">FL</td>
           <td class="calado">9,80</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="FL" data-d="2026-11-04">B</td>
           <td class="cal">1h10</td>
           <td class="esc esc-col">LC &gt; AB &gt; PA &gt; MM &gt; MC &gt; MS &gt; LB &gt; AD &gt; NI &gt; AR &gt; LE &gt; GE &gt; FL</td>
@@ -896,7 +896,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="berco">E BTP-3</td>
           <td class="dt">06/11 00:00</td>
           <td class="ep relx" data-p="FL" data-d="2026-11-05">FL</td>
-          <td class="calado"></td>
+          <td class="calado">11,10</td>
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="FL" data-d="2026-11-05">A</td>
           <td class="cal"></td>
