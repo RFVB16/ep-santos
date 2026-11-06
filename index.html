@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>02:55</b> (06/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 02:51</span><br>
+    <span style="font-size:15px">Atualizado às <b>03:05</b> (06/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 03:01</span><br>
     Ontem: <b>44</b> manobras | Hoje: <b>39</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>5</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h47</b> | Posições médias após B: <b>18.7</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-06T02:55:41-03:00');
+  const gen = new Date('2026-11-06T03:05:42-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">05/11 15:00</td>
           <td class="ep relx" data-p="GE" data-d="2026-11-05">GE/MM</td>
           <td class="calado">13,50</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="GE" data-d="2026-11-05">B/B</td>
           <td class="cal">GE 35min / MM 43min</td>
           <td class="esc esc-col">MM &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE</td>
@@ -1015,7 +1015,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ARMATHIA</td>
           <td class="berco">S 13/14</td>
-          <td class="dt">06/11 07:30</td>
+          <td class="dt">06/11 08:00</td>
           <td class="ep relx" data-p="AR" data-d="2026-11-06">AR</td>
           <td class="calado">13,56</td>
           <td class="brd">BE</td>
@@ -1025,7 +1025,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DSM EVERTON</td>
           <td class="berco">E 13/14</td>
-          <td class="dt">06/11 08:00</td>
+          <td class="dt">06/11 08:30</td>
           <td class="ep relx" data-p="NI" data-d="2026-11-06">NI</td>
           <td class="calado">6,50</td>
           <td class="brd">BE</td>
