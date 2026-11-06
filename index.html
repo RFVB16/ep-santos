@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>22:45</b> (05/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 22:45</span><br>
+    <span style="font-size:15px">Atualizado às <b>22:55</b> (05/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 22:50</span><br>
     Ontem: <b>44</b> manobras | Hoje: <b>33</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>4</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h49</b> | Posições médias após B: <b>18.8</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-05T22:45:47-03:00');
+  const gen = new Date('2026-11-05T22:55:54-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
-      <div class="side-scroll"><table><tbody><tr><td class="prat">CF</td><td class="st"><span class="tE">E 01:00</span><br><span class="tS">S 01:00</span></td></tr><tr><td class="prat">GE</td><td class="st"><span class="tE">E 01:30</span><br><span class="tS">S 01:30</span></td></tr><tr><td class="prat">MM</td><td class="st"><span class="tE">E 01:30</span><br><span class="tS">S 01:30</span></td></tr></tbody></table></div>
+      <div class="side-scroll"><table><tbody><tr><td class="prat">CF</td><td class="st"><span class="tE">E 01:00</span><br><span class="tS">S 01:15</span></td></tr><tr><td class="prat">GE</td><td class="st"><span class="tE">E 01:30</span><br><span class="tS">S 01:30</span></td></tr><tr><td class="prat">MM</td><td class="st"><span class="tE">E 01:30</span><br><span class="tS">S 01:30</span></td></tr></tbody></table></div>
     </div>
   </div>
   <div class="panel proj">
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
       <table id="projtab" class="hide-esc">
         <thead><tr>
           <th>Navio</th><th>Local</th><th>Horário</th>
-          <th title="⚠ = risco de atraso (pouco tempo entre o fim previsto da A e a B). M = margem extra possível: na escalação (1 h antes) o prático ainda estava dentro do T da manobra anterior; se ainda estiver a bordo, pode pedir +1 h. Só manobras confirmadas. Toque no símbolo para ver o motivo.">PRT</th><th>Calado</th><th>Bordo</th><th>A/B</th><th title="Na A (amarelo): descanso, do fim da manobra anterior (início + T + lancha até a Atalaia) até o início da A — o mesmo do relatório. Na B: tempo livre na Atalaia, da chegada depois da A (início + T + lancha) até a saída para a B (início da B − lancha até o embarque)">Δt</th><th class="esc-col">Escalação</th>
+          <th title="⚠ = risco de atraso (pouco tempo entre o fim previsto da A e a B). M (na manobra em que o prático está a bordo) = margem extra possível: ele foi escalado para a próxima manobra (1 h antes dela) ainda dentro do T desta; se ainda estiver a bordo, pode pedir +1 h. Só manobras confirmadas. Toque no símbolo para ver o motivo.">PRT</th><th>Calado</th><th>Bordo</th><th>A/B</th><th title="Na A (amarelo): descanso, do fim da manobra anterior (início + T + lancha até a Atalaia) até o início da A — o mesmo do relatório. Na B: tempo livre na Atalaia, da chegada depois da A (início + T + lancha) até a saída para a B (início da B − lancha até o embarque)">Δt</th><th class="esc-col">Escalação</th>
         </tr></thead>
         <tbody><tr style="background:#ff4a4a;color:#fff">
           <td class="vessel">GOLDEN THETIS</td>
@@ -256,7 +256,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">STAR NAGA</td>
           <td class="berco">E EMB-3</td>
           <td class="dt">04/11 09:45</td>
-          <td class="ep relx" data-p="GE" data-d="2026-11-04">GE</td>
+          <td class="ep relx" data-p="GE" data-d="2026-11-04">GE<span class="obsx" tabindex="0" title="Margem extra possível (GE): escalado para CAPE PIONEER 11:30 quando ainda faltavam 35 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GE): escalado para CAPE PIONEER 11:30 quando ainda faltavam 35 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">9,15</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="GE" data-d="2026-11-04">A</td>
@@ -266,7 +266,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">MSC ADELE <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S BTP-1</td>
           <td class="dt">04/11 10:30</td>
-          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM/MC</td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM/MC<span class="obsx" tabindex="0" title="Margem extra possível (MM): escalado para CMA CGM VERACRUZ 13:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MM): escalado para CMA CGM VERACRUZ 13:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">9,90</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="MM" data-d="2026-11-04">A/A</td>
@@ -276,7 +276,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">INDONESIA EXPRESS</td>
           <td class="berco">S 37.1</td>
           <td class="dt">04/11 10:45</td>
-          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS</td>
+          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS<span class="obsx" tabindex="0" title="Margem extra possível (MS): escalado para SERENITY DIVA 12:30 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MS): escalado para SERENITY DIVA 12:30 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">12,90</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="MS" data-d="2026-11-04">A</td>
@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">CAPE PIONEER</td>
           <td class="berco">S EMB-2</td>
           <td class="dt">04/11 11:30</td>
-          <td class="ep relx" data-p="GE" data-d="2026-11-04">GE<span class="obsx" tabindex="0" title="Margem extra possível (GE): na escalação (1 h antes) ainda faltavam 35 min para o fim previsto da manobra anterior (STAR NAGA 09:45). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GE): na escalação (1 h antes) ainda faltavam 35 min para o fim previsto da manobra anterior (STAR NAGA 09:45). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="GE" data-d="2026-11-04">GE</td>
           <td class="calado">14,50</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="GE" data-d="2026-11-04">B</td>
@@ -306,7 +306,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">SERENITY DIVA</td>
           <td class="berco">S TERMG</td>
           <td class="dt">04/11 12:30</td>
-          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS<span class="obsx" tabindex="0" title="Margem extra possível (MS): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (INDONESIA EXPRESS 10:45). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MS): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (INDONESIA EXPRESS 10:45). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS</td>
           <td class="calado">6,85</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="MS" data-d="2026-11-04">B</td>
@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">ONE GEORGE WASHINGTON</td>
           <td class="berco">S TC 2</td>
           <td class="dt">04/11 12:30</td>
-          <td class="ep relx" data-p="LE" data-d="2026-11-04">LE</td>
+          <td class="ep relx" data-p="LE" data-d="2026-11-04">LE<span class="obsx" tabindex="0" title="Margem extra possível (LE): escalado para SAN MARCO MAERSK 14:30 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (LE): escalado para SAN MARCO MAERSK 14:30 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">10,50</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="LE" data-d="2026-11-04">A</td>
@@ -326,7 +326,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">CMA CGM VERACRUZ</td>
           <td class="berco">M TC 1.2 → TC 1.2</td>
           <td class="dt">04/11 13:00</td>
-          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM<span class="obsx" tabindex="0" title="Margem extra possível (MM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (MSC ADELE 10:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (MSC ADELE 10:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM</td>
           <td class="calado">10,20</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="MM" data-d="2026-11-04">B</td>
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">SAN MARCO MAERSK <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E EMB-2</td>
           <td class="dt">04/11 14:30</td>
-          <td class="ep relx" data-p="LE" data-d="2026-11-04">LE/AD<span class="obsx" tabindex="0" title="Margem extra possível (LE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (ONE GEORGE WASHINGTON 12:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (LE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (ONE GEORGE WASHINGTON 12:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="LE" data-d="2026-11-04">LE/AD<span class="obsx" tabindex="0" title="Margem extra possível (AD): escalado para LOG-IN EXPERIENCE 16:30 quando ainda faltavam 25 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (AD): escalado para LOG-IN EXPERIENCE 16:30 quando ainda faltavam 25 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">12,00</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="LE" data-d="2026-11-04">B/A</td>
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">ACRA</td>
           <td class="berco">E 37.1</td>
           <td class="dt">04/11 15:00</td>
-          <td class="ep relx" data-p="AR" data-d="2026-11-04">AR</td>
+          <td class="ep relx" data-p="AR" data-d="2026-11-04">AR<span class="obsx" tabindex="0" title="Margem extra possível (AR): escalado para NIKE 16:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (AR): escalado para NIKE 16:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">12,01</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="AR" data-d="2026-11-04">A</td>
@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">LOG-IN EXPERIENCE</td>
           <td class="berco">S TC 1.1</td>
           <td class="dt">04/11 16:30</td>
-          <td class="ep relx" data-p="AD" data-d="2026-11-04">AD<span class="obsx" tabindex="0" title="Margem extra possível (AD): na escalação (1 h antes) ainda faltavam 25 min para o fim previsto da manobra anterior (SAN MARCO MAERSK 14:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (AD): na escalação (1 h antes) ainda faltavam 25 min para o fim previsto da manobra anterior (SAN MARCO MAERSK 14:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="AD" data-d="2026-11-04">AD</td>
           <td class="calado">9,70</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="AD" data-d="2026-11-04">B</td>
@@ -426,7 +426,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">NIKE</td>
           <td class="berco">S VAL</td>
           <td class="dt">04/11 16:30</td>
-          <td class="ep relx" data-p="AR" data-d="2026-11-04">AR<span class="obsx" tabindex="0" title="Margem extra possível (AR): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (ACRA 15:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (AR): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (ACRA 15:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="AR" data-d="2026-11-04">AR</td>
           <td class="calado">3,70</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="AR" data-d="2026-11-04">B</td>
@@ -466,7 +466,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">PALENA</td>
           <td class="berco">S TC 3</td>
           <td class="dt">04/11 20:00</td>
-          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS</td>
+          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS<span class="obsx" tabindex="0" title="Margem extra possível (MS): escalado para SWANSEA 22:00 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MS): escalado para SWANSEA 22:00 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">9,30</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="MS" data-d="2026-11-04">A</td>
@@ -476,7 +476,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">MTM AMAZON</td>
           <td class="berco">S IB BC</td>
           <td class="dt">04/11 20:00</td>
-          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM</td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM<span class="obsx" tabindex="0" title="Margem extra possível (MM): escalado para BOW TIGER 22:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MM): escalado para BOW TIGER 22:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">8,00</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="MM" data-d="2026-11-04">A</td>
@@ -486,7 +486,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">SWANSEA</td>
           <td class="berco">E TC 3</td>
           <td class="dt">04/11 22:00</td>
-          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS<span class="obsx" tabindex="0" title="Margem extra possível (MS): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (PALENA 20:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MS): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (PALENA 20:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="MS" data-d="2026-11-04">MS</td>
           <td class="calado">12,10</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="MS" data-d="2026-11-04">B</td>
@@ -496,7 +496,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">BOW TIGER</td>
           <td class="berco">E IB BC</td>
           <td class="dt">04/11 22:00</td>
-          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM<span class="obsx" tabindex="0" title="Margem extra possível (MM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (MTM AMAZON 20:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (MTM AMAZON 20:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-04">MM</td>
           <td class="calado">9,80</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="MM" data-d="2026-11-04">B</td>
@@ -506,7 +506,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">AGRAFA</td>
           <td class="berco">S 19</td>
           <td class="dt">04/11 22:30</td>
-          <td class="ep relx" data-p="MC" data-d="2026-11-04">MC</td>
+          <td class="ep relx" data-p="MC" data-d="2026-11-04">MC<span class="obsx" tabindex="0" title="Margem extra possível (MC): escalado para ARSINOE 00:30 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MC): escalado para ARSINOE 00:30 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">13,90</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="MC" data-d="2026-11-04">A</td>
@@ -516,7 +516,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">ARSINOE</td>
           <td class="berco">E 19</td>
           <td class="dt">05/11 00:30</td>
-          <td class="ep relx" data-p="MC" data-d="2026-11-04">MC<span class="obsx" tabindex="0" title="Margem extra possível (MC): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (AGRAFA 22:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (MC): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (AGRAFA 22:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="MC" data-d="2026-11-04">MC</td>
           <td class="calado">8,74</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="MC" data-d="2026-11-04">B</td>
@@ -586,7 +586,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">FARMER</td>
           <td class="berco">E 37.1</td>
           <td class="dt">05/11 06:00</td>
-          <td class="ep relx" data-p="NI" data-d="2026-11-04">NI</td>
+          <td class="ep relx" data-p="NI" data-d="2026-11-04">NI<span class="obsx" tabindex="0" title="Margem extra possível (NI): escalado para DESERT OASIS 07:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (NI): escalado para DESERT OASIS 07:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">9,43</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="NI" data-d="2026-11-04">A</td>
@@ -596,7 +596,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">NSS GUILLOBEL</td>
           <td class="berco">E OUT-2</td>
           <td class="dt">05/11 06:00</td>
-          <td class="ep relx" data-p="FL" data-d="2026-11-04">FL</td>
+          <td class="ep relx" data-p="FL" data-d="2026-11-04">FL<span class="obsx" tabindex="0" title="Margem extra possível (FL): escalado para STEPHANIE C 08:00 quando ainda faltavam 20 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (FL): escalado para STEPHANIE C 08:00 quando ainda faltavam 20 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">5,80</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="FL" data-d="2026-11-04">A</td>
@@ -616,7 +616,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">DESERT OASIS</td>
           <td class="berco">M 32 → 33</td>
           <td class="dt">05/11 07:30</td>
-          <td class="ep relx" data-p="NI" data-d="2026-11-05">NI<span class="obsx" tabindex="0" title="Margem extra possível (NI): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (FARMER 06:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (NI): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (FARMER 06:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="NI" data-d="2026-11-05">NI</td>
           <td class="calado">8,90</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="NI" data-d="2026-11-05">B</td>
@@ -626,7 +626,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">STEPHANIE C</td>
           <td class="berco">S EMB-1</td>
           <td class="dt">05/11 08:00</td>
-          <td class="ep relx" data-p="FL" data-d="2026-11-05">FL<span class="obsx" tabindex="0" title="Margem extra possível (FL): na escalação (1 h antes) ainda faltavam 20 min para o fim previsto da manobra anterior (NSS GUILLOBEL 06:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (FL): na escalação (1 h antes) ainda faltavam 20 min para o fim previsto da manobra anterior (NSS GUILLOBEL 06:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="FL" data-d="2026-11-05">FL</td>
           <td class="calado">9,30</td>
           <td class="brd"></td>
           <td class="ab-b relx" data-p="FL" data-d="2026-11-05">B</td>
@@ -646,7 +646,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">NAVIOS MERIDIAN</td>
           <td class="berco">S 39</td>
           <td class="dt">05/11 09:15</td>
-          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM</td>
+          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM<span class="obsx" tabindex="0" title="Margem extra possível (GM): escalado para HODAKA GALAXY 11:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GM): escalado para HODAKA GALAXY 11:00 quando ainda faltavam 15 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">13,78</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="GM" data-d="2026-11-05">A</td>
@@ -676,7 +676,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">HODAKA GALAXY</td>
           <td class="berco">E AL 3</td>
           <td class="dt">05/11 11:00</td>
-          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM<span class="obsx" tabindex="0" title="Margem extra possível (GM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (NAVIOS MERIDIAN 09:15). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GM): na escalação (1 h antes) ainda faltavam 15 min para o fim previsto da manobra anterior (NAVIOS MERIDIAN 09:15). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM</td>
           <td class="calado">6,80</td>
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="GM" data-d="2026-11-05">B</td>
@@ -686,7 +686,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">NC BRUMA</td>
           <td class="berco">E EMB-1</td>
           <td class="dt">05/11 11:30</td>
-          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF</td>
+          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF<span class="obsx" tabindex="0" title="Margem extra possível (CF): escalado para CMA CGM VERACRUZ 13:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (CF): escalado para CMA CGM VERACRUZ 13:30 quando ainda faltavam 30 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">8,50</td>
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="CF" data-d="2026-11-05">A</td>
@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">MSC MICHELA <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S TC 2</td>
           <td class="dt">05/11 13:00</td>
-          <td class="ep relx" data-p="GE" data-d="2026-11-05">GE/LZ</td>
+          <td class="ep relx" data-p="GE" data-d="2026-11-05">GE/LZ<span class="obsx" tabindex="0" title="Margem extra possível (GE): escalado para CMA CGM COBALT 15:00 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GE): escalado para CMA CGM COBALT 15:00 quando ainda faltavam 5 min para o fim previsto desta manobra. Se ainda estiver a bordo, pode pedir +1 h na disponibilidade para essa próxima manobra, mantendo a posição na fila.</span></span></td>
           <td class="calado">10,30</td>
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="GE" data-d="2026-11-05">A/A</td>
@@ -736,7 +736,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">CMA CGM VERACRUZ</td>
           <td class="berco">S TC 1.2</td>
           <td class="dt">05/11 13:30</td>
-          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF<span class="obsx" tabindex="0" title="Margem extra possível (CF): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (NC BRUMA 11:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (CF): na escalação (1 h antes) ainda faltavam 30 min para o fim previsto da manobra anterior (NC BRUMA 11:30). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF</td>
           <td class="calado">9,00</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="CF" data-d="2026-11-05">B</td>
@@ -746,7 +746,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="vessel">CMA CGM COBALT <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E TC 2</td>
           <td class="dt">05/11 15:00</td>
-          <td class="ep relx" data-p="GE" data-d="2026-11-05">GE/MM<span class="obsx" tabindex="0" title="Margem extra possível (GE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (MSC MICHELA 13:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila." onclick="this.classList.toggle('open')">M<span class="obsx-txt">Margem extra possível (GE): na escalação (1 h antes) ainda faltavam 5 min para o fim previsto da manobra anterior (MSC MICHELA 13:00). Se ainda estiver a bordo, pode pedir +1 h na disponibilidade, mantendo a posição na fila.</span></span></td>
+          <td class="ep relx" data-p="GE" data-d="2026-11-05">GE/MM</td>
           <td class="calado">13,50</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="GE" data-d="2026-11-05">B/B</td>
@@ -903,41 +903,41 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal">NI 5min / FL 52min</td>
           <td class="esc esc-col">FL &gt; GO(00:15) &gt; GM &gt; SB &gt; CF(01:00) &gt; GE(01:30) &gt; MM(01:30) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">GOOD WISH</td>
-          <td class="berco">S 12-A</td>
-          <td class="dt">06/11 00:30</td>
-          <td class="ep relx" data-p="GO" data-d="2026-11-05">GO</td>
-          <td class="calado">14,20</td>
-          <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="GO" data-d="2026-11-05">B</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">GM &gt; SB &gt; CF(01:00) &gt; GE(01:30) &gt; MM(01:30) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO</td>
-        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">VICENTE PINZON</td>
           <td class="berco">S BTP-2</td>
           <td class="dt">06/11 00:30</td>
-          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM</td>
+          <td class="ep relx" data-p="GO" data-d="2026-11-05">GO</td>
           <td class="calado">9,20</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="GM" data-d="2026-11-05">B</td>
+          <td class="ab-b relx" data-p="GO" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SB &gt; CF(01:15) &gt; GE(01:30) &gt; MM(01:30) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM &gt; SB &gt; CF(01:15) &gt; GE(01:30) &gt; MM(01:30) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CSPC PISCES</td>
           <td class="berco">M 35.2 → EMB-4</td>
           <td class="dt">06/11 01:00</td>
-          <td class="ep relx" data-p="SB" data-d="2026-11-05">SB</td>
+          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM</td>
           <td class="calado">11,47</td>
           <td class="brd">BB</td>
-          <td class="ab-b relx" data-p="SB" data-d="2026-11-05">B</td>
+          <td class="ab-b relx" data-p="GM" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">CF &gt; GE(01:15) &gt; MM(01:15) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; SB</td>
+          <td class="esc esc-col">SB &gt; CF &gt; GE(01:15) &gt; MM(01:15) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ARMATHIA</td>
           <td class="berco">S 13/14</td>
           <td class="dt">06/11 01:00</td>
-          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF</td>
+          <td class="ep relx" data-p="SB" data-d="2026-11-05">SB</td>
           <td class="calado">13,56</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="SB" data-d="2026-11-05">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">CF &gt; GE(01:30) &gt; MM(01:30) &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; SB</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">GOOD WISH</td>
+          <td class="berco">S 12-A</td>
+          <td class="dt">06/11 01:00</td>
+          <td class="ep relx" data-p="CF" data-d="2026-11-05">CF</td>
+          <td class="calado">14,20</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="CF" data-d="2026-11-05">B</td>
           <td class="cal"></td>
@@ -1005,7 +1005,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DSM EVERTON</td>
           <td class="berco">E 13/14</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 02:15 (provavelmente o horário ainda não foi atualizado)">06/11 01:30<br><span class="invi">⚠ livre 02:15</span></td>
+          <td class="dt">06/11 03:00</td>
           <td class="ep relx" data-p="FL" data-d="2026-11-05">FL</td>
           <td class="calado">6,50</td>
           <td class="brd">BE</td>
@@ -1015,103 +1015,103 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DARYA RASHMI</td>
           <td class="berco">S TGG</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 02:30 (provavelmente o horário ainda não foi atualizado)">06/11 02:00<br><span class="invi">⚠ livre 02:30</span></td>
-          <td class="ep relx" data-p="GO" data-d="2026-11-05">GO</td>
-          <td class="calado"></td>
-          <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="GO" data-d="2026-11-05">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">LZ(02:45) &gt; MC(03:00) &gt; LB(03:00) &gt; AR(02:45) &gt; NI(03:00) &gt; FL(03:15) &gt; GO(n/a) &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">LOG-IN PANTANAL</td>
-          <td class="berco">S TC 1.2</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 02:45 (provavelmente o horário ainda não foi atualizado)">06/11 02:00<br><span class="invi">⚠ livre 02:45</span></td>
+          <td class="dt">06/11 03:30</td>
           <td class="ep relx" data-p="LZ" data-d="2026-11-05">LZ</td>
-          <td class="calado">8,90</td>
+          <td class="calado"></td>
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="LZ" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(03:00) &gt; LB(03:00) &gt; AR(02:45) &gt; NI(03:00) &gt; FL(03:15) &gt; GO(03:45) &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ</td>
+          <td class="esc esc-col">MC &gt; LB &gt; AR &gt; NI &gt; FL(04:45) &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LOG-IN PANTANAL</td>
+          <td class="berco">S TC 1.2</td>
+          <td class="dt">06/11 03:30</td>
+          <td class="ep relx" data-p="MC" data-d="2026-11-05">MC</td>
+          <td class="calado">8,90</td>
+          <td class="brd">BB</td>
+          <td class="ab-b relx" data-p="MC" data-d="2026-11-05">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">LB &gt; AR &gt; NI &gt; FL(04:45) &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">WARRIOR</td>
           <td class="berco">E TGG</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:00 (provavelmente o horário ainda não foi atualizado)">06/11 02:30<br><span class="invi">⚠ livre 03:00</span></td>
-          <td class="ep relx" data-p="GM" data-d="2026-11-05">GM</td>
+          <td class="dt">06/11 04:00</td>
+          <td class="ep relx" data-p="LB" data-d="2026-11-05">LB</td>
           <td class="calado">7,22</td>
           <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="GM" data-d="2026-11-05">A</td>
+          <td class="ab-b relx" data-p="LB" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(03:30) &gt; LB(03:30) &gt; AR(03:30) &gt; NI(03:30) &gt; FL(04:00) &gt; GO(03:45) &gt; GM(n/a) &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ</td>
+          <td class="esc esc-col">AR &gt; NI &gt; FL(05:30) &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC &gt; LB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">NC BRUMA</td>
           <td class="berco">S EMB-1</td>
           <td class="dt">06/11 05:00</td>
-          <td class="ep relx" data-p="MC" data-d="2026-11-05">MC</td>
+          <td class="ep relx" data-p="AR" data-d="2026-11-05">AR</td>
           <td class="calado">9,90</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="MC" data-d="2026-11-05">B</td>
+          <td class="ab-b relx" data-p="AR" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LB &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC</td>
+          <td class="esc esc-col">NI &gt; FL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC &gt; LB &gt; AR</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BUENAVISTA</td>
           <td class="berco">E 25</td>
           <td class="dt">06/11 07:00</td>
-          <td class="ep relx" data-p="LB" data-d="2026-11-05">LB</td>
+          <td class="ep relx" data-p="NI" data-d="2026-11-05">NI</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="LB" data-d="2026-11-05">B</td>
+          <td class="ab-b relx" data-p="NI" data-d="2026-11-05">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC &gt; LB</td>
+          <td class="esc esc-col">FL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GE &gt; MM &gt; LZ &gt; MC &gt; LB &gt; AR &gt; NI</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SWANSEA</td>
           <td class="berco">S TC 3</td>
           <td class="dt">06/11 09:30</td>
-          <td class="ep relx" data-p="AR" data-d="2026-11-06">AR</td>
+          <td class="ep relx" data-p="FL" data-d="2026-11-06">FL</td>
           <td class="calado">14,00</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="AR" data-d="2026-11-06">B</td>
+          <td class="ab-b relx" data-p="FL" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">NI &gt; FL &gt; GO &gt; GM &gt; GL &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR</td>
+          <td class="esc esc-col">GL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">FORTUNE SUNSHINE</td>
           <td class="berco">S 38</td>
           <td class="dt">06/11 10:00</td>
-          <td class="ep relx" data-p="NI" data-d="2026-11-06">NI</td>
+          <td class="ep relx" data-p="GL" data-d="2026-11-06">GL</td>
           <td class="calado">13,30</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="NI" data-d="2026-11-06">B</td>
+          <td class="ab-a relx" data-p="GL" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">FL &gt; GO &gt; GM &gt; GL &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI</td>
+          <td class="esc esc-col">GL(n/a) &gt; GO &gt; GM &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">XIN CHONG QING</td>
           <td class="berco">E TC 3</td>
           <td class="dt">06/11 10:00</td>
-          <td class="ep relx" data-p="FL" data-d="2026-11-06">FL</td>
+          <td class="ep relx" data-p="GO" data-d="2026-11-06">GO</td>
           <td class="calado">10,10</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="FL" data-d="2026-11-06">B</td>
+          <td class="ab-a relx" data-p="GO" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GO &gt; GM &gt; GL &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL</td>
+          <td class="esc esc-col">GL(11:45) &gt; GO(n/a) &gt; GM &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BOW TIGER</td>
           <td class="berco">S IB BC</td>
           <td class="dt">06/11 12:00</td>
-          <td class="ep relx" data-p="GO" data-d="2026-11-06">GO</td>
+          <td class="ep relx" data-p="GL" data-d="2026-11-06">GL</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="GO" data-d="2026-11-06">B</td>
+          <td class="ab-b relx" data-p="GL" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GM &gt; GL &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO</td>
+          <td class="esc esc-col">GO &gt; GM &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">COPIAPO <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S BTP-1</td>
           <td class="dt">06/11 12:00</td>
-          <td class="ep relx" data-p="GM" data-d="2026-11-06">GM/GL</td>
+          <td class="ep relx" data-p="GO" data-d="2026-11-06">GO/GM</td>
           <td class="calado">14,50</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="GM" data-d="2026-11-06">B/A</td>
+          <td class="ab-b relx" data-p="GO" data-d="2026-11-06">B/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GL &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM &gt; SB &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">KEYAKI FORTUNE</td>
           <td class="berco">S COS 3</td>
@@ -1121,7 +1121,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="SB" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GL(14:45) &gt; SB(n/a) &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM(14:45) &gt; SB(n/a) &gt; CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MAERSK LABERINTO</td>
           <td class="berco">E BTP-1</td>
@@ -1131,7 +1131,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="CF" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GL(14:30) &gt; SB(14:45) &gt; CF(n/a) &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM(14:30) &gt; SB(14:45) &gt; CF(n/a) &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">HANZE GENDT</td>
           <td class="berco">E COS 3</td>
@@ -1141,7 +1141,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="GA" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GL(14:30) &gt; SB(14:45) &gt; CF(15:30) &gt; GA(n/a) &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM(14:30) &gt; SB(14:45) &gt; CF(15:30) &gt; GA(n/a) &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MOYRA</td>
           <td class="berco">E DOW</td>
@@ -1151,17 +1151,17 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="MM" data-d="2026-11-06">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GL(14:30) &gt; SB(14:45) &gt; CF(15:30) &gt; GA(16:00) &gt; MM(n/a) &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM</td>
+          <td class="esc esc-col">GM(14:30) &gt; SB(14:45) &gt; CF(15:30) &gt; GA(16:00) &gt; MM(n/a) &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LAKE ONTARIO</td>
           <td class="berco">E LARGO</td>
           <td class="dt">06/11 15:00</td>
-          <td class="ep relx" data-p="GL" data-d="2026-11-06">GL</td>
+          <td class="ep relx" data-p="GM" data-d="2026-11-06">GM</td>
           <td class="calado">5,65</td>
           <td class="brd"></td>
-          <td class="ab-b relx" data-p="GL" data-d="2026-11-06">B</td>
+          <td class="ab-b relx" data-p="GM" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SB &gt; CF(15:30) &gt; GA(16:00) &gt; MM(16:00) &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; GL</td>
+          <td class="esc esc-col">SB &gt; CF(15:30) &gt; GA(16:00) &gt; MM(16:00) &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO &gt; GM</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MAERSK LAMANAI</td>
           <td class="berco">E LARGO</td>
@@ -1171,7 +1171,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd"></td>
           <td class="ab-b relx" data-p="SB" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; GL &gt; SB</td>
+          <td class="esc esc-col">CF &gt; GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO &gt; GM &gt; SB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">FLUMAR MACEIO</td>
           <td class="berco">E IB?</td>
@@ -1181,7 +1181,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd"></td>
           <td class="ab-b relx" data-p="CF" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; GL &gt; SB &gt; CF</td>
+          <td class="esc esc-col">GA &gt; MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO &gt; GM &gt; SB &gt; CF</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">STAR NAGA</td>
           <td class="berco">S EMB-3</td>
@@ -1191,7 +1191,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="GA" data-d="2026-11-06">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GO &gt; GM &gt; GL &gt; SB &gt; CF &gt; GA</td>
+          <td class="esc esc-col">MM &gt; LZ &gt; FO &gt; AR &gt; NI &gt; FL &gt; GL &gt; GO &gt; GM &gt; SB &gt; CF &gt; GA</td>
         </tr></tbody>
       </table>
     </div>
