@@ -141,9 +141,9 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>23:26</b> (09/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 23:23</span><br>
-    Ontem: <b>37</b> manobras | Hoje: <b>18</b> manobras | Média do ano: <b>38.5</b>/dia<br>
+    <span style="font-size:15px">Atualizado às <b>23:36</b> (09/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 23:33</span><br>
+    Ontem: <b>37</b> manobras | Hoje: <b>19</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>2</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h31</b> | Posições médias após B: <b>18.7</b>
   </div>
 </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-09T23:26:03-03:00');
+  const gen = new Date('2026-11-09T23:36:00-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -196,8 +196,8 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
       </div>
     </div>
     <div class="panel side disp">
-      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (10/11 00:30), considerando quem estará livre na hora prevista da próxima manobra não confirmada (01:00)">Disponíveis · 01:00 (E)</div>
-      <div class="side-scroll"><table><tbody><tr class="esp"><td class="pos">1</td><td class="prat">SI</td><td class="st"><span class="badge esp">1</span></td></tr><tr class=""><td class="pos">2</td><td class="prat">RO</td><td class="st"></td></tr><tr class=""><td class="pos">3</td><td class="prat">SB</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">FO</td><td class="st"></td></tr><tr class=""><td class="pos">5</td><td class="prat">PI</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">LZ</td><td class="st"></td></tr><tr class="esp"><td class="pos">7</td><td class="prat">JA</td><td class="st"><span class="badge esp">7</span></td></tr><tr class=""><td class="pos">8</td><td class="prat">FX</td><td class="st"></td></tr><tr class=""><td class="pos">9</td><td class="prat">BA</td><td class="st"></td></tr><tr class=""><td class="pos">10</td><td class="prat">GL</td><td class="st"></td></tr><tr class=""><td class="pos">11</td><td class="prat">AB</td><td class="st"></td></tr><tr class=""><td class="pos">12</td><td class="prat">CV</td><td class="st"></td></tr></tbody></table></div>
+      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (10/11 01:00), considerando quem estará livre na hora prevista da próxima manobra não confirmada (01:30)">Disponíveis · 01:30 (E)</div>
+      <div class="side-scroll"><table><tbody><tr class=""><td class="pos">1</td><td class="prat">RO</td><td class="st"></td></tr><tr class=""><td class="pos">2</td><td class="prat">SB</td><td class="st"></td></tr><tr class=""><td class="pos">3</td><td class="prat">FO</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">PI</td><td class="st"></td></tr><tr class=""><td class="pos">5</td><td class="prat">LZ</td><td class="st"></td></tr><tr class="esp"><td class="pos">6</td><td class="prat">JA</td><td class="st"><span class="badge esp">6</span></td></tr><tr class=""><td class="pos">7</td><td class="prat">FX</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">BA</td><td class="st"></td></tr><tr class=""><td class="pos">9</td><td class="prat">GL</td><td class="st"></td></tr><tr class=""><td class="pos">10</td><td class="prat">AB</td><td class="st"></td></tr><tr class=""><td class="pos">11</td><td class="prat">CV</td><td class="st"></td></tr><tr class="esp"><td class="pos">12</td><td class="prat">SI</td><td class="st"><span class="badge esp">12</span></td></tr></tbody></table></div>
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
