@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="refresh" content="300">
+<title>MARCO ZERO · E2D — Ao Vivo</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: #f0f2f5; color: #1a1a1a; }
+
+.header { background: #1B4F72; color: white; padding: 10px 16px;
+           display: flex; align-items: center; justify-content: space-between; }
+.header h1 { font-size: 15px; font-weight: 700; letter-spacing: 1px; }
+.header .meta { font-size: 11px; opacity: .85; text-align: right; line-height: 1.5; }
+
+.stats { display: flex; gap: 16px; padding: 7px 14px; background: #eaf0fb;
+         border-bottom: 1px solid #d0daf0; font-size: 11px; color: #1B4F72; }
+.stats b { font-weight: 700; }
+
+.container { display: flex; gap: 12px; padding: 12px; max-width: 100%; margin: 0 auto; height: calc(100vh - 100px); }
+
+.panel { background: white; border-radius: 6px; box-shadow: 0 1px 4px rgba(0,0,0,.12); overflow: hidden; }
+.panel-title { background: #2E86C1; color: white; padding: 7px 12px;
+                font-size: 12px; font-weight: 700; letter-spacing: .5px; }
+
+/* Fila */
+.fila { width: 155px; flex-shrink: 0; overflow-y: auto; }
+.fila table { width: 100%; border-collapse: collapse; }
+.fila td { padding: 3px 5px; border-bottom: 1px solid #eee; }
+.pos { width: 24px; font-weight: 700; color: #888; font-size: 10px; }
+.prat { font-weight: 700; font-size: 12px; letter-spacing: .3px; }
+.st { text-align: right; font-size: 10px; }
+.fila .badge { font-size: 9px; padding: 1px 4px; }
+
+/* Coluna lateral esquerda: Z5 + disponíveis + indisponíveis */
+.sidecol { width: 128px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+.sidecol .panel { display: flex; flex-direction: column; min-height: 0; }
+.sidecol .panel-title { padding: 6px 8px; font-size: 11px; }
+.side { flex: 1 1 0; }
+.side-scroll { flex: 1; overflow-y: auto; }
+.side table { width: 100%; border-collapse: collapse; }
+.side td { padding: 2px 6px; border-bottom: 1px solid #eee; }
+.side .pos { width: 18px; color: #999; font-size: 10px; font-weight: 400; }
+.side .prat { font-weight: 700; font-size: 13px; letter-spacing: .3px; }
+.side .st { text-align: right; font-size: 10px; color: #555; white-space: nowrap; }
+.side tr.esp { color: #2d6a2d; background: #f1f8f1; }
+.side .tE { color: #1a5276; }
+.side .tS { color: #7d6608; }
+.side .so { font-size: 9px; color: #b9770e; white-space: nowrap; }
+.side .dia { color: #999; font-size: 9px; }
+.side .vazio { text-align: center; color: #999; font-size: 10px; padding: 8px; }
+.disp .panel-title { background: #1e8449; }
+.indisp .panel-title { background: #5d6d7e; }
+.z5col { flex: 0 1 auto; max-height: 22%; }
+.z5col .panel-title { background: #C0392B; }
+.z5-scroll { flex: 1; overflow-y: auto; }
+.z5col table { width: 100%; border-collapse: collapse; }
+.z5col td { padding: 3px 5px; border-bottom: 1px solid #eee; text-align: center; }
+.z5-hh { font-size: 10px; color: #888; }
+.z5-prat { font-weight: 700; font-size: 13px; color: #C0392B; letter-spacing: .3px; }
+
+/* Projeção */
+.proj { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+.proj-scroll { flex: 1; overflow-y: scroll; overflow-x: auto;
+                scrollbar-width: thin; scrollbar-color: #2E86C1 #f0f0f0; }
+.proj-scroll::-webkit-scrollbar { width: 8px; height: 10px; }
+.proj-scroll::-webkit-scrollbar-thumb { background: #2E86C1; border-radius: 4px; }
+.proj-scroll::-webkit-scrollbar-track { background: #f0f0f0; }
+.proj table { min-width: 100%; border-collapse: collapse; table-layout: auto;
+               font-family: Tahoma, Verdana, "Segoe UI", sans-serif; font-size: 11px; }
+/* visual igual à pauta do SPPilots: Tahoma 11px (medido com os dois em 100%), cabeçalho cinza, linhas separadas por traço preto */
+.proj th { background: #cccccc; color: #000; padding: 3px 6px; border-bottom: 1px solid #000;
+            font-size: 11px; font-weight: 700; text-align: left; position: sticky; top: 0; z-index: 1;
+            white-space: nowrap; }
+.proj td { padding: 2px 6px; border-bottom: 1px solid #000; font-size: 11px; line-height: 14px; }
+.proj td.vessel, .proj td.berco, .proj td.dt, .proj td.ep, .proj td.calado, .proj td.brd,
+.proj td.cal, .proj td.esc, .proj td.ab-a, .proj td.ab-b { color: inherit; font-size: 11px; font-weight: 400; letter-spacing: 0; }
+.proj td.esc { font-size: 10px; }
+#projtab.hide-esc .esc-col { display: none; }
+.p2 { background: #ffff00; color: #0000ff; }
+.es { width: 28px; text-align: center; font-weight: 700; white-space: nowrap; }
+.star2 { font-size: 9px; color: #d4a017; margin-left: 2px; }
+.vessel { font-weight: 600; white-space: nowrap; }
+.berco { font-weight: 600; font-size: 11px; white-space: nowrap; }
+.brd { font-size: 11px; text-align: center; width: 36px; }
+.calado { font-size: 11px; white-space: nowrap; color: #333; }
+.dt { width: 85px; white-space: nowrap; }
+.invi { background: #ffff00; color: #c00000; font-weight: 700; font-size: 10px; padding: 0 2px; }
+.relx { cursor: pointer; text-decoration: underline dotted; }
+#relbox .tg { font-size:10px; padding:0 4px; border-radius:3px; color:#fff; } #relbox .tl { background:#2e7d32; } #relbox .tc { background:#8d6e00; }
+#relbox tr.cic td { background:#fff8e1; color:#555; }
+#relbox .te { background:#555; } #relbox .ta { background:#7cc47f; color:#000; } #relbox .ti { background:#999; } #relbox .tf { background:#b2dfdb; color:#00695c; }
+#relbox .dia { background:#eaf3ea; border:1px solid #9cc79c; border-radius:4px; padding:5px 8px; margin:6px 0; }
+#relbox .barra { margin:4px 0 0; } #relbox .barra svg { display:block; width:100%; height:auto; }
+#relbox .leg { font-size:10px; color:#333; margin:0 0 8px; line-height:1.6; } #relbox .leg span { display:inline-block; width:10px; height:10px; margin:0 3px 0 7px; vertical-align:-1px; }
+#relbox .big { font-size:16px; font-weight:700; } #relbox .ok { color:#2e7d32; }
+#relbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,.45); z-index:100; }
+#relbox .in { background:#fff; color:#000; max-width:760px; margin:4vh auto; max-height:90vh; overflow:auto; padding:12px 14px; border-radius:6px; font-size:12px; }
+#relbox table { border-collapse:collapse; width:100%; margin:4px 0 8px; }
+#relbox td, #relbox th { border:1px solid #ccc; padding:2px 5px; text-align:left; vertical-align:top; }
+#relbox th { background:#1f3a5f; color:#fff; }
+#relbox .fut { color:#999; } #relbox .neg { color:#c00000; font-weight:700; }
+#relbox .x { float:right; cursor:pointer; font-size:18px; font-weight:700; }
+#relbox .cols { display:flex; gap:10px; flex-wrap:wrap; } #relbox .cols > div { flex:1 1 330px; }
+.obsx { position: relative; color: #ffd400; text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000; font-weight: 700; margin-left: 3px; cursor: pointer; }
+.obsx-txt { display: none; position: absolute; left: 0; top: 1.4em; z-index: 20; width: 240px; white-space: normal;
+  background: #ffffe0; color: #000; border: 1px solid #000; padding: 4px 6px; font-weight: 400; font-size: 11px; text-align: left; }
+.obsx.open .obsx-txt { display: block; }
+.dl-a { color: #ffd400; font-weight: 800; text-shadow: 0 0 1px #000, 0 0 1px #000, 0 0 1px #000; }
+.ep { font-weight: 700; font-size: 14px; color: #1B4F72; letter-spacing: .5px; white-space: nowrap; }
+.cal, .brd { font-size: 10.5px; color: #666; white-space: nowrap; }
+.esc { font-size: 11px; font-family: "Consolas","Courier New",monospace; color: #333;
+        white-space: nowrap;
+        letter-spacing: 0px; word-spacing: 0px; }
+.agt { font-size: 11px; color: #666; max-width: 90px; }
+.obs { font-size: 10px; color: #555; max-width: 240px;
+        overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+/* Histórico */
+.hist { max-width: 100%; margin: 0 auto; padding: 0 12px 16px; }
+.hist table { width: 100%; border-collapse: collapse; }
+.hist th { background: #1B4F72; color: white; padding: 6px 8px; font-size: 11px; text-align: left; }
+.hist td { padding: 4px 8px; font-size: 12px; border-right: 1px solid #e8e8e8; }
+.hdt { width: 110px; white-space: nowrap; font-weight: 600; }
+.hvessel { font-weight: 600; width: 180px; }
+.hrota { color: #555; width: 180px; }
+.hep { font-weight: 700; color: #1B4F72; width: 60px; }
+.hpts { width: 50px; color: #666; }
+
+.ab-a { font-weight: 700; color: #1a5276; text-align: center; width: 28px; }
+.ab-b { font-weight: 700; color: #1e8449; text-align: center; width: 28px; }
+
+.badge { display: inline-block; padding: 2px 6px; border-radius: 3px; font-size: 10px; font-weight: 700; }
+.badge.ok { background: #d5f5e3; color: #1e8449; }
+.badge.hhmm { background: #d6eaf8; color: #1a5276; }
+.badge.esp { background: #e8f4e8; color: #2d6a2d; }
+</style>
+</head>
+<body><div style="background:#5b2a86;color:#fff;font:600 14px system-ui,sans-serif;padding:8px 12px;text-align:center">PAINEL MARCO ZERO — E2D começando em 10/11/2026 às 07:30, a partir da seta da E12. Simulação paralela; o painel oficial continua o mesmo.</div>
+
+<div class="header">
+  <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
+  <div class="meta">
+    <span style="font-size:15px">Atualizado às <b>14:37</b> (10/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 14:37</span><br>
+    Ontem: <b>31</b> manobras | Hoje: <b>16</b> manobras | Média do ano: <b>38.4</b>/dia<br>
+    Navios 2 práticos (hoje): <b>2</b> | Descanso médio efetivo (Δt, 7 dias): <b>—</b> | Posições médias após B: <b>—</b>
+  </div>
+</div>
+
+
+<div class="stats">
+  <span style="margin-left:auto;opacity:.7">Dados atualizados a cada 10 min · próxima verificação em <span id="countdown">5:00</span></span>
+</div>
+
+<script>
+function togEsc(){var t=document.getElementById('projtab'),b=document.getElementById('btn-esc');if(!t)return;
+var h=t.classList.toggle('hide-esc');if(b)b.textContent=h?'Mostrar escalação':'Ocultar escalação';
+try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
+document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
+// Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
+(function(){
+  const gen = new Date('2026-11-10T14:37:28-03:00');
+  const el = document.getElementById('idade');
+  function upd() {
+    const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
+    if (!el) return;
+    if (min > 30) {
+      const h = Math.floor(min / 60), mm = min % 60;
+      el.textContent = '⚠ desatualizado há ' + (h ? h + 'h' + String(mm).padStart(2, '0') : min + ' min');
+      el.style.cssText = 'color:#fff;background:#c0392b;padding:1px 6px;border-radius:3px';
+    } else {
+      el.textContent = min < 1 ? 'agora' : 'há ' + min + ' min';
+    }
+  }
+  upd(); setInterval(upd, 30000);
+})();
+// Contador visual do proximo refresh (a pagina recarrega sozinha via meta http-equiv)
+(function(){
+  let s = 300;
+  const el = document.getElementById('countdown');
+  setInterval(() => {
+    s = Math.max(0, s - 1);
+    const m = Math.floor(s/60), ss = s%60;
+    if (el) el.textContent = m + ':' + String(ss).padStart(2,'0');
+  }, 1000);
+})();
+</script>
+
+<div class="container">
+  <div class="sidecol">
+    <div class="panel z5col">
+      <div class="panel-title">Z5 hoje</div>
+      <div class="z5-scroll">
+        <table><tbody><tr><td class="z5-hh">08:30</td><td class="z5-prat">ON</td></tr></tbody></table>
+      </div>
+    </div>
+    <div class="panel side disp">
+      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (10/11 15:00), considerando quem estará livre na hora prevista da próxima manobra não confirmada (15:30)">Disponíveis · 15:30 (S/M)</div>
+      <div class="side-scroll"><table><tbody><tr class="esp"><td class="pos">1</td><td class="prat">JA</td><td class="st"><span class="badge esp">1</span></td></tr><tr class=""><td class="pos">2</td><td class="prat">AB</td><td class="st"><span class="so" title="Livre para a próxima manobra; para entrada só a partir de 16:30">entrada só 16:30</span></td></tr><tr class=""><td class="pos">3</td><td class="prat">FX</td><td class="st"></td></tr><tr class="esp"><td class="pos">4</td><td class="prat">SI</td><td class="st"><span class="badge esp">6</span></td></tr><tr class=""><td class="pos">5</td><td class="prat">MM</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">BA</td><td class="st"></td></tr><tr class=""><td class="pos">7</td><td class="prat">AG</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">ON</td><td class="st"></td></tr></tbody></table></div>
+    </div>
+    <div class="panel side indisp">
+      <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
+      <div class="side-scroll"><table><tbody><tr><td class="prat">CV</td><td class="st"><span class="tE">E 16:00</span><br><span class="tS">S 15:45</span></td></tr><tr><td class="prat">HI</td><td class="st"><span class="tE">E 16:30</span><br><span class="tS">S 16:45</span></td></tr><tr><td class="prat">LZ</td><td class="st"><span class="tE">E 17:30</span><br><span class="tS">S 17:45</span></td></tr><tr><td class="prat">PI</td><td class="st"><span class="tE">E 17:30</span><br><span class="tS">S 17:45</span></td></tr></tbody></table></div>
+    </div>
+  </div>
+  <div class="panel proj">
+    <div class="panel-title">🚢 Pauta simulada pela E2D · margem 45 min antes de entrada e 25 min antes de saída/mudança · especiais pela E12 <button id="btn-esc" type="button" onclick="togEsc()" style="float:right;font-size:11px;padding:1px 8px;cursor:pointer">Mostrar escalação</button></div>
+    <div class="proj-scroll">
+      <table id="projtab" class="hide-esc">
+        <thead><tr>
+          <th>Navio</th><th>Local</th><th>Horário</th>
+          <th title="⚠ = risco de atraso (pouco tempo entre o fim previsto da A e a B). Só manobras confirmadas. Toque no ⚠ para ver o motivo.">PRT</th><th>Calado</th><th>Bordo</th><th>A/B</th><th title="Na A (amarelo): descanso, do fim da manobra anterior (início + T + lancha até a Atalaia) até o início da A — o mesmo do relatório. Na B: tempo livre na Atalaia, da chegada depois da A (início + T + lancha) até a saída para a B (início da B − lancha até o embarque)">Δt</th><th class="esc-col">Escalação</th>
+        </tr></thead>
+        <tbody><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">TORONTO</td>
+          <td class="berco">E TEV</td>
+          <td class="dt">10/11 07:30</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-10">PI</td>
+          <td class="calado">9,25</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="PI" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI(n/a) &gt; MM &gt; BA &gt; AG &gt; SI(5) &gt; JA(5) &gt; ON &gt; AB &gt; FX(08:30) &gt; CV &gt; HI &gt; LZ(09:15)</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">NSS GUILLOBEL</td>
+          <td class="berco">S OUT-2</td>
+          <td class="dt">10/11 08:00</td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-10">MM</td>
+          <td class="calado"></td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="MM" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI(09:00) &gt; MM(n/a) &gt; BA &gt; SI(4) &gt; JA(4) &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ(08:30)</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">MAERSK JAIPUR</td>
+          <td class="berco">S EMB-2</td>
+          <td class="dt">10/11 08:00</td>
+          <td class="ep relx" data-p="BA" data-d="2026-11-10">BA</td>
+          <td class="calado">10,00</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="BA" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI(09:00) &gt; MM(10:00) &gt; SI(3) &gt; JA(3) &gt; BA(n/a) &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ(08:30)</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">DSM EVERTON</td>
+          <td class="berco">S 13/14</td>
+          <td class="dt">10/11 08:30</td>
+          <td class="ep relx" data-p="AG" data-d="2026-11-10">AG</td>
+          <td class="calado">10,49</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="AG" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI(09:00) &gt; SI(2) &gt; JA(2) &gt; MM(10:00) &gt; BA(10:15) &gt; AG(n/a) &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">BERGE DAISETSU</td>
+          <td class="berco">S ULT</td>
+          <td class="dt">10/11 08:30</td>
+          <td class="ep relx" data-p="ON" data-d="2026-11-10">ON</td>
+          <td class="calado">6,32</td>
+          <td class="brd">BB</td>
+          <td class="ab-a relx" data-p="ON" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">SI(1) &gt; JA(1) &gt; PI(09:15) &gt; MM(10:30) &gt; BA(10:30) &gt; AG(10:45) &gt; ON(n/a) &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ(08:45)</td>
+        </tr><tr style="background:#000000;color:#fff">
+          <td class="vessel">CMA CGM KRYPTON <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">S TC 3</td>
+          <td class="dt">10/11 10:00</td>
+          <td class="ep">JA/SI</td>
+          <td class="calado">12,60</td>
+          <td class="brd">BE</td>
+          <td class="ab-a"></td>
+          <td class="cal"></td>
+          <td class="esc esc-col">SI(1) &gt; PI &gt; MM &gt; BA &gt; AG(10:30) &gt; ON(11:15) &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; JA(12)</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">DALIAN EXPRESS <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">E TC 3</td>
+          <td class="dt">10/11 11:30</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-10">PI/MM</td>
+          <td class="calado">9,70</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="PI" data-d="2026-11-10">B/B</td>
+          <td class="cal">PI 2h40 / MM 1h50</td>
+          <td class="esc esc-col">MM &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; JA(11) &gt; SI(16)</td>
+        </tr><tr style="background:#ff4a4a;color:#fff">
+          <td class="vessel">AVAX</td>
+          <td class="berco">E 13/14</td>
+          <td class="dt">10/11 11:30</td>
+          <td class="ep relx" data-p="BA" data-d="2026-11-10">BA</td>
+          <td class="calado">6,60</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="BA" data-d="2026-11-10">B</td>
+          <td class="cal">1h45</td>
+          <td class="esc esc-col">AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; JA(9) &gt; MM &gt; BA &gt; SI(14)</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="vessel">MAERSK FORTALEZA</td>
+          <td class="berco">E EMB-2</td>
+          <td class="dt">10/11 13:00</td>
+          <td class="ep relx" data-p="AG" data-d="2026-11-10">AG</td>
+          <td class="calado">9,90</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="AG" data-d="2026-11-10">B</td>
+          <td class="cal">2h55</td>
+          <td class="esc esc-col">ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; JA(8) &gt; MM &gt; BA &gt; AG &gt; SI(13)</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="vessel">LILIAN TRADER</td>
+          <td class="berco">E ULT</td>
+          <td class="dt">10/11 13:00</td>
+          <td class="ep relx" data-p="AB" data-d="2026-11-10">AB</td>
+          <td class="calado">10,30</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="AB" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">ON &gt; AB(n/a) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; JA(7) &gt; PI &gt; MM &gt; BA &gt; AG &gt; SI(12)</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="vessel">ZHONG YUAN HAI YUN CHUANG XIN</td>
+          <td class="berco">S 35.2</td>
+          <td class="dt">10/11 13:30</td>
+          <td class="ep relx" data-p="ON" data-d="2026-11-10">ON</td>
+          <td class="calado">9,90</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="ON" data-d="2026-11-10">B</td>
+          <td class="cal">2h42</td>
+          <td class="esc esc-col">AB(16:00) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; JA(6) &gt; PI &gt; MM &gt; BA &gt; AG &gt; SI(11) &gt; ON</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="vessel">MERCOSUL SUAPE</td>
+          <td class="berco">S TC 1.1</td>
+          <td class="dt">10/11 13:30</td>
+          <td class="ep relx" data-p="FX" data-d="2026-11-10">FX</td>
+          <td class="calado">10,70</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="FX" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">AB(16:00) &gt; FX(n/a) &gt; CV &gt; HI &gt; JA(5) &gt; LZ &gt; PI &gt; MM &gt; BA &gt; SI(10) &gt; AG &gt; ON</td>
+        </tr><tr style="background:#33ccff;color:#000">
+          <td class="vessel">GREEN ITAJAI</td>
+          <td class="berco">E 35.2</td>
+          <td class="dt">10/11 14:00</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-10">CV</td>
+          <td class="calado">10,50</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="CV" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">AB(16:30) &gt; FX(15:15) &gt; CV(n/a) &gt; JA(4) &gt; HI &gt; LZ &gt; PI &gt; MM &gt; SI(9) &gt; BA &gt; AG &gt; ON</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="vessel">HEEMSKERKGRACHT</td>
+          <td class="berco">S CS 4</td>
+          <td class="dt">10/11 14:30</td>
+          <td class="ep relx" data-p="HI" data-d="2026-11-10">HI</td>
+          <td class="calado">7,50</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="HI" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">AB(15:45) &gt; FX(15:15) &gt; JA(3) &gt; CV(15:30) &gt; HI(n/a) &gt; LZ &gt; PI &gt; SI(8) &gt; MM &gt; BA &gt; AG &gt; ON</td>
+        </tr><tr style="background:#b7b7ff;color:#000">
+          <td class="vessel">PARANA EXPRESS <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">S BTP-3</td>
+          <td class="dt">10/11 15:00</td>
+          <td class="ep relx" data-p="LZ" data-d="2026-11-10">LZ/PI</td>
+          <td class="calado">13,10</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="LZ" data-d="2026-11-10">A/A</td>
+          <td class="cal"><b class="dl-a">PI 2h19</b></td>
+          <td class="esc esc-col">AB(15:45) &gt; JA(2) &gt; FX(15:15) &gt; CV(15:45) &gt; HI(16:30) &gt; LZ(n/a) &gt; SI(7) &gt; PI &gt; MM &gt; BA &gt; AG &gt; ON</td>
+        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="vessel">ANGELINA THE GREAT N</td>
+          <td class="berco">S TIP-4</td>
+          <td class="dt">10/11 15:30</td>
+          <td class="ep">JA</td>
+          <td class="calado">6,68</td>
+          <td class="brd">BE</td>
+          <td class="ab-a"></td>
+          <td class="cal"></td>
+          <td class="esc esc-col">AB &gt; FX &gt; CV(15:45) &gt; HI(16:45) &gt; SI(5) &gt; LZ(17:45) &gt; PI(17:45) &gt; MM &gt; BA &gt; AG &gt; ON &gt; JA(12)</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">AGGELOS B</td>
+          <td class="berco">S TEAG</td>
+          <td class="dt">10/11 16:00</td>
+          <td class="ep relx" data-p="AB" data-d="2026-11-10">AB</td>
+          <td class="calado">13,10</td>
+          <td class="brd">BB</td>
+          <td class="ab-b relx" data-p="AB" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">FX &gt; CV &gt; HI(16:15) &gt; SI(4) &gt; JA(4) &gt; LZ(17:15) &gt; PI(17:15) &gt; MM &gt; BA &gt; AG &gt; ON &gt; AB</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">THERESA BRIGHT</td>
+          <td class="berco">S 16/17</td>
+          <td class="dt">10/11 16:00</td>
+          <td class="ep relx" data-p="FX" data-d="2026-11-10">FX</td>
+          <td class="calado">11,30</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="FX" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">CV &gt; HI(16:30) &gt; SI(3) &gt; JA(3) &gt; LZ(17:30) &gt; PI(17:30) &gt; MM &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">CORNALIN</td>
+          <td class="berco">E TIP-4</td>
+          <td class="dt">10/11 16:00</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-10">CV</td>
+          <td class="calado">12,22</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="CV" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">HI(16:30) &gt; SI(2) &gt; JA(2) &gt; LZ(17:30) &gt; PI(17:30) &gt; MM &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">TIGER PIONEER</td>
+          <td class="berco">E TEAG</td>
+          <td class="dt">10/11 16:30</td>
+          <td class="ep relx" data-p="HI" data-d="2026-11-10">HI</td>
+          <td class="calado">6,80</td>
+          <td class="brd">BB</td>
+          <td class="ab-b relx" data-p="HI" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">SI(1) &gt; JA(1) &gt; LZ(17:30) &gt; PI(17:30) &gt; MM &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI</td>
+        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="vessel">MSC CATERINA <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">E BTP-2</td>
+          <td class="dt">10/11 16:30</td>
+          <td class="ep">SI/JA</td>
+          <td class="calado">12,30</td>
+          <td class="brd">BE</td>
+          <td class="ab-a"></td>
+          <td class="cal"></td>
+          <td class="esc esc-col">JA(1) &gt; LZ(17:30) &gt; PI(17:30) &gt; MM &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; HI &gt; SI(12)</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">SALIGNA</td>
+          <td class="berco">S 32</td>
+          <td class="dt">10/11 17:00</td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-10">MM</td>
+          <td class="calado"></td>
+          <td class="brd">BB</td>
+          <td class="ab-a relx" data-p="MM" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">LZ(17:15) &gt; PI(17:15) &gt; MM(n/a) &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; SI(10) &gt; JA(10) &gt; HI</td>
+        </tr><tr style="background:#ffffff;color:#000000">
+          <td class="vessel">MSC JEONGMIN <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">M TC 2 → BTP-3</td>
+          <td class="dt">10/11 17:30</td>
+          <td class="ep relx" data-p="LZ" data-d="2026-11-10">LZ/PI</td>
+          <td class="calado"></td>
+          <td class="brd"></td>
+          <td class="ab-b relx" data-p="LZ" data-d="2026-11-10">B/B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI &gt; MM(18:45) &gt; BA &gt; AG &gt; ON &gt; AB &gt; FX &gt; CV &gt; SI(9) &gt; JA(9) &gt; HI &gt; LZ</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">GREEN PECEM</td>
+          <td class="berco">E 34</td>
+          <td class="dt">10/11 17:30</td>
+          <td class="ep relx" data-p="BA" data-d="2026-11-10">BA</td>
+          <td class="calado">8,19</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="BA" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">MM(18:45) &gt; BA(n/a) &gt; AG &gt; ON &gt; AB &gt; FX &gt; SI(7) &gt; JA(7) &gt; CV &gt; HI &gt; LZ &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">OMICRON ATLAS</td>
+          <td class="berco">S 19</td>
+          <td class="dt">10/11 18:00</td>
+          <td class="ep relx" data-p="AG" data-d="2026-11-10">AG</td>
+          <td class="calado">13,45</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="AG" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">MM(18:45) &gt; BA(19:00) &gt; AG(n/a) &gt; ON &gt; AB &gt; SI(6) &gt; JA(6) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LOG-IN JATOBA</td>
+          <td class="berco">E TC 1.1</td>
+          <td class="dt">10/11 19:00</td>
+          <td class="ep relx" data-p="MM" data-d="2026-11-10">MM</td>
+          <td class="calado">9,00</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="MM" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">BA(19:30) &gt; AG(20:00) &gt; ON &gt; AB &gt; SI(5) &gt; JA(5) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">DESERT OASIS</td>
+          <td class="berco">S 33</td>
+          <td class="dt">10/11 21:00</td>
+          <td class="ep relx" data-p="BA" data-d="2026-11-10">BA</td>
+          <td class="calado">9,16</td>
+          <td class="brd">BB</td>
+          <td class="ab-b relx" data-p="BA" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">AG &gt; ON &gt; AB &gt; SI(4) &gt; JA(4) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM &gt; BA</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">ONEGO NEVA</td>
+          <td class="berco">E CS 4</td>
+          <td class="dt">10/11 21:00</td>
+          <td class="ep relx" data-p="AG" data-d="2026-11-10">AG</td>
+          <td class="calado">5,40</td>
+          <td class="brd">BB</td>
+          <td class="ab-b relx" data-p="AG" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">ON &gt; AB &gt; SI(3) &gt; JA(3) &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM &gt; BA &gt; AG</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">ULTRA RESILIENCE</td>
+          <td class="berco">E 33</td>
+          <td class="dt">10/11 21:30</td>
+          <td class="ep relx" data-p="ON" data-d="2026-11-10">ON</td>
+          <td class="calado">11,69</td>
+          <td class="brd">BB</td>
+          <td class="ab-a relx" data-p="ON" data-d="2026-11-10">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">ON(n/a) &gt; SI(2) &gt; JA(2) &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM &gt; BA &gt; AG</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">HSL TAMPA</td>
+          <td class="berco">S 39</td>
+          <td class="dt">10/11 23:00</td>
+          <td class="ep relx" data-p="ON" data-d="2026-11-10">ON</td>
+          <td class="calado">11,91</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="ON" data-d="2026-11-10">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">SI(1) &gt; JA(1) &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM &gt; BA &gt; AG &gt; ON</td>
+        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="vessel">MSC NAPOLI <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">S BTP-1</td>
+          <td class="dt">11/11 02:00</td>
+          <td class="ep">SI/JA</td>
+          <td class="calado">13,30</td>
+          <td class="brd">BE</td>
+          <td class="ab-a"></td>
+          <td class="cal"></td>
+          <td class="esc esc-col">JA(1) &gt; AB &gt; FX &gt; CV &gt; HI &gt; LZ &gt; PI &gt; MM &gt; BA &gt; AG &gt; ON &gt; SI(12)</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">NSS GUILLOBEL</td>
+          <td class="berco">E OUT-2</td>
+          <td class="dt">11/11 15:00</td>
+          <td class="ep relx" data-p="FX" data-d="2026-11-11">FX</td>
+          <td class="calado">8,80</td>
+          <td class="brd"></td>
+          <td class="ab-a relx" data-p="FX" data-d="2026-11-11">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">FX(n/a) &gt; RO &gt; RG &gt; HI &gt; LZ &gt; AD &gt; MM &gt; HL &gt; BA &gt; ML &gt; FO &gt; CF</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LAKE ONTARIO</td>
+          <td class="berco">E LARGO</td>
+          <td class="dt">11/11 15:00</td>
+          <td class="ep relx" data-p="RO" data-d="2026-11-11">RO</td>
+          <td class="calado">5,65</td>
+          <td class="brd"></td>
+          <td class="ab-a relx" data-p="RO" data-d="2026-11-11">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">FX(17:30) &gt; RO(n/a) &gt; RG &gt; HI &gt; LZ &gt; AD &gt; MM &gt; HL &gt; BA &gt; ML &gt; FO &gt; CF</td>
+        </tr></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Tabela "Historico - Dia Operacional Atual" removida.
+     Manobras finalizadas (do dia operacional vigente, anteriores a primeira
+     da pauta) ja estao integradas na tabela principal "Manobras - Projecao EP",
+     em ordem cronologica, com visual de manobra executada (vermelho). -->
+
+<!-- Botao "Atualizar Pauta SPPILOTS" removido (nao funcionava na pratica).
+     Para atualizar a pauta: clique no favorito "EP Salvar Pauta" no Chrome
+     com SPPILOTS aberto, depois rode python ep_atualizar.py no terminal. -->
+
+
+<div id="relbox" onclick="if(event.target===this)this.style.display='none'"><div class="in" id="relin"></div></div>
+<script>
+var REL = {"d": {"AB": {"p": "AB", "ini": "07/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 4, "corte": "10/11 15:00", "m12": [{"t": "07/11 08:30 MARVELOUS ACE (E TEV)", "f": "09:38", "fut": false, "ab": ""}, {"t": "07/11 13:00 BERGE DAISETSU (E ULT)", "f": "15:36", "fut": false, "ab": ""}, {"t": "07/11 18:30 THERESA BRIGHT (E 16/17)", "f": "20:06", "fut": false, "ab": ""}, {"t": "08/11 06:00 CSPC PISCES (S EMB-4)", "f": "07:38", "fut": false, "ab": ""}, {"t": "08/11 10:00 GRAND VEGA (E TEV)", "f": "11:08", "fut": false, "ab": ""}, {"t": "08/11 16:30 MAERSK LAGUNA (E BTP-2)", "f": "18:35", "fut": false, "ab": ""}, {"t": "09/11 01:30 ANITA GARIBALDI (S AL 1)", "f": "03:27", "fut": false, "ab": ""}, {"t": "09/11 07:30 MAERSK MONTE ALEGR (S EMB-1)", "f": "09:08", "fut": false, "ab": ""}, {"t": "09/11 19:30 MSC JEONGMIN (E TC 2)", "f": "20:41", "fut": false, "ab": ""}, {"t": "10/11 05:00 SAGA HORIZON (S 34)", "f": "06:08", "fut": false, "ab": ""}, {"t": "10/11 11:30 DALIAN EXPRESS (E TC 3)", "f": "12:41", "fut": false, "ab": ""}, {"t": "10/11 15:00 PARANA EXPRESS (S BTP-3)", "f": "16:48", "fut": false, "ab": ""}], "m2": [{"t": "10/11 13:00 LILIAN TRADER (E ULT)", "f": "15:36", "fut": false, "ab": "A"}], "s12": {"n": 12, "maior": 622.0, "total": 3734.0, "mad": 117.0, "fechado": false, "maior_longo": 622.0, "total_longo": 3674.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 4650.0, "total": 4650.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 322.0, "n": 11, "lt5": 5}, "b0": 1794036600000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1794036600000, 1794123000000, 1794209400000], "hj": 1794295800000, "vi": 1794036600000, "vd": [1794123000000, 1794209400000], "b2": [[[1794315600000, 1794322800000, "A", "10/11 13:00 LILIAN TRADER (E ULT)"]], [[1794036600000, 1794315600000, 4650, "inicio", "", null]]], "b12": [[[1794040200000, 1794044280000, "", "07/11 08:30 MARVELOUS ACE (E TEV)"], [1794056400000, 1794065760000, "", "07/11 13:00 BERGE DAISETSU (E ULT)"], [1794076200000, 1794081960000, "", "07/11 18:30 THERESA BRIGHT (E 16/17)"], [1794117600000, 1794123480000, "", "08/11 06:00 CSPC PISCES (S EMB-4)"], [1794132000000, 1794136080000, "", "08/11 10:00 GRAND VEGA (E TEV)"], [1794155400000, 1794162900000, "", "08/11 16:30 MAERSK LAGUNA (E BTP-2)"], [1794187800000, 1794194820000, "", "09/11 01:30 ANITA GARIBALDI (S AL 1)"], [1794209400000, 1794215280000, "", "09/11 07:30 MAERSK MONTE ALEGR (S EMB-1)"], [1794252600000, 1794256860000, "", "09/11 19:30 MSC JEONGMIN (E TC 2)"], [1794286800000, 1794290880000, "", "10/11 05:00 SAGA HORIZON (S 34)"], [1794310200000, 1794314460000, "", "10/11 11:30 DALIAN EXPRESS (E TC 3)"], [1794322800000, 1794322800000, "", "10/11 15:00 PARANA EXPRESS (S BTP-3)"]], [[1794036600000, 1794040200000, 60, "inicio", "", null], [1794044280000, 1794056400000, 202, "longo", "", null], [1794065760000, 1794076200000, 174, "longo", "", null], [1794081960000, 1794117600000, 594, "longo", "", null], [1794123480000, 1794132000000, 142, "longo", "", null], [1794136080000, 1794155400000, 322, "longo", "", null], [1794162900000, 1794187800000, 415, "longo", "", null], [1794194820000, 1794209400000, 243, "longo", "", null], [1794215280000, 1794252600000, 622, "longo", "", null], [1794256860000, 1794286800000, 499, "longo", "", null], [1794290880000, 1794310200000, 322, "longo", "", null], [1794314460000, 1794322800000, 139, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "AG": {"p": "AG", "ini": "10/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 1, "corte": "10/11 15:00", "m12": [{"t": "10/11 08:30 DSM EVERTON (S 13/14)", "f": "09:53", "fut": false, "ab": ""}, {"t": "10/11 14:30 HEEMSKERKGRACHT (S CS 4)", "f": "15:53", "fut": false, "ab": ""}], "m2": [{"t": "10/11 08:30 DSM EVERTON (S 13/14)", "f": "09:53", "fut": false, "ab": "A"}, {"t": "10/11 13:00 MAERSK FORTALEZA (E EMB-2)", "f": "14:39", "fut": false, "ab": "B"}], "s12": {"n": 2, "maior": 277.0, "total": 337.0, "mad": 0.0, "fechado": false, "maior_longo": 277.0, "total_longo": 277.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 187.0, "total": 268.0, "mad": 0.0, "fechado": false, "maior_longo": 21.0, "total_longo": 21.0, "total_ciclo": 187.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 277.0, "n": 1, "lt5": 1}, "b0": 1794295800000, "b1": 1794382200000, "ag": 1794322800000, "dd": [], "hj": 1794295800000, "vi": 1794295800000, "vd": [1794382200000, 1794468600000], "b2": [[[1794299400000, 1794304380000, "A", "10/11 08:30 DSM EVERTON (S 13/14)"], [1794315600000, 1794321540000, "B", "10/11 13:00 MAERSK FORTALEZA (E EMB-2)"]], [[1794295800000, 1794299400000, 60, "inicio", "", null], [1794304380000, 1794315600000, 187, "ciclo", "", 175], [1794321540000, 1794322800000, 21, "andamento", "", null]]], "b12": [[[1794299400000, 1794304380000, "", "10/11 08:30 DSM EVERTON (S 13/14)"], [1794321000000, 1794322800000, "", "10/11 14:30 HEEMSKERKGRACHT (S CS 4)"]], [[1794295800000, 1794299400000, 60, "inicio", "", null], [1794304380000, 1794321000000, 277, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "BA": {"p": "BA", "ini": "09/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 2, "corte": "10/11 15:00", "m12": [{"t": "09/11 15:00 MINOAN GLORY (S CTRLE)", "f": "16:08", "fut": false, "ab": ""}, {"t": "10/11 02:30 MAERSK LAGUNA (S BTP-2)", "f": "04:23", "fut": false, "ab": ""}, {"t": "10/11 08:00 MAERSK JAIPUR (S EMB-2)", "f": "09:33", "fut": false, "ab": ""}, {"t": "10/11 14:00 GREEN ITAJAI (E 35.2)", "f": "15:05", "fut": false, "ab": ""}], "m2": [{"t": "10/11 08:00 MAERSK JAIPUR (S EMB-2)", "f": "09:33", "fut": false, "ab": "A"}, {"t": "10/11 11:30 AVAX (E 13/14)", "f": "12:57", "fut": false, "ab": "B"}], "s12": {"n": 4, "maior": 622.0, "total": 1556.0, "mad": 113.0, "fechado": false, "maior_longo": 622.0, "total_longo": 1106.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 1470.0, "total": 1710.0, "mad": 0.0, "fechado": false, "maior_longo": 123.0, "total_longo": 123.0, "total_ciclo": 117.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 267.0, "n": 3, "lt5": 2}, "b0": 1794209400000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1794209400000], "hj": 1794295800000, "vi": 1794209400000, "vd": [1794295800000, 1794382200000], "b2": [[[1794297600000, 1794303180000, "A", "10/11 08:00 MAERSK JAIPUR (S EMB-2)"], [1794310200000, 1794315420000, "B", "10/11 11:30 AVAX (E 13/14)"]], [[1794209400000, 1794297600000, 1470, "inicio", "", null], [1794303180000, 1794310200000, 117, "ciclo", "", 105], [1794315420000, 1794322800000, 123, "andamento", "", null]]], "b12": [[[1794236400000, 1794240480000, "", "09/11 15:00 MINOAN GLORY (S CTRLE)"], [1794277800000, 1794284580000, "", "10/11 02:30 MAERSK LAGUNA (S BTP-2)"], [1794297600000, 1794303180000, "", "10/11 08:00 MAERSK JAIPUR (S EMB-2)"], [1794319200000, 1794322800000, "", "10/11 14:00 GREEN ITAJAI (E 35.2)"]], [[1794209400000, 1794236400000, 450, "inicio", "", null], [1794240480000, 1794277800000, 622, "longo", "", null], [1794284580000, 1794297600000, 217, "longo", "", null], [1794303180000, 1794319200000, 267, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "CV": {"p": "CV", "ini": "09/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 2, "corte": "10/11 15:00", "m12": [{"t": "09/11 14:00 HEEMSKERKGRACHT (E CS 4)", "f": "15:32", "fut": false, "ab": ""}, {"t": "10/11 02:30 BRIGHTON (S CS 2)", "f": "04:03", "fut": false, "ab": ""}, {"t": "10/11 11:30 AVAX (E 13/14)", "f": "12:57", "fut": false, "ab": ""}], "m2": [{"t": "10/11 14:00 GREEN ITAJAI (E 35.2)", "f": "15:05", "fut": false, "ab": "A"}], "s12": {"n": 3, "maior": 658.0, "total": 1618.0, "mad": 93.0, "fechado": false, "maior_longo": 658.0, "total_longo": 1228.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 1830.0, "total": 1830.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 552.5, "n": 2, "lt5": 0}, "b0": 1794209400000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1794209400000], "hj": 1794295800000, "vi": 1794209400000, "vd": [1794295800000, 1794382200000], "b2": [[[1794319200000, 1794322800000, "A", "10/11 14:00 GREEN ITAJAI (E 35.2)"]], [[1794209400000, 1794319200000, 1830, "inicio", "", null]]], "b12": [[[1794232800000, 1794238320000, "", "09/11 14:00 HEEMSKERKGRACHT (E CS 4)"], [1794277800000, 1794283380000, "", "10/11 02:30 BRIGHTON (S CS 2)"], [1794310200000, 1794315420000, "", "10/11 11:30 AVAX (E 13/14)"]], [[1794209400000, 1794232800000, 390, "inicio", "", null], [1794238320000, 1794277800000, 658, "longo", "", null], [1794283380000, 1794310200000, 447, "longo", "", null], [1794315420000, 1794322800000, 123, "andamento", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "FO": {"p": "FO", "ini": "08/11 07:30", "fim": "10/11 15:00", "fim2": "10/11 07:30", "nd": 2, "corte": "10/11 15:00", "m12": [{"t": "08/11 12:00 DARYA RASHMI (E TGG)", "f": "13:06", "fut": false, "ab": ""}, {"t": "08/11 19:00 EVER FAIR (S TC 3)", "f": "20:13", "fut": false, "ab": ""}, {"t": "09/11 06:30 GRAND VEGA (S TEV)", "f": "07:38", "fut": false, "ab": ""}, {"t": "09/11 09:30 MAERSK REDWOOD (E EMB-1)", "f": "11:14", "fut": false, "ab": ""}, {"t": "09/11 17:00 DARYA RASHMI (S TGG)", "f": "18:08", "fut": false, "ab": ""}, {"t": "10/11 04:00 NAVIOS DOMINO (S TC 1.2)", "f": "05:08", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 6, "maior": 617.0, "total": 2433.0, "mad": 60.0, "fechado": true, "maior_longo": 617.0, "total_longo": 2021.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 2880.0, "total": 2880.0, "mad": 0.0, "fechado": true, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 354.0, "n": 5, "lt5": 1}, "b0": 1794123000000, "b1": 1794295800000, "ag": 1794322800000, "dd": [1794123000000, 1794209400000], "hj": null, "vi": 1794123000000, "vd": [1794209400000, 1794295800000], "b2": [[], [[1794123000000, 1794295800000, 2880, "inicio", "", null]]], "b12": [[[1794139200000, 1794143160000, "", "08/11 12:00 DARYA RASHMI (E TGG)"], [1794164400000, 1794168780000, "", "08/11 19:00 EVER FAIR (S TC 3)"], [1794205800000, 1794209880000, "", "09/11 06:30 GRAND VEGA (S TEV)"], [1794216600000, 1794222840000, "", "09/11 09:30 MAERSK REDWOOD (E EMB-1)"], [1794243600000, 1794247680000, "", "09/11 17:00 DARYA RASHMI (S TGG)"], [1794283200000, 1794287280000, "", "10/11 04:00 NAVIOS DOMINO (S TC 1.2)"]], [[1794123000000, 1794139200000, 270, "inicio", "", null], [1794143160000, 1794164400000, 354, "longo", "", null], [1794168780000, 1794205800000, 617, "longo", "", null], [1794209880000, 1794216600000, 112, "longo", "", null], [1794222840000, 1794243600000, 346, "longo", "", null], [1794247680000, 1794283200000, 592, "longo", "", null], [1794287280000, 1794295800000, 142, "fimserv", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "FX": {"p": "FX", "ini": "07/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 4, "corte": "10/11 15:00", "m12": [{"t": "07/11 07:30 MAERSK LABERINTO (E BTP-1)", "f": "09:35", "fut": false, "ab": ""}, {"t": "07/11 12:00 PATMOS EXPRESS (M TC 1.1 → EMB-1)", "f": "13:14", "fut": false, "ab": ""}, {"t": "07/11 16:00 ARSINOE (S 19)", "f": "17:23", "fut": false, "ab": ""}, {"t": "08/11 05:30 MINOAN HILL (S OUT-3)", "f": "06:48", "fut": false, "ab": ""}, {"t": "08/11 10:30 CITRIODORA (E EMB-4)", "f": "12:14", "fut": false, "ab": ""}, {"t": "08/11 18:30 MSC NAPOLI (E BTP-1)", "f": "20:35", "fut": false, "ab": ""}, {"t": "09/11 04:00 SAGA HORIZON (E 34)", "f": "05:06", "fut": false, "ab": ""}, {"t": "09/11 11:00 SANTA VANESSA (S EMB-2)", "f": "12:33", "fut": false, "ab": ""}, {"t": "09/11 19:30 MSC JEONGMIN (E TC 2)", "f": "20:41", "fut": false, "ab": ""}, {"t": "10/11 06:00 ENSEMBLE (E IB SP)", "f": "07:32", "fut": false, "ab": ""}, {"t": "10/11 11:30 DALIAN EXPRESS (E TC 3)", "f": "12:41", "fut": false, "ab": ""}], "m2": [{"t": "10/11 13:30 MERCOSUL SUAPE (S TC 1.1)", "f": "14:38", "fut": false, "ab": "A"}], "s12": {"n": 11, "maior": 727.0, "total": 3788.0, "mad": 60.0, "fechado": false, "maior_longo": 727.0, "total_longo": 3788.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 4680.0, "total": 4702.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 22.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 365.0, "n": 10, "lt5": 4}, "b0": 1794036600000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1794036600000, 1794123000000, 1794209400000], "hj": 1794295800000, "vi": 1794036600000, "vd": [1794123000000, 1794209400000], "b2": [[[1794317400000, 1794321480000, "A", "10/11 13:30 MERCOSUL SUAPE (S TC 1.1)"]], [[1794036600000, 1794317400000, 4680, "inicio", "", null], [1794321480000, 1794322800000, 22, "andamento", "", 14]]], "b12": [[[1794036600000, 1794044100000, "", "07/11 07:30 MAERSK LABERINTO (E BTP-1)"], [1794052800000, 1794057240000, "", "07/11 12:00 PATMOS EXPRESS (M TC 1.1 → EMB-1)"], [1794067200000, 1794072180000, "", "07/11 16:00 ARSINOE (S 19)"], [1794115800000, 1794120480000, "", "08/11 05:30 MINOAN HILL (S OUT-3)"], [1794133800000, 1794140040000, "", "08/11 10:30 CITRIODORA (E EMB-4)"], [1794162600000, 1794170100000, "", "08/11 18:30 MSC NAPOLI (E BTP-1)"], [1794196800000, 1794200760000, "", "09/11 04:00 SAGA HORIZON (E 34)"], [1794222000000, 1794227580000, "", "09/11 11:00 SANTA VANESSA (S EMB-2)"], [1794252600000, 1794256860000, "", "09/11 19:30 MSC JEONGMIN (E TC 2)"], [1794290400000, 1794295920000, "", "10/11 06:00 ENSEMBLE (E IB SP)"], [1794310200000, 1794314460000, "", "10/11 11:30 DALIAN EXPRESS (E TC 3)"]], [[1794044100000, 1794052800000, 145, "longo", "", null], [1794057240000, 1794067200000, 166, "longo", "", null], [1794072180000, 1794115800000, 727, "longo", "", null], [1794120480000, 1794133800000, 222, "longo", "", null], [1794140040000, 1794162600000, 376, "longo", "", null], [1794170100000, 1794196800000, 445, "longo", "", null], [1794200760000, 1794222000000, 354, "longo", "", null], [1794227580000, 1794252600000, 417, "longo", "", null], [1794256860000, 1794290400000, 559, "longo", "", null], [1794295920000, 1794310200000, 238, "longo", "", null], [1794314460000, 1794322800000, 139, "andamento", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "GL": {"p": "GL", "ini": "06/11 07:30", "fim": "10/11 15:00", "fim2": "10/11 07:30", "nd": 4, "corte": "10/11 15:00", "m12": [{"t": "06/11 13:30 HARBOUR MOON (E 12-A)", "f": "15:03", "fut": false, "ab": ""}, {"t": "06/11 22:00 SEAJOY II (E 37.1)", "f": "23:04", "fut": false, "ab": ""}, {"t": "07/11 05:00 MERCOSUL SANTOS (S TC 1.2)", "f": "06:08", "fut": false, "ab": ""}, {"t": "07/11 10:30 VICENTE PINZON (S EMB-1)", "f": "12:08", "fut": false, "ab": ""}, {"t": "07/11 15:00 MSC NERISSA V (S BTP-3)", "f": "16:48", "fut": false, "ab": ""}, {"t": "08/11 05:00 KYPROS LAND (S 39)", "f": "06:08", "fut": false, "ab": ""}, {"t": "08/11 07:30 WARRIOR (S TGG)", "f": "08:38", "fut": false, "ab": ""}, {"t": "08/11 14:00 CMA CGM MISSISSIPP (S BTP-2)", "f": "15:53", "fut": false, "ab": ""}, {"t": "09/11 01:30 LOG-IN ENDURANCE (E TC 2)", "f": "02:41", "fut": false, "ab": ""}, {"t": "09/11 13:00 PARANA EXPRESS (E BTP-3)", "f": "14:59", "fut": false, "ab": ""}, {"t": "09/11 20:00 BLUE BUTTERFLY (S AL 3)", "f": "21:43", "fut": false, "ab": ""}, {"t": "10/11 06:30 CMA CGM HONG KONG (E TC 1.2)", "f": "07:37", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 12, "maior": 732.0, "total": 4727.0, "mad": 71.0, "fechado": true, "maior_longo": 732.0, "total_longo": 4367.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 5760.0, "total": 5760.0, "mad": 0.0, "fechado": true, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 356.0, "n": 11, "lt5": 3}, "b0": 1793950200000, "b1": 1794295800000, "ag": 1794322800000, "dd": [1793950200000, 1794036600000, 1794123000000, 1794209400000], "hj": null, "vi": 1793950200000, "vd": [1794036600000, 1794123000000], "b2": [[], [[1793950200000, 1794295800000, 5760, "inicio", "", null]]], "b12": [[[1793971800000, 1793977380000, "", "06/11 13:30 HARBOUR MOON (E 12-A)"], [1794002400000, 1794006240000, "", "06/11 22:00 SEAJOY II (E 37.1)"], [1794027600000, 1794031680000, "", "07/11 05:00 MERCOSUL SANTOS (S TC 1.2)"], [1794047400000, 1794053280000, "", "07/11 10:30 VICENTE PINZON (S EMB-1)"], [1794063600000, 1794070080000, "", "07/11 15:00 MSC NERISSA V (S BTP-3)"], [1794114000000, 1794118080000, "", "08/11 05:00 KYPROS LAND (S 39)"], [1794123000000, 1794127080000, "", "08/11 07:30 WARRIOR (S TGG)"], [1794146400000, 1794153180000, "", "08/11 14:00 CMA CGM MISSISSIPP (S BTP-2)"], [1794187800000, 1794192060000, "", "09/11 01:30 LOG-IN ENDURANCE (E TC 2)"], [1794229200000, 1794236340000, "", "09/11 13:00 PARANA EXPRESS (E BTP-3)"], [1794254400000, 1794260580000, "", "09/11 20:00 BLUE BUTTERFLY (S AL 3)"], [1794292200000, 1794295800000, "", "10/11 06:30 CMA CGM HONG KONG (E TC 1.2)"]], [[1793950200000, 1793971800000, 360, "inicio", "", null], [1793977380000, 1794002400000, 417, "longo", "", null], [1794006240000, 1794027600000, 356, "longo", "", null], [1794031680000, 1794047400000, 262, "longo", "", null], [1794053280000, 1794063600000, 172, "longo", "", null], [1794070080000, 1794114000000, 732, "longo", "", null], [1794118080000, 1794123000000, 82, "longo", "", null], [1794127080000, 1794146400000, 322, "longo", "", null], [1794153180000, 1794187800000, 577, "longo", "", null], [1794192060000, 1794229200000, 619, "longo", "", null], [1794236340000, 1794254400000, 301, "longo", "", null], [1794260580000, 1794292200000, 527, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "HI": {"p": "HI", "ini": "10/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 1, "corte": "10/11 15:00", "m12": [{"t": "10/11 13:00 MAERSK FORTALEZA (E EMB-2)", "f": "14:39", "fut": false, "ab": ""}], "m2": [{"t": "10/11 14:30 HEEMSKERKGRACHT (S CS 4)", "f": "15:53", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 330.0, "total": 351.0, "mad": 0.0, "fechado": false, "maior_longo": 21.0, "total_longo": 21.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 420.0, "total": 420.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794295800000, "b1": 1794382200000, "ag": 1794322800000, "dd": [], "hj": 1794295800000, "vi": 1794295800000, "vd": [1794382200000, 1794468600000], "b2": [[[1794321000000, 1794322800000, "A", "10/11 14:30 HEEMSKERKGRACHT (S CS 4)"]], [[1794295800000, 1794321000000, 420, "inicio", "", null]]], "b12": [[[1794315600000, 1794321540000, "", "10/11 13:00 MAERSK FORTALEZA (E EMB-2)"]], [[1794295800000, 1794315600000, 330, "inicio", "", null], [1794321540000, 1794322800000, 21, "andamento", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "LZ": {"p": "LZ", "ini": "05/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 6, "corte": "10/11 15:00", "m12": [{"t": "05/11 07:30 DESERT OASIS (M 32 → 33)", "f": "08:31", "fut": false, "ab": ""}, {"t": "05/11 13:00 MSC MICHELA (S TC 2)", "f": "14:13", "fut": false, "ab": ""}, {"t": "05/11 21:30 WITHAM (E AL 1)", "f": "23:41", "fut": false, "ab": ""}, {"t": "06/11 02:30 MSC NERISSA V (E BTP-3)", "f": "04:29", "fut": false, "ab": ""}, {"t": "06/11 10:45 XIN CHONG QING (E TC 3)", "f": "11:56", "fut": false, "ab": ""}, {"t": "06/11 18:30 AGGELOS B (E TEAG)", "f": "19:34", "fut": false, "ab": ""}, {"t": "07/11 03:30 SAN AUGUSTIN MAERS (S EMB-2)", "f": "05:03", "fut": false, "ab": ""}, {"t": "07/11 10:00 CMA CGM COBALT (S TC 2)", "f": "11:13", "fut": false, "ab": ""}, {"t": "07/11 15:00 MAERSK LAMANAI (E TC 1.2)", "f": "16:07", "fut": false, "ab": ""}, {"t": "08/11 00:00 MISTRAL FLAME (S AL 4)", "f": "01:48", "fut": false, "ab": ""}, {"t": "08/11 09:30 MAERSK MONTE ALEGR (E EMB-1)", "f": "11:14", "fut": false, "ab": ""}, {"t": "08/11 16:30 YM MOBILITY (E TC 1.2)", "f": "17:37", "fut": false, "ab": ""}, {"t": "09/11 00:00 EVER FIT (S TC 2)", "f": "01:13", "fut": false, "ab": ""}, {"t": "09/11 13:00 PARANA EXPRESS (E BTP-3)", "f": "14:59", "fut": false, "ab": ""}, {"t": "10/11 00:30 SPARROWHAWK (S AL 4)", "f": "02:18", "fut": false, "ab": ""}, {"t": "10/11 06:30 PEDRO ALVARES CABR (E EMB-1)", "f": "08:14", "fut": false, "ab": ""}, {"t": "10/11 13:00 LILIAN TRADER (E ULT)", "f": "15:36", "fut": false, "ab": ""}], "m2": [{"t": "10/11 15:00 PARANA EXPRESS (S BTP-3)", "f": "16:48", "fut": false, "ab": "A"}], "s12": {"n": 17, "maior": 707.0, "total": 6095.0, "mad": 498.0, "fechado": false, "maior_longo": 707.0, "total_longo": 6095.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 7650.0, "total": 7650.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 379.5, "n": 16, "lt5": 6}, "b0": 1793863800000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1793863800000, 1793950200000, 1794036600000, 1794123000000, 1794209400000], "hj": 1794295800000, "vi": 1793863800000, "vd": [1793950200000, 1794036600000], "b2": [[[1794322800000, 1794322800000, "A", "10/11 15:00 PARANA EXPRESS (S BTP-3)"]], [[1793863800000, 1794322800000, 7650, "inicio", "", null]]], "b12": [[[1793863800000, 1793867460000, "", "05/11 07:30 DESERT OASIS (M 32 → 33)"], [1793883600000, 1793887980000, "", "05/11 13:00 MSC MICHELA (S TC 2)"], [1793914200000, 1793922060000, "", "05/11 21:30 WITHAM (E AL 1)"], [1793932200000, 1793939340000, "", "06/11 02:30 MSC NERISSA V (E BTP-3)"], [1793961900000, 1793966160000, "", "06/11 10:45 XIN CHONG QING (E TC 3)"], [1793989800000, 1793993640000, "", "06/11 18:30 AGGELOS B (E TEAG)"], [1794022200000, 1794027780000, "", "07/11 03:30 SAN AUGUSTIN MAERS (S EMB-2)"], [1794045600000, 1794049980000, "", "07/11 10:00 CMA CGM COBALT (S TC 2)"], [1794063600000, 1794067620000, "", "07/11 15:00 MAERSK LAMANAI (E TC 1.2)"], [1794096000000, 1794102480000, "", "08/11 00:00 MISTRAL FLAME (S AL 4)"], [1794130200000, 1794136440000, "", "08/11 09:30 MAERSK MONTE ALEGR (E EMB-1)"], [1794155400000, 1794159420000, "", "08/11 16:30 YM MOBILITY (E TC 1.2)"], [1794182400000, 1794186780000, "", "09/11 00:00 EVER FIT (S TC 2)"], [1794229200000, 1794236340000, "", "09/11 13:00 PARANA EXPRESS (E BTP-3)"], [1794270600000, 1794277080000, "", "10/11 00:30 SPARROWHAWK (S AL 4)"], [1794292200000, 1794298440000, "", "10/11 06:30 PEDRO ALVARES CABR (E EMB-1)"], [1794315600000, 1794322800000, "", "10/11 13:00 LILIAN TRADER (E ULT)"]], [[1793867460000, 1793883600000, 269, "longo", "", null], [1793887980000, 1793914200000, 437, "longo", "", null], [1793922060000, 1793932200000, 169, "longo", "", null], [1793939340000, 1793961900000, 376, "longo", "", null], [1793966160000, 1793989800000, 394, "longo", "", null], [1793993640000, 1794022200000, 476, "longo", "", null], [1794027780000, 1794045600000, 297, "longo", "", null], [1794049980000, 1794063600000, 227, "longo", "", null], [1794067620000, 1794096000000, 473, "longo", "", null], [1794102480000, 1794130200000, 462, "longo", "", null], [1794136440000, 1794155400000, 316, "longo", "", null], [1794159420000, 1794182400000, 383, "longo", "", null], [1794186780000, 1794229200000, 707, "longo", "", null], [1794236340000, 1794270600000, 571, "longo", "", null], [1794277080000, 1794292200000, 252, "longo", "", null], [1794298440000, 1794315600000, 286, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "MM": {"p": "MM", "ini": "10/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 1, "corte": "10/11 15:00", "m12": [{"t": "10/11 08:00 NSS GUILLOBEL (S OUT-2)", "f": "09:28", "fut": false, "ab": ""}, {"t": "10/11 13:30 MERCOSUL SUAPE (S TC 1.1)", "f": "14:38", "fut": false, "ab": ""}], "m2": [{"t": "10/11 08:00 NSS GUILLOBEL (S OUT-2)", "f": "09:28", "fut": false, "ab": "A"}, {"t": "10/11 11:30 DALIAN EXPRESS (E TC 3)", "f": "12:41", "fut": false, "ab": "B"}], "s12": {"n": 2, "maior": 242.0, "total": 294.0, "mad": 0.0, "fechado": false, "maior_longo": 242.0, "total_longo": 264.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 139.0, "total": 291.0, "mad": 0.0, "fechado": false, "maior_longo": 139.0, "total_longo": 139.0, "total_ciclo": 122.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 242.0, "n": 1, "lt5": 1}, "b0": 1794295800000, "b1": 1794382200000, "ag": 1794322800000, "dd": [], "hj": 1794295800000, "vi": 1794295800000, "vd": [1794382200000, 1794468600000], "b2": [[[1794297600000, 1794302880000, "A", "10/11 08:00 NSS GUILLOBEL (S OUT-2)"], [1794310200000, 1794314460000, "B", "10/11 11:30 DALIAN EXPRESS (E TC 3)"]], [[1794295800000, 1794297600000, 30, "inicio", "", null], [1794302880000, 1794310200000, 122, "ciclo", "", 110], [1794314460000, 1794322800000, 139, "andamento", "", null]]], "b12": [[[1794297600000, 1794302880000, "", "10/11 08:00 NSS GUILLOBEL (S OUT-2)"], [1794317400000, 1794321480000, "", "10/11 13:30 MERCOSUL SUAPE (S TC 1.1)"]], [[1794295800000, 1794297600000, 30, "inicio", "", null], [1794302880000, 1794317400000, 242, "longo", "", null], [1794321480000, 1794322800000, 22, "andamento", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "ON": {"p": "ON", "ini": "10/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 1, "corte": "10/11 15:00", "m12": [{"t": "10/11 08:30 BERGE DAISETSU (S ULT)", "f": "10:43", "fut": false, "ab": ""}, {"t": "10/11 15:00 PARANA EXPRESS (S BTP-3)", "f": "16:48", "fut": false, "ab": ""}], "m2": [{"t": "10/11 08:30 BERGE DAISETSU (S ULT)", "f": "10:43", "fut": false, "ab": "A"}, {"t": "10/11 13:30 ZHONG YUAN HAI YUN (S 35.2)", "f": "14:38", "fut": false, "ab": "B"}], "s12": {"n": 2, "maior": 257.0, "total": 317.0, "mad": 0.0, "fechado": false, "maior_longo": 257.0, "total_longo": 257.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 167.0, "total": 249.0, "mad": 0.0, "fechado": false, "maior_longo": 22.0, "total_longo": 22.0, "total_ciclo": 167.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 257.0, "n": 1, "lt5": 1}, "b0": 1794295800000, "b1": 1794382200000, "ag": 1794322800000, "dd": [], "hj": 1794295800000, "vi": 1794295800000, "vd": [1794382200000, 1794468600000], "b2": [[[1794299400000, 1794307380000, "A", "10/11 08:30 BERGE DAISETSU (S ULT)"], [1794317400000, 1794321480000, "B", "10/11 13:30 ZHONG YUAN HAI YUN (S 35.2)"]], [[1794295800000, 1794299400000, 60, "inicio", "", null], [1794307380000, 1794317400000, 167, "ciclo", "", 162], [1794321480000, 1794322800000, 22, "andamento", "", null]]], "b12": [[[1794299400000, 1794307380000, "", "10/11 08:30 BERGE DAISETSU (S ULT)"], [1794322800000, 1794322800000, "", "10/11 15:00 PARANA EXPRESS (S BTP-3)"]], [[1794295800000, 1794299400000, 60, "inicio", "", null], [1794307380000, 1794322800000, 257, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "PI": {"p": "PI", "ini": "07/11 07:30", "fim": "10/11 15:00", "fim2": "11/11 07:30", "nd": 4, "corte": "10/11 15:00", "m12": [{"t": "07/11 08:30 ATROMITOS L (E 20/21)", "f": "09:55", "fut": false, "ab": ""}, {"t": "07/11 13:30 GENCO HUNTER (E 23)", "f": "14:45", "fut": false, "ab": ""}, {"t": "07/11 19:30 OMICRON ATLAS (E 19)", "f": "20:56", "fut": false, "ab": ""}, {"t": "08/11 06:00 LEON (S TIP-3)", "f": "08:08", "fut": false, "ab": ""}, {"t": "08/11 10:30 BOW COMPASS (E IB-OE)", "f": "12:12", "fut": false, "ab": ""}, {"t": "08/11 18:30 MSC NAPOLI (E BTP-1)", "f": "20:35", "fut": false, "ab": ""}, {"t": "09/11 04:00 MANTA ANADOLU (E AL 1)", "f": "06:11", "fut": false, "ab": ""}, {"t": "09/11 14:00 FLUMAR MACEIO (S IB BC)", "f": "15:23", "fut": false, "ab": ""}, {"t": "10/11 02:00 BOW COMPASS (S IB-OE)", "f": "03:33", "fut": false, "ab": ""}, {"t": "10/11 07:30 TORONTO (E TEV)", "f": "08:38", "fut": false, "ab": ""}, {"t": "10/11 13:30 ZHONG YUAN HAI YUN (S 35.2)", "f": "14:38", "fut": false, "ab": ""}], "m2": [{"t": "10/11 07:30 TORONTO (E TEV)", "f": "08:38", "fut": false, "ab": "A"}, {"t": "10/11 11:30 DALIAN EXPRESS (E TC 3)", "f": "12:41", "fut": false, "ab": "B"}, {"t": "10/11 15:00 PARANA EXPRESS (S BTP-3)", "f": "16:48", "fut": false, "ab": "A"}], "s12": {"n": 11, "maior": 637.0, "total": 3726.0, "mad": 153.0, "fechado": false, "maior_longo": 637.0, "total_longo": 3666.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 3, "maior": 4320.0, "total": 4631.0, "mad": 0.0, "fechado": false, "maior_longo": 139.0, "total_longo": 139.0, "total_ciclo": 172.0, "n_ciclo": 1}, "c2": {"med": 139.0, "n": 1, "lt5": 1}, "c12": {"med": 335.0, "n": 10, "lt5": 5}, "b0": 1794036600000, "b1": 1794382200000, "ag": 1794322800000, "dd": [1794036600000, 1794123000000, 1794209400000], "hj": 1794295800000, "vi": 1794036600000, "vd": [1794123000000, 1794209400000], "b2": [[[1794295800000, 1794299880000, "A", "10/11 07:30 TORONTO (E TEV)"], [1794310200000, 1794314460000, "B", "10/11 11:30 DALIAN EXPRESS (E TC 3)"], [1794322800000, 1794322800000, "A", "10/11 15:00 PARANA EXPRESS (S BTP-3)"]], [[1794036600000, 1794295800000, 4320, "inicio", "", null], [1794299880000, 1794310200000, 172, "ciclo", "", 160], [1794314460000, 1794322800000, 139, "longo", "", null]]], "b12": [[[1794040200000, 1794045300000, "", "07/11 08:30 ATROMITOS L (E 20/21)"], [1794058200000, 1794062700000, "", "07/11 13:30 GENCO HUNTER (E 23)"], [1794079800000, 1794084960000, "", "07/11 19:30 OMICRON ATLAS (E 19)"], [1794117600000, 1794125280000, "", "08/11 06:00 LEON (S TIP-3)"], [1794133800000, 1794139920000, "", "08/11 10:30 BOW COMPASS (E IB-OE)"], [1794162600000, 1794170100000, "", "08/11 18:30 MSC NAPOLI (E BTP-1)"], [1794196800000, 1794204660000, "", "09/11 04:00 MANTA ANADOLU (E AL 1)"], [1794232800000, 1794237780000, "", "09/11 14:00 FLUMAR MACEIO (S IB BC)"], [1794276000000, 1794281580000, "", "10/11 02:00 BOW COMPASS (S IB-OE)"], [1794295800000, 1794299880000, "", "10/11 07:30 TORONTO (E TEV)"], [1794317400000, 1794321480000, "", "10/11 13:30 ZHONG YUAN HAI YUN (S 35.2)"]], [[1794036600000, 1794040200000, 60, "inicio", "", null], [1794045300000, 1794058200000, 215, "longo", "", null], [1794062700000, 1794079800000, 285, "longo", "", null], [1794084960000, 1794117600000, 544, "longo", "", null], [1794125280000, 1794133800000, 142, "longo", "", null], [1794139920000, 1794162600000, 378, "longo", "", null], [1794170100000, 1794196800000, 445, "longo", "", null], [1794204660000, 1794232800000, 469, "longo", "", null], [1794237780000, 1794276000000, 637, "longo", "", null], [1794281580000, 1794295800000, 237, "longo", "", null], [1794299880000, 1794317400000, 292, "longo", "", null], [1794321480000, 1794322800000, 22, "andamento", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "RO": {"p": "RO", "ini": "09/11 07:30", "fim": "10/11 15:00", "fim2": "10/11 07:30", "nd": 1, "corte": "10/11 15:00", "m12": [{"t": "09/11 13:00 MAERSK JAIPUR (E EMB-2)", "f": "14:39", "fut": false, "ab": ""}, {"t": "09/11 19:30 GUO YUAN 26 (E TGG)", "f": "20:36", "fut": false, "ab": ""}, {"t": "10/11 06:00 LARGO CALIFORNIA (E AL 4)", "f": "08:01", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 3, "maior": 564.0, "total": 1185.0, "mad": 0.0, "fechado": true, "maior_longo": 564.0, "total_longo": 855.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 1440.0, "total": 1440.0, "mad": 0.0, "fechado": true, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 427.5, "n": 2, "lt5": 1}, "b0": 1794209400000, "b1": 1794295800000, "ag": 1794322800000, "dd": [1794209400000], "hj": null, "vi": 1794209400000, "vd": [1794295800000, 1794382200000], "b2": [[], [[1794209400000, 1794295800000, 1440, "inicio", "", null]]], "b12": [[[1794229200000, 1794235140000, "", "09/11 13:00 MAERSK JAIPUR (E EMB-2)"], [1794252600000, 1794256560000, "", "09/11 19:30 GUO YUAN 26 (E TGG)"], [1794290400000, 1794295800000, "", "10/11 06:00 LARGO CALIFORNIA (E AL 4)"]], [[1794209400000, 1794229200000, 330, "inicio", "", null], [1794235140000, 1794252600000, 291, "longo", "", null], [1794256560000, 1794290400000, 564, "longo", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}, "SB": {"p": "SB", "ini": "05/11 07:30", "fim": "10/11 15:00", "fim2": "10/11 07:30", "nd": 5, "corte": "10/11 15:00", "m12": [{"t": "05/11 12:00 VICENTE PINZON (E BTP-2)", "f": "14:05", "fut": false, "ab": ""}, {"t": "05/11 21:30 VAST ATLANTIC (S IB SP)", "f": "22:54", "fut": false, "ab": ""}, {"t": "06/11 02:30 SAN AUGUSTIN MAERS (E EMB-2)", "f": "04:09", "fut": false, "ab": ""}, {"t": "06/11 10:45 SWANSEA (S TC 3)", "f": "11:58", "fut": false, "ab": ""}, {"t": "06/11 18:00 HANZE GENDT (E COS 3)", "f": "20:31", "fut": false, "ab": ""}, {"t": "07/11 03:00 BOW TIGER (S IB BC)", "f": "04:23", "fut": false, "ab": ""}, {"t": "07/11 09:30 SLAVYANKA (S 23)", "f": "10:43", "fut": false, "ab": ""}, {"t": "07/11 14:00 EVER FIT (E TC 2)", "f": "15:11", "fut": false, "ab": ""}, {"t": "07/11 20:30 ZHONG YUAN HAI YUN (E 35.2)", "f": "21:35", "fut": false, "ab": ""}, {"t": "08/11 07:30 MARVELOUS ACE (S TEV)", "f": "08:38", "fut": false, "ab": ""}, {"t": "08/11 13:30 MAERSK LAMANAI (S TC 1.2)", "f": "14:38", "fut": false, "ab": ""}, {"t": "08/11 20:45 CMA CGM KRYPTON (E TC 3)", "f": "21:56", "fut": false, "ab": ""}, {"t": "09/11 07:30 YM MOBILITY (S TC 1.2)", "f": "08:38", "fut": false, "ab": ""}, {"t": "09/11 16:30 LOG-IN ENDURANCE (S TC 2)", "f": "17:43", "fut": false, "ab": ""}, {"t": "10/11 03:45 ATROMITOS L (S 20/21)", "f": "05:08", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 15, "maior": 602.0, "total": 5945.0, "mad": 257.0, "fechado": true, "maior_longo": 602.0, "total_longo": 5533.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 7200.0, "total": 7200.0, "mad": 0.0, "fechado": true, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": 378.0, "n": 14, "lt5": 3}, "b0": 1793863800000, "b1": 1794295800000, "ag": 1794322800000, "dd": [1793863800000, 1793950200000, 1794036600000, 1794123000000, 1794209400000], "hj": null, "vi": 1793863800000, "vd": [1793950200000, 1794036600000], "b2": [[], [[1793863800000, 1794295800000, 7200, "inicio", "", null]]], "b12": [[[1793880000000, 1793887500000, "", "05/11 12:00 VICENTE PINZON (E BTP-2)"], [1793914200000, 1793919240000, "", "05/11 21:30 VAST ATLANTIC (S IB SP)"], [1793932200000, 1793938140000, "", "06/11 02:30 SAN AUGUSTIN MAERS (E EMB-2)"], [1793961900000, 1793966280000, "", "06/11 10:45 SWANSEA (S TC 3)"], [1793988000000, 1793997060000, "", "06/11 18:00 HANZE GENDT (E COS 3)"], [1794020400000, 1794025380000, "", "07/11 03:00 BOW TIGER (S IB BC)"], [1794043800000, 1794048180000, "", "07/11 09:30 SLAVYANKA (S 23)"], [1794060000000, 1794064260000, "", "07/11 14:00 EVER FIT (E TC 2)"], [1794083400000, 1794087300000, "", "07/11 20:30 ZHONG YUAN HAI YUN (E 35.2)"], [1794123000000, 1794127080000, "", "08/11 07:30 MARVELOUS ACE (S TEV)"], [1794144600000, 1794148680000, "", "08/11 13:30 MAERSK LAMANAI (S TC 1.2)"], [1794170700000, 1794174960000, "", "08/11 20:45 CMA CGM KRYPTON (E TC 3)"], [1794209400000, 1794213480000, "", "09/11 07:30 YM MOBILITY (S TC 1.2)"], [1794241800000, 1794246180000, "", "09/11 16:30 LOG-IN ENDURANCE (S TC 2)"], [1794282300000, 1794287280000, "", "10/11 03:45 ATROMITOS L (S 20/21)"]], [[1793863800000, 1793880000000, 270, "inicio", "", null], [1793887500000, 1793914200000, 445, "longo", "", null], [1793919240000, 1793932200000, 216, "longo", "", null], [1793938140000, 1793961900000, 396, "longo", "", null], [1793966280000, 1793988000000, 362, "longo", "", null], [1793997060000, 1794020400000, 389, "longo", "", null], [1794025380000, 1794043800000, 307, "longo", "", null], [1794048180000, 1794060000000, 197, "longo", "", null], [1794064260000, 1794083400000, 319, "longo", "", null], [1794087300000, 1794123000000, 595, "longo", "", null], [1794127080000, 1794144600000, 292, "longo", "", null], [1794148680000, 1794170700000, 367, "longo", "", null], [1794174960000, 1794209400000, 574, "longo", "", null], [1794213480000, 1794241800000, 472, "longo", "", null], [1794246180000, 1794282300000, 602, "longo", "", null], [1794287280000, 1794295800000, 142, "fimserv", "", null]]], "dias": ["2026-11-09", "2026-11-10"]}}, "i": {"AB|2026-11-02": "AB", "AB|2026-11-03": "AB", "AB|2026-11-04": "AB", "AB|2026-11-05": "AB", "AB|2026-11-06": "AB", "AB|2026-11-07": "AB", "AB|2026-11-08": "AB", "AB|2026-11-09": "AB", "AB|2026-11-10": "AB", "AB|2026-11-11": "AB", "AG|2026-11-02": "AG", "AG|2026-11-03": "AG", "AG|2026-11-04": "AG", "AG|2026-11-05": "AG", "AG|2026-11-06": "AG", "AG|2026-11-07": "AG", "AG|2026-11-08": "AG", "AG|2026-11-09": "AG", "AG|2026-11-10": "AG", "AG|2026-11-11": "AG", "BA|2026-11-02": "BA", "BA|2026-11-03": "BA", "BA|2026-11-04": "BA", "BA|2026-11-05": "BA", "BA|2026-11-06": "BA", "BA|2026-11-07": "BA", "BA|2026-11-08": "BA", "BA|2026-11-09": "BA", "BA|2026-11-10": "BA", "BA|2026-11-11": "BA", "CV|2026-11-02": "CV", "CV|2026-11-03": "CV", "CV|2026-11-04": "CV", "CV|2026-11-05": "CV", "CV|2026-11-06": "CV", "CV|2026-11-07": "CV", "CV|2026-11-08": "CV", "CV|2026-11-09": "CV", "CV|2026-11-10": "CV", "CV|2026-11-11": "CV", "FO|2026-11-02": "FO", "FO|2026-11-03": "FO", "FO|2026-11-04": "FO", "FO|2026-11-05": "FO", "FO|2026-11-06": "FO", "FO|2026-11-07": "FO", "FO|2026-11-08": "FO", "FO|2026-11-09": "FO", "FO|2026-11-10": "FO", "FO|2026-11-11": "FO", "FX|2026-11-02": "FX", "FX|2026-11-03": "FX", "FX|2026-11-04": "FX", "FX|2026-11-05": "FX", "FX|2026-11-06": "FX", "FX|2026-11-07": "FX", "FX|2026-11-08": "FX", "FX|2026-11-09": "FX", "FX|2026-11-10": "FX", "FX|2026-11-11": "FX", "GL|2026-11-02": "GL", "GL|2026-11-03": "GL", "GL|2026-11-04": "GL", "GL|2026-11-05": "GL", "GL|2026-11-06": "GL", "GL|2026-11-07": "GL", "GL|2026-11-08": "GL", "GL|2026-11-09": "GL", "GL|2026-11-10": "GL", "GL|2026-11-11": "GL", "HI|2026-11-02": "HI", "HI|2026-11-03": "HI", "HI|2026-11-04": "HI", "HI|2026-11-05": "HI", "HI|2026-11-06": "HI", "HI|2026-11-07": "HI", "HI|2026-11-08": "HI", "HI|2026-11-09": "HI", "HI|2026-11-10": "HI", "HI|2026-11-11": "HI", "LZ|2026-11-02": "LZ", "LZ|2026-11-03": "LZ", "LZ|2026-11-04": "LZ", "LZ|2026-11-05": "LZ", "LZ|2026-11-06": "LZ", "LZ|2026-11-07": "LZ", "LZ|2026-11-08": "LZ", "LZ|2026-11-09": "LZ", "LZ|2026-11-10": "LZ", "LZ|2026-11-11": "LZ", "MM|2026-11-02": "MM", "MM|2026-11-03": "MM", "MM|2026-11-04": "MM", "MM|2026-11-05": "MM", "MM|2026-11-06": "MM", "MM|2026-11-07": "MM", "MM|2026-11-08": "MM", "MM|2026-11-09": "MM", "MM|2026-11-10": "MM", "MM|2026-11-11": "MM", "ON|2026-11-02": "ON", "ON|2026-11-03": "ON", "ON|2026-11-04": "ON", "ON|2026-11-05": "ON", "ON|2026-11-06": "ON", "ON|2026-11-07": "ON", "ON|2026-11-08": "ON", "ON|2026-11-09": "ON", "ON|2026-11-10": "ON", "ON|2026-11-11": "ON", "PI|2026-11-02": "PI", "PI|2026-11-03": "PI", "PI|2026-11-04": "PI", "PI|2026-11-05": "PI", "PI|2026-11-06": "PI", "PI|2026-11-07": "PI", "PI|2026-11-08": "PI", "PI|2026-11-09": "PI", "PI|2026-11-10": "PI", "PI|2026-11-11": "PI", "RO|2026-11-02": "RO", "RO|2026-11-03": "RO", "RO|2026-11-04": "RO", "RO|2026-11-05": "RO", "RO|2026-11-06": "RO", "RO|2026-11-07": "RO", "RO|2026-11-08": "RO", "RO|2026-11-09": "RO", "RO|2026-11-10": "RO", "RO|2026-11-11": "RO", "SB|2026-11-02": "SB", "SB|2026-11-03": "SB", "SB|2026-11-04": "SB", "SB|2026-11-05": "SB", "SB|2026-11-06": "SB", "SB|2026-11-07": "SB", "SB|2026-11-08": "SB", "SB|2026-11-09": "SB", "SB|2026-11-10": "SB", "SB|2026-11-11": "SB"}, "dia": {"2026-11-10": {"e2d": {"med": 139.0, "n": 1, "lt5": 100}, "e12": {"med": 262.0, "n": 12, "lt5": 83}}, "2026-11-09": {"e12": {"med": 543.0, "n": 24, "lt5": 17}}}, "nm": {"2026-11-10": 37, "2026-11-11": 2, "2026-11-12": 1, "2026-11-13": 1}, "nma": {"2026-11-10": 16}};
+function _h(m){m=Math.round(m);var s=m<0?'-':'';m=Math.abs(m);return s+Math.floor(m/60)+'h'+String(m%60).padStart(2,'0');}
+function _lista(L){if(!L.length)return '<tr><td>nenhuma</td></tr>';return L.map(function(x){return '<tr class="'+(x.fut?'fut':'')+'"><td>'+(x.ab?'<b>'+x.ab+'</b> ':'')+x.t+'</td><td>'+x.f+'</td></tr>';}).join('');}
+function _gaps(G){if(!G.length)return '<tr><td colspan=2>—</td></tr>';var nm={longo:['tl','descanso longo'],ciclo:['tc','dentro do ciclo'],emendado:['te','emendado'],andamento:['ta','em andamento'],inicio:['ti','antes da 1ª'],canc:['ti','após cancelada'],fimserv:['tf','fim do serviço']};return G.map(function(g){var t=g[3],z=nm[t],tg=z?'<span class="tg '+z[0]+'">'+z[1]+'</span> ':'';var fora=(t!=='longo'&&t!=='');return '<tr'+(fora?' class="cic"':'')+'><td>'+tg+g[0]+' → '+g[1]+'</td><td>'+(t==='emendado'?'—':_h(g[2]))+'</td></tr>';}).join('');}
+function _hm(t){var d=new Date(t);return String(d.getUTCHours()).padStart(2,'0')+':'+String(d.getUTCMinutes()).padStart(2,'0');}
+function _barra(r){var W=700,DIA=86400000,H=3600000,out='',bars=[];
+(r.dd||[]).forEach(function(S){var dt=new Date(S);bars.push([S,S+DIA,String(dt.getUTCDate()).padStart(2,'0')+'/'+String(dt.getUTCMonth()+1).padStart(2,'0'),3]);});
+if(r.hj){var dh=new Date(r.hj);bars.push([r.hj,r.hj+DIA,String(dh.getUTCDate()).padStart(2,'0')+'/'+String(dh.getUTCMonth()+1).padStart(2,'0'),3]);}
+function rc(v){return v>=480?'#2e7d32':(v>=300?'#ef8f00':'#c62828');}
+bars.forEach(function(Z,zi){var S=Z[0],E=Z[1],X=function(t){return (t-S)/(E-S)*W;},mov=(r.hj&&S===r.hj);
+function linha(B,y){var ms=B[0],gs=B[1],o='<rect x="0" y="'+y+'" width="'+W+'" height="24" fill="#eeeeee"><title>fora do serviço</title></rect>';gs.forEach(function(g){var t=g[3],c;if(t==='emendado')return;
+var g0=Math.max(g[0],S),g1=Math.min(g[1],E);if(g1<=g0)return;
+if(t==='fimserv')c='#b2dfdb';else if(t==='inicio'||t==='canc'||t==='folga')c='#d9d9d9';else if(t==='andamento')c='#7cc47f';else if(t==='ciclo')c='#f3d36b';else c=rc(g[2]);
+var a=X(g0),b=X(g1);if(b-a<0.5)return;var meu=(g1-g0)*2>=(g[1]-g[0])||(g[4]&&g0===S);
+o+='<rect x="'+a.toFixed(1)+'" y="'+y+'" width="'+(b-a).toFixed(1)+'" height="24" fill="'+c+'"><title>'+(g[4]?'desde '+g[4]:_hm(g[0]))+' → '+_hm(g[1])+' · '+_h(g[2])+(t==='ciclo'&&g[5]!==null?' · livre na Atalaia '+_h(Math.max(0,g[5])):'')+'</title></rect>';
+if(!meu)return;
+if(t==='ciclo'&&g[5]!==null&&g[5]>=120&&b-a>24)o+='<text x="'+((a+b)/2).toFixed(1)+'" y="'+(y+16)+'" text-anchor="middle" font-size="11" fill="#000">'+_h(Math.max(0,g[5]))+'<title>livre na Atalaia (o Δt da B na pauta)</title></text>';
+else if(t==='fimserv'&&b-a>34)o+='<text x="'+((a+b)/2).toFixed(1)+'" y="'+(y+16)+'" text-anchor="middle" font-size="11" fill="#00695c">'+(b-a>130?'fim do serviço · ':'')+_h(g[2])+'</text>';
+else if(b-a>34&&t!=='ciclo'&&t!=='inicio'&&t!=='canc'&&t!=='folga')o+='<text x="'+((a+b)/2).toFixed(1)+'" y="'+(y+16)+'" text-anchor="middle" font-size="11" fill="'+(t==='andamento'?'#000':'#fff')+'">'+(g[0]<S||g[1]>E?'↔':'')+_h(g[2])+(t==='andamento'?'…':'')+'</text>';});
+var fa=null;ms.forEach(function(m){var m0=Math.max(m[0],S),m1=Math.min(m[1],E);if(m1<=m0)return;var a=X(m0),b=X(m1),em=false;if(fa!==null&&a<fa){a=fa;em=true;}if(b<a+3)b=a+3;
+o+='<rect x="'+a.toFixed(1)+'" y="'+y+'" width="'+(b-a).toFixed(1)+'" height="24" fill="#1f3a5f" stroke="#fff" stroke-width="1"><title>'+(m[2]?m[2]+' · ':'')+(m[3]||'')+' · início '+_hm(m[0])+' · fim '+_hm(m[1])+'</title></rect>';
+if(m[2]&&b-a>11&&m[0]>=S)o+='<text x="'+((a+b)/2).toFixed(1)+'" y="'+(y+16)+'" text-anchor="middle" font-size="11" fill="#fff">'+m[2]+'</text>';
+if(em)o+='<path d="M'+(a-3).toFixed(1)+' '+(y-5)+' l6 0 l-3 5 z" fill="#c62828"><title>emendada: começa antes do fim da anterior (T + lancha)</title></path>';fa=b;});return o;}
+var st=Z[3]*H,t0=Math.ceil((S-450*60000)/st)*st+450*60000,tk='';for(var t=t0;t<=E+60000;t+=st){var x=X(t),an=x<12?'start':(x>W-12?'end':'middle');tk+='<line x1="'+x.toFixed(1)+'" y1="6" x2="'+x.toFixed(1)+'" y2="66" stroke="#bbb" stroke-dasharray="2,3"/><text x="'+x.toFixed(1)+'" y="78" font-size="10" text-anchor="'+an+'" fill="#555">'+_hm(t)+'</text>';}
+var md='';for(var M=Math.floor(S/DIA)*DIA;M<E;M+=DIA){var a=X(Math.max(M,S)),b=X(Math.min(M+5*H,E));if(b>a)md+='<rect x="'+a.toFixed(1)+'" y="6" width="'+(b-a).toFixed(1)+'" height="60" fill="#0d1b4c" fill-opacity="0.14" pointer-events="none"/><text x="'+((a+b)/2).toFixed(1)+'" y="5" text-anchor="middle" font-size="8" fill="#0d1b4c">madrugada</text>';}
+var dv='';if(mov&&r.ag<E){var xa=Math.max(0,X(r.ag));dv+='<rect x="'+xa.toFixed(1)+'" y="6" width="'+(W-xa).toFixed(1)+'" height="60" fill="#fafafa"/>'+(W-xa>110?'<text x="'+((xa+W)/2).toFixed(1)+'" y="40" text-anchor="middle" font-size="11" fill="#999">ainda não aconteceu</text>':'')+'<line x1="'+xa.toFixed(1)+'" y1="4" x2="'+xa.toFixed(1)+'" y2="68" stroke="#1565c0" stroke-width="1.5"><title>agora ('+_hm(r.ag)+')</title></line>';}
+out+='<svg viewBox="-92 0 '+(W+100)+' 84" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI,Arial">'+tk+
+'<text x="-90" y="36" font-size="13" font-weight="700"'+(mov?' fill="#1565c0"':'')+'>'+Z[2]+'</text>'+(mov?'<text x="-90" y="50" font-size="10" fill="#1565c0">hoje</text>':'')+(function(){var kd=new Date(S),kk=kd.getUTCFullYear()+'-'+String(kd.getUTCMonth()+1).padStart(2,'0')+'-'+String(kd.getUTCDate()).padStart(2,'0'),nn=mov?(REL.nma||{})[kk]:(REL.nm||{})[kk];return nn?'<text x="-90" y="'+(mov?62:52)+'" font-size="10" fill="#555">'+nn+(mov?' até agora':' manobras')+'<title>manobras do porto neste dia operacional (07:30 a 07:29)'+(mov?': as que já começaram até a hora da atualização; na pauta do dia todo são '+(REL.nm||{})[kk]:'')+'</title></text>':'';})()+
+'<text x="-6" y="24" text-anchor="end" font-size="11" font-weight="600">E2D</text>'+linha(r.b2,8)+
+'<text x="-6" y="56" text-anchor="end" font-size="11" font-weight="600">E12</text>'+linha(r.b12,40)+md+dv+'</svg>';});
+return '<div class="barra">'+out+'</div>'+
+'<div class="leg"><span style="background:#1f3a5f"></span>manobra (início → fim + lancha)<span style="background:#2e7d32"></span>descanso ≥ 8 h<span style="background:#ef8f00"></span>5–8 h<span style="background:#c62828"></span>&lt; 5 h<span style="background:#f3d36b"></span>dentro do ciclo (A→B; com 2 h ou mais livre na Atalaia, mostra o tempo)<span style="background:#7cc47f"></span>em andamento<span style="background:#b2dfdb"></span>fim do serviço (da última manobra até o fim do período; o descanso continua na folga)<span style="background:#d9d9d9"></span>antes da 1ª manobra ou folga<span style="background:#0d1b4c;opacity:.3"></span>madrugada (0h–5h) · uma barra por dia, de 07:30 a 07:30 (hoje, em azul, até agora) · ↔ descanso que passa para o dia vizinho (número inteiro)<span style="background:#c62828;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:6px solid #c62828;background:none"></span>emendada</div>';}
+function fecharRel(){document.getElementById('relbox').style.display='none';}
+function abrirRel(p,d){var k=REL.i[p+'|'+d],r=k&&REL.d[k];if(!r){document.getElementById('relin').innerHTML='<span class="x" onclick="fecharRel()">×</span>Sem relatório para '+p+': nenhuma manobra ontem nem hoje.';document.getElementById('relbox').style.display='block';return;}
+var a=r.s12,b=r.s2,M=function(v){return v===null||v===undefined?'—':_h(v);};
+var dias='';(r.dias||[]).forEach(function(dd){var z=REL.dia[dd];if(z&&z.e2d&&z.e12)dias+='<div class="dia"><b>Dia '+dd.slice(8,10)+'/'+dd.slice(5,7)+', todos os práticos:</b> descanso longo típico da E2D <b>'+_h(z.e2d.med)+'</b> × intervalo típico da E12 <b>'+_h(z.e12.med)+'</b> · abaixo de 5 h: E2D '+z.e2d.lt5+'% × E12 '+z.e12.lt5+'%</div>';});
+var row=function(n,x,y){return '<tr><td>'+n+'</td><td>'+x+'</td><td>'+y+'</td></tr>';};
+var h='<span class="x" onclick="fecharRel()">×</span>'+
+'<b>'+r.p+' · '+r.nd+(r.nd>1?' dias seguidos':' dia')+': '+r.ini+' → '+r.fim2+'</b>'+
+'<table><tr><th></th><th>E2D (descanso longo, da B até a A)</th><th>E12 real (todos os intervalos)</th></tr>'+
+row('Descanso típico','<span class="big ok">'+M(r.c2.med)+'</span>','<span class="big">'+M(r.c12.med)+'</span>')+
+row('Manobras',b.n,a.n)+row('Trabalho na madrugada (0h–5h)',_h(b.mad),_h(a.mad))+'</table>'+
+'<b>Linha do tempo, dia a dia</b>'+_barra(r)+
+'<small>Passe o mouse (ou toque) num trecho da barra para ver a manobra ou o descanso. Fim da manobra = início + T da tabela + lancha até a Atalaia. Fora da comparação: dentro do ciclo, emendado, antes da 1ª manobra, fim do serviço, folga e em andamento.</small>';
+document.getElementById('relin').innerHTML=h;document.getElementById('relbox').style.display='block';}
+document.addEventListener('click',function(e){var t=e.target.closest('.relx');if(!t||e.target.closest('.obsx'))return;abrirRel(t.dataset.p,t.dataset.d);});
+</script>
+
+<div class="panel" style="margin-top:18px">
+  <div class="panel-title">📊 Histórico semanal — Δt e Posições</div>
+  <div style="padding:8px 12px">
+    <div style="max-height:340px;overflow-y:auto;border:1px solid #e0e0e0;border-radius:4px">
+      <table style="width:100%;border-collapse:collapse;font-size:12px">
+        <thead><tr style="background:#f0f4f8;position:sticky;top:0;z-index:1">
+          <th style="padding:8px;border-bottom:1px solid #ccc">Semana</th>
+          <th style="padding:8px;border-bottom:1px solid #ccc;text-align:left">Período</th>
+          <th style="padding:8px;border-bottom:1px solid #ccc">Manobras (média/dia)</th>
+          <th style="padding:8px;border-bottom:1px solid #ccc">Δt médio efetivo</th>
+          <th style="padding:8px;border-bottom:1px solid #ccc">Pos. média após B</th>
+        </tr></thead>
+        <tbody>
+          <tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">1</td><td style="white-space:nowrap;padding:4px 8px">01/01/2026 → 08/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">2</td><td style="white-space:nowrap;padding:4px 8px">08/01/2026 → 15/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">3</td><td style="white-space:nowrap;padding:4px 8px">15/01/2026 → 22/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">4</td><td style="white-space:nowrap;padding:4px 8px">22/01/2026 → 29/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">5</td><td style="white-space:nowrap;padding:4px 8px">29/01/2026 → 05/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">6</td><td style="white-space:nowrap;padding:4px 8px">05/02/2026 → 12/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">7</td><td style="white-space:nowrap;padding:4px 8px">12/02/2026 → 19/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">8</td><td style="white-space:nowrap;padding:4px 8px">19/02/2026 → 26/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">9</td><td style="white-space:nowrap;padding:4px 8px">26/02/2026 → 05/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">10</td><td style="white-space:nowrap;padding:4px 8px">05/03/2026 → 12/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">11</td><td style="white-space:nowrap;padding:4px 8px">12/03/2026 → 19/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">12</td><td style="white-space:nowrap;padding:4px 8px">19/03/2026 → 26/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">13</td><td style="white-space:nowrap;padding:4px 8px">26/03/2026 → 02/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">14</td><td style="white-space:nowrap;padding:4px 8px">02/04/2026 → 09/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">15</td><td style="white-space:nowrap;padding:4px 8px">09/04/2026 → 16/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">16</td><td style="white-space:nowrap;padding:4px 8px">16/04/2026 → 23/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">17</td><td style="white-space:nowrap;padding:4px 8px">23/04/2026 → 30/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">18</td><td style="white-space:nowrap;padding:4px 8px">30/04/2026 → 07/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">19</td><td style="white-space:nowrap;padding:4px 8px">07/05/2026 → 14/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">20</td><td style="white-space:nowrap;padding:4px 8px">14/05/2026 → 21/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">21</td><td style="white-space:nowrap;padding:4px 8px">21/05/2026 → 28/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">22</td><td style="white-space:nowrap;padding:4px 8px">28/05/2026 → 04/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">23</td><td style="white-space:nowrap;padding:4px 8px">04/06/2026 → 11/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">24</td><td style="white-space:nowrap;padding:4px 8px">11/06/2026 → 18/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">25</td><td style="white-space:nowrap;padding:4px 8px">18/06/2026 → 25/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">26</td><td style="white-space:nowrap;padding:4px 8px">25/06/2026 → 02/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">27</td><td style="white-space:nowrap;padding:4px 8px">02/07/2026 → 09/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">28</td><td style="white-space:nowrap;padding:4px 8px">09/07/2026 → 16/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">29</td><td style="white-space:nowrap;padding:4px 8px">16/07/2026 → 23/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">30</td><td style="white-space:nowrap;padding:4px 8px">23/07/2026 → 30/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">31</td><td style="white-space:nowrap;padding:4px 8px">30/07/2026 → 06/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">32</td><td style="white-space:nowrap;padding:4px 8px">06/08/2026 → 13/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">33</td><td style="white-space:nowrap;padding:4px 8px">13/08/2026 → 20/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">34</td><td style="white-space:nowrap;padding:4px 8px">20/08/2026 → 27/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">35</td><td style="white-space:nowrap;padding:4px 8px">27/08/2026 → 03/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">36</td><td style="white-space:nowrap;padding:4px 8px">03/09/2026 → 10/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">37</td><td style="white-space:nowrap;padding:4px 8px">10/09/2026 → 17/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">38</td><td style="white-space:nowrap;padding:4px 8px">17/09/2026 → 24/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">39</td><td style="white-space:nowrap;padding:4px 8px">24/09/2026 → 01/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">40</td><td style="white-space:nowrap;padding:4px 8px">01/10/2026 → 08/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">41</td><td style="white-space:nowrap;padding:4px 8px">08/10/2026 → 15/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">42</td><td style="white-space:nowrap;padding:4px 8px">15/10/2026 → 22/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">43</td><td style="white-space:nowrap;padding:4px 8px">22/10/2026 → 29/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">44</td><td style="white-space:nowrap;padding:4px 8px">29/10/2026 → 05/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">45</td><td style="white-space:nowrap;padding:4px 8px">05/11/2026 → 12/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">46</td><td style="white-space:nowrap;padding:4px 8px">12/11/2026 → 19/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">47</td><td style="white-space:nowrap;padding:4px 8px">19/11/2026 → 26/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">48</td><td style="white-space:nowrap;padding:4px 8px">26/11/2026 → 03/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">49</td><td style="white-space:nowrap;padding:4px 8px">03/12/2026 → 10/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">50</td><td style="white-space:nowrap;padding:4px 8px">10/12/2026 → 17/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">51</td><td style="white-space:nowrap;padding:4px 8px">17/12/2026 → 24/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">52</td><td style="white-space:nowrap;padding:4px 8px">24/12/2026 → 31/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
