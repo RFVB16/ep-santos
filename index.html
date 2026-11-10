@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>00:16</b> (10/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 00:13</span><br>
+    <span style="font-size:15px">Atualizado às <b>00:26</b> (10/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 00:23</span><br>
     Ontem: <b>37</b> manobras | Hoje: <b>18</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>2</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h31</b> | Posições médias após B: <b>18.7</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-10T00:16:00-03:00');
+  const gen = new Date('2026-11-10T00:26:03-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -723,145 +723,85 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal"></td>
           <td class="esc esc-col">RO &gt; SB &gt; FO &gt; PI &gt; LZ &gt; JA(6) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV &gt; SI(12)</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">LARGO CALIFORNIA</td>
-          <td class="berco">E AL 4</td>
-          <td class="dt">10/11 01:30</td>
+          <td class="vessel">SAGA HORIZON</td>
+          <td class="berco">S 34</td>
+          <td class="dt">10/11 02:00</td>
           <td class="ep relx" data-p="RO" data-d="2026-11-09">RO</td>
-          <td class="calado">11,40</td>
-          <td class="brd"></td>
+          <td class="calado">10,35</td>
+          <td class="brd">BE</td>
           <td class="ab-a relx" data-p="RO" data-d="2026-11-09">A</td>
           <td class="cal"></td>
           <td class="esc esc-col">RO(n/a) &gt; SB &gt; FO &gt; PI &gt; JA(5) &gt; LZ &gt; FX &gt; BA &gt; GL &gt; AB &gt; SI(11) &gt; CV</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">SAGA HORIZON</td>
-          <td class="berco">S 34</td>
+          <td class="vessel">BRIGHTON</td>
+          <td class="berco">S CS 2</td>
           <td class="dt">10/11 02:00</td>
           <td class="ep relx" data-p="SB" data-d="2026-11-09">SB</td>
-          <td class="calado">10,35</td>
-          <td class="brd">BE</td>
+          <td class="calado">10,03</td>
+          <td class="brd">BB</td>
           <td class="ab-a relx" data-p="SB" data-d="2026-11-09">A</td>
           <td class="cal"></td>
           <td class="esc esc-col">RO(03:45) &gt; SB(n/a) &gt; FO &gt; JA(4) &gt; PI &gt; LZ &gt; FX &gt; BA &gt; GL &gt; SI(10) &gt; AB &gt; CV</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">BRIGHTON</td>
-          <td class="berco">S CS 2</td>
-          <td class="dt">10/11 02:00</td>
-          <td class="ep relx" data-p="FO" data-d="2026-11-09">FO</td>
-          <td class="calado">10,03</td>
-          <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="FO" data-d="2026-11-09">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(03:45) &gt; SB(03:45) &gt; JA(3) &gt; FO(n/a) &gt; PI &gt; LZ &gt; FX &gt; BA &gt; SI(9) &gt; GL &gt; AB &gt; CV</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">MAERSK LAGUNA</td>
-          <td class="berco">S BTP-2</td>
-          <td class="dt">10/11 02:00</td>
-          <td class="ep relx" data-p="PI" data-d="2026-11-09">PI</td>
-          <td class="calado">14,50</td>
-          <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="PI" data-d="2026-11-09">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(03:30) &gt; JA(2) &gt; SB(04:00) &gt; FO(04:15) &gt; PI(n/a) &gt; LZ &gt; FX &gt; SI(8) &gt; BA &gt; GL &gt; AB &gt; CV</td>
-        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ATROMITOS L</td>
           <td class="berco">S 20/21</td>
           <td class="dt">10/11 02:30</td>
-          <td class="ep relx" data-p="LZ" data-d="2026-11-09">LZ</td>
+          <td class="ep relx" data-p="FO" data-d="2026-11-09">FO</td>
           <td class="calado">9,87</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="LZ" data-d="2026-11-09">A</td>
+          <td class="ab-a relx" data-p="FO" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">JA(1) &gt; RO(03:45) &gt; SB(03:45) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(n/a) &gt; SI(7) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV</td>
-        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="esc esc-col">RO(03:45) &gt; SB(04:15) &gt; JA(3) &gt; FO(n/a) &gt; PI &gt; LZ &gt; FX &gt; BA &gt; SI(9) &gt; GL &gt; AB &gt; CV</td>
+        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DSM EVERTON</td>
           <td class="berco">S 13/14</td>
           <td class="dt">10/11 02:30</td>
-          <td class="ep">JA</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-09">PI</td>
           <td class="calado">10,25</td>
           <td class="brd">BE</td>
-          <td class="ab-a"></td>
+          <td class="ab-a relx" data-p="PI" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RO(03:45) &gt; SB(03:45) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(04:30) &gt; SI(6) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV &gt; JA(12)</td>
+          <td class="esc esc-col">RO(03:45) &gt; JA(2) &gt; SB(04:15) &gt; FO(04:30) &gt; PI(n/a) &gt; LZ &gt; FX &gt; SI(8) &gt; BA &gt; GL &gt; AB &gt; CV</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">TORONTO</td>
-          <td class="berco">E TEV</td>
-          <td class="dt">10/11 03:00</td>
-          <td class="ep relx" data-p="FX" data-d="2026-11-09">FX</td>
-          <td class="calado">9,40</td>
+          <td class="vessel">MAERSK LAGUNA</td>
+          <td class="berco">S BTP-2</td>
+          <td class="dt">10/11 02:30</td>
+          <td class="ep relx" data-p="LZ" data-d="2026-11-09">LZ</td>
+          <td class="calado">14,50</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="FX" data-d="2026-11-09">A</td>
+          <td class="ab-a relx" data-p="LZ" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RO(04:30) &gt; SB(03:45) &gt; FO(04:15) &gt; PI(04:30) &gt; SI(5) &gt; LZ(04:30) &gt; FX(n/a) &gt; BA &gt; GL &gt; AB &gt; JA(11) &gt; CV</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">PORTO KIONI</td>
-          <td class="berco">E 20/21</td>
-          <td class="dt">10/11 03:00</td>
-          <td class="ep relx" data-p="BA" data-d="2026-11-09">BA</td>
-          <td class="calado">6,41</td>
-          <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="BA" data-d="2026-11-09">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(04:30) &gt; SB(03:45) &gt; FO(04:15) &gt; SI(4) &gt; PI(04:30) &gt; LZ(04:30) &gt; FX(05:00) &gt; BA(n/a) &gt; GL &gt; JA(10) &gt; AB &gt; CV</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">AVAX</td>
-          <td class="berco">E 13/14</td>
-          <td class="dt">10/11 03:00</td>
-          <td class="ep relx" data-p="GL" data-d="2026-11-09">GL</td>
-          <td class="calado">6,60</td>
-          <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="GL" data-d="2026-11-09">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(04:30) &gt; SB(03:45) &gt; SI(3) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(04:30) &gt; FX(05:00) &gt; BA(05:15) &gt; JA(9) &gt; GL(n/a) &gt; AB &gt; CV</td>
-        </tr><tr style="background:#ffffff;color:#000">
+          <td class="esc esc-col">JA(1) &gt; RO(04:00) &gt; SB(04:15) &gt; FO(04:45) &gt; PI(04:45) &gt; LZ(n/a) &gt; SI(7) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV</td>
+        </tr><tr style="background:#a5a5a5;color:#fff">
           <td class="vessel">MAERSK REDWOOD</td>
           <td class="berco">S EMB-1</td>
           <td class="dt">10/11 03:00</td>
-          <td class="ep relx" data-p="AB" data-d="2026-11-09">AB</td>
+          <td class="ep">JA</td>
           <td class="calado">11,80</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="AB" data-d="2026-11-09">A</td>
+          <td class="ab-a"></td>
           <td class="cal"></td>
-          <td class="esc esc-col">RO(03:45) &gt; SI(2) &gt; SB(03:45) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(04:30) &gt; FX(04:30) &gt; JA(8) &gt; BA(04:45) &gt; GL(04:45) &gt; AB(n/a) &gt; CV</td>
+          <td class="esc esc-col">RO(03:45) &gt; SB(04:15) &gt; FO(04:30) &gt; PI(04:30) &gt; LZ(05:00) &gt; SI(6) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV &gt; JA(12)</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BOW COMPASS</td>
           <td class="berco">S IB-OE</td>
           <td class="dt">10/11 03:00</td>
-          <td class="ep relx" data-p="CV" data-d="2026-11-09">CV</td>
+          <td class="ep relx" data-p="FX" data-d="2026-11-09">FX</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="CV" data-d="2026-11-09">A</td>
+          <td class="ab-a relx" data-p="FX" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SI(1) &gt; RO(03:45) &gt; SB(03:45) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(04:30) &gt; JA(7) &gt; FX(04:30) &gt; BA(04:45) &gt; GL(04:45) &gt; AB(05:15) &gt; CV(n/a)</td>
-        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="esc esc-col">RO(03:45) &gt; SB(04:15) &gt; FO(04:30) &gt; PI(04:30) &gt; SI(5) &gt; LZ(05:00) &gt; FX(n/a) &gt; BA &gt; GL &gt; AB &gt; JA(11) &gt; CV</td>
+        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BERGE DAISETSU</td>
           <td class="berco">S ULT</td>
           <td class="dt">10/11 03:00</td>
-          <td class="ep">SI</td>
+          <td class="ep relx" data-p="BA" data-d="2026-11-09">BA</td>
           <td class="calado">6,20</td>
           <td class="brd">BB</td>
-          <td class="ab-a"></td>
+          <td class="ab-a relx" data-p="BA" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RO(03:45) &gt; SB(04:00) &gt; FO(04:30) &gt; PI(04:45) &gt; LZ(04:45) &gt; JA(6) &gt; FX(04:45) &gt; BA(05:00) &gt; GL(05:00) &gt; AB(05:30) &gt; CV(05:30) &gt; SI(12)</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">PEDRO ALVARES CABRAL</td>
-          <td class="berco">E EMB-1</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:45 (provavelmente o horário ainda não foi atualizado)">10/11 03:30<br><span class="invi">⚠ livre 03:45</span></td>
-          <td class="ep relx" data-p="SB" data-d="2026-11-09">SB</td>
-          <td class="calado">9,70</td>
-          <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="SB" data-d="2026-11-09">B</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(04:30) &gt; FO(04:15) &gt; PI(04:30) &gt; LZ(04:30) &gt; SI(5) &gt; JA(5) &gt; FX(05:00) &gt; BA(05:15) &gt; GL(05:30) &gt; AB(05:15) &gt; CV(05:15) &gt; SB</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">LILIAN TRADER</td>
-          <td class="berco">E ULT</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 04:15 (provavelmente o horário ainda não foi atualizado)">10/11 03:30<br><span class="invi">⚠ livre 04:15</span></td>
-          <td class="ep relx" data-p="FO" data-d="2026-11-09">FO</td>
-          <td class="calado">10,30</td>
-          <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="FO" data-d="2026-11-09">B</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">RO(04:30) &gt; PI(04:30) &gt; LZ(04:30) &gt; SI(4) &gt; JA(4) &gt; FX(05:00) &gt; BA(05:15) &gt; GL(05:30) &gt; AB(05:15) &gt; CV(05:15) &gt; SB &gt; FO</td>
+          <td class="esc esc-col">RO(04:00) &gt; SB(04:30) &gt; FO(04:45) &gt; SI(4) &gt; PI(04:45) &gt; LZ(05:15) &gt; FX(05:30) &gt; BA(n/a) &gt; GL &gt; JA(10) &gt; AB &gt; CV</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">NAVIOS DOMINO</td>
           <td class="berco">S TC 1.2</td>
@@ -871,27 +811,87 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="RO" data-d="2026-11-09">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">PI(04:30) &gt; LZ(04:30) &gt; SI(3) &gt; JA(3) &gt; FX(04:30) &gt; BA(04:45) &gt; GL(04:45) &gt; AB(05:15) &gt; CV(05:00) &gt; SB &gt; FO &gt; RO</td>
+          <td class="esc esc-col">SB &gt; FO(04:30) &gt; SI(3) &gt; PI(04:30) &gt; LZ(05:00) &gt; FX(05:00) &gt; BA(05:45) &gt; GL &gt; JA(9) &gt; AB &gt; CV &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">HEEMSKERKGRACHT</td>
           <td class="berco">S CS 4</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 04:30 (provavelmente o horário ainda não foi atualizado)">10/11 04:00<br><span class="invi">⚠ livre 04:30</span></td>
-          <td class="ep relx" data-p="PI" data-d="2026-11-09">PI</td>
+          <td class="dt">10/11 04:00</td>
+          <td class="ep relx" data-p="GL" data-d="2026-11-09">GL</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="PI" data-d="2026-11-09">B</td>
+          <td class="ab-a relx" data-p="GL" data-d="2026-11-09">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LZ(04:30) &gt; SI(2) &gt; JA(2) &gt; FX(04:30) &gt; BA(04:45) &gt; GL(04:45) &gt; AB(05:15) &gt; CV(05:15) &gt; SB &gt; FO &gt; RO &gt; PI</td>
+          <td class="esc esc-col">SB(04:15) &gt; SI(2) &gt; FO(04:30) &gt; PI(04:30) &gt; LZ(05:00) &gt; FX(05:15) &gt; BA(06:00) &gt; JA(8) &gt; GL(n/a) &gt; AB &gt; CV &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CMA CGM HONG KONG</td>
           <td class="berco">E TC 1.2</td>
           <td class="dt">10/11 04:30</td>
-          <td class="ep relx" data-p="LZ" data-d="2026-11-09">LZ</td>
+          <td class="ep relx" data-p="SB" data-d="2026-11-09">SB</td>
           <td class="calado">13,50</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="SB" data-d="2026-11-09">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">SI(1) &gt; FO &gt; PI &gt; LZ(05:00) &gt; FX(05:15) &gt; BA(05:45) &gt; JA(7) &gt; GL(06:00) &gt; AB &gt; CV &gt; RO &gt; SB</td>
+        </tr><tr style="background:#a5a5a5;color:#fff">
+          <td class="vessel">TORONTO</td>
+          <td class="berco">E TEV</td>
+          <td class="dt">10/11 04:30</td>
+          <td class="ep">SI</td>
+          <td class="calado">9,40</td>
+          <td class="brd">BE</td>
+          <td class="ab-a"></td>
+          <td class="cal"></td>
+          <td class="esc esc-col">FO &gt; PI &gt; LZ(05:00) &gt; FX(05:15) &gt; BA(05:45) &gt; JA(6) &gt; GL(06:00) &gt; AB &gt; CV &gt; RO &gt; SB &gt; SI(12)</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">PORTO KIONI</td>
+          <td class="berco">E 20/21</td>
+          <td class="dt">10/11 04:30</td>
+          <td class="ep relx" data-p="FO" data-d="2026-11-09">FO</td>
+          <td class="calado">6,41</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="FO" data-d="2026-11-09">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">PI &gt; LZ(05:00) &gt; FX(05:15) &gt; BA(05:45) &gt; SI(5) &gt; JA(5) &gt; GL(06:00) &gt; AB &gt; CV &gt; RO &gt; SB &gt; FO</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">PEDRO ALVARES CABRAL</td>
+          <td class="berco">E EMB-1</td>
+          <td class="dt">10/11 04:30</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-09">PI</td>
+          <td class="calado">9,70</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="PI" data-d="2026-11-09">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">LZ(05:00) &gt; FX(05:15) &gt; BA(05:45) &gt; SI(4) &gt; JA(4) &gt; GL(06:00) &gt; AB &gt; CV &gt; RO &gt; SB &gt; FO &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">AVAX</td>
+          <td class="berco">E 13/14</td>
+          <td class="dt">10/11 04:30</td>
+          <td class="ep relx" data-p="AB" data-d="2026-11-09">AB</td>
+          <td class="calado">6,60</td>
+          <td class="brd">BE</td>
+          <td class="ab-a relx" data-p="AB" data-d="2026-11-09">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">LZ(05:00) &gt; FX(05:15) &gt; SI(3) &gt; JA(3) &gt; BA(05:45) &gt; GL(06:00) &gt; AB(n/a) &gt; CV &gt; RO &gt; SB &gt; FO &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LARGO CALIFORNIA</td>
+          <td class="berco">E AL 4</td>
+          <td class="dt">10/11 04:30</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-09">CV</td>
+          <td class="calado">11,40</td>
+          <td class="brd"></td>
+          <td class="ab-a relx" data-p="CV" data-d="2026-11-09">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">LZ(05:00) &gt; SI(2) &gt; JA(2) &gt; FX(05:15) &gt; BA(05:45) &gt; GL(06:00) &gt; AB(07:00) &gt; CV(n/a) &gt; RO &gt; SB &gt; FO &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LILIAN TRADER</td>
+          <td class="berco">E ULT</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 05:00 (provavelmente o horário ainda não foi atualizado)">10/11 04:30<br><span class="invi">⚠ livre 05:00</span></td>
+          <td class="ep relx" data-p="LZ" data-d="2026-11-09">LZ</td>
+          <td class="calado">10,30</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="LZ" data-d="2026-11-09">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SI(1) &gt; JA(1) &gt; FX(05:00) &gt; BA(05:15) &gt; GL(05:30) &gt; AB(05:15) &gt; CV(05:15) &gt; SB &gt; FO &gt; RO &gt; PI &gt; LZ</td>
+          <td class="esc esc-col">SI(1) &gt; JA(1) &gt; FX(05:15) &gt; BA(05:45) &gt; GL(06:00) &gt; AB(07:00) &gt; CV(07:30) &gt; RO &gt; SB &gt; FO &gt; PI &gt; LZ</td>
         </tr><tr style="background:#a5a5a5;color:#fff">
           <td class="vessel">MSC CATERINA <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E BTP-1</td>
@@ -901,7 +901,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a"></td>
           <td class="cal"></td>
-          <td class="esc esc-col">SI(1) &gt; FX &gt; BA &gt; GL &gt; AB &gt; CV &gt; SB &gt; FO &gt; RO &gt; PI &gt; LZ &gt; JA(12)</td>
+          <td class="esc esc-col">SI(1) &gt; FX &gt; BA(05:45) &gt; GL(06:00) &gt; AB(07:00) &gt; CV(07:30) &gt; RO &gt; SB &gt; FO &gt; PI &gt; LZ &gt; JA(12)</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ENSEMBLE</td>
           <td class="berco">E IB SP</td>
@@ -911,7 +911,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd"></td>
           <td class="ab-b relx" data-p="FX" data-d="2026-11-09">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BA &gt; GL &gt; AB &gt; CV &gt; SB &gt; FO &gt; RO &gt; PI &gt; LZ &gt; FX &gt; JA(11) &gt; SI(16)</td>
+          <td class="esc esc-col">BA &gt; GL &gt; AB(07:00) &gt; CV(07:30) &gt; RO &gt; SB &gt; FO &gt; PI &gt; LZ &gt; FX &gt; JA(11) &gt; SI(16)</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ZHONG YUAN HAI YUN CHUANG XIN</td>
           <td class="berco">S 35.2</td>
