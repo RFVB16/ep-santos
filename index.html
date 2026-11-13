@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>03:56</b> (13/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 03:55</span><br>
+    <span style="font-size:15px">Atualizado às <b>04:06</b> (13/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 04:01</span><br>
     Ontem: <b>37</b> manobras | Hoje: <b>41</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>5</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h25</b> | Posições médias após B: <b>18.2</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-13T03:56:22-03:00');
+  const gen = new Date('2026-11-13T04:06:24-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -738,7 +738,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">12/11 16:00</td>
           <td class="ep relx" data-p="RG" data-d="2026-11-12">RG</td>
           <td class="calado">11,62</td>
-          <td class="brd">BB</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="RG" data-d="2026-11-12">B</td>
           <td class="cal">1h00</td>
           <td class="esc esc-col">HI &gt; SF(16:15) &gt; FX(16:45) &gt; HL(16:45) &gt; BA &gt; ED &gt; PI &gt; CF &gt; AD &gt; ML &gt; AN &gt; RG</td>
@@ -748,7 +748,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">12/11 16:00</td>
           <td class="ep relx" data-p="HI" data-d="2026-11-12">HI</td>
           <td class="calado">9,00</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="HI" data-d="2026-11-12">B</td>
           <td class="cal">26min</td>
           <td class="esc esc-col">SF(16:30) &gt; FX(17:00) &gt; HL(17:00) &gt; BA &gt; ED &gt; PI &gt; CF &gt; AD &gt; ML &gt; AN &gt; RG &gt; HI</td>
