@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>10:56</b> (13/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 10:53</span><br>
+    <span style="font-size:15px">Atualizado às <b>11:06</b> (13/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 11:03</span><br>
     Ontem: <b>41</b> manobras | Hoje: <b>8</b> manobras | Média do ano: <b>38.4</b>/dia<br>
     Navios 2 práticos (hoje): <b>0</b> | Descanso médio efetivo (Δt, 7 dias): <b>—</b> | Posições médias após B: <b>—</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-13T10:56:45-03:00');
+  const gen = new Date('2026-11-13T11:06:45-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -196,8 +196,8 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
       </div>
     </div>
     <div class="panel side disp">
-      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (13/11 11:30), considerando quem estará livre na hora prevista da próxima manobra não confirmada (13:00)">Disponíveis · 13:00 (E)</div>
-      <div class="side-scroll"><table><tbody><tr class=""><td class="pos">1</td><td class="prat">PI</td><td class="st"></td></tr><tr class=""><td class="pos">2</td><td class="prat">RG</td><td class="st"></td></tr><tr class=""><td class="pos">3</td><td class="prat">AD</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">EV</td><td class="st"></td></tr><tr class=""><td class="pos">5</td><td class="prat">HL</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">LG</td><td class="st"></td></tr><tr class=""><td class="pos">7</td><td class="prat">AN</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">HI</td><td class="st"></td></tr><tr class=""><td class="pos">9</td><td class="prat">RO</td><td class="st"></td></tr></tbody></table></div>
+      <div class="panel-title" title="Ordem da escalação após a última manobra confirmada (13/11 11:30), considerando quem estará livre na hora prevista da próxima manobra não confirmada (12:30)">Disponíveis · 12:30 (S/M)</div>
+      <div class="side-scroll"><table><tbody><tr class=""><td class="pos">1</td><td class="prat">PI</td><td class="st"></td></tr><tr class=""><td class="pos">2</td><td class="prat">RG</td><td class="st"><span class="so" title="Livre para a próxima manobra; para entrada só a partir de 13:00">entrada só 13:00</span></td></tr><tr class=""><td class="pos">3</td><td class="prat">AD</td><td class="st"></td></tr><tr class=""><td class="pos">4</td><td class="prat">EV</td><td class="st"></td></tr><tr class=""><td class="pos">5</td><td class="prat">HL</td><td class="st"></td></tr><tr class=""><td class="pos">6</td><td class="prat">LG</td><td class="st"></td></tr><tr class=""><td class="pos">7</td><td class="prat">AN</td><td class="st"></td></tr><tr class=""><td class="pos">8</td><td class="prat">HI</td><td class="st"></td></tr><tr class=""><td class="pos">9</td><td class="prat">RO</td><td class="st"></td></tr></tbody></table></div>
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
@@ -622,7 +622,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="PI" data-d="2026-11-13">A</td>
           <td class="cal"><b class="dl-a">14h25</b></td>
           <td class="esc esc-col">FL(13:30) &gt; PI(n/a) &gt; RG &gt; BR &gt; ED &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">SKANDI CARLA</td>
           <td class="berco">E 29</td>
           <td class="dt">13/11 11:00</td>
@@ -653,15 +653,25 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal"><b class="dl-a">10h52</b></td>
           <td class="esc esc-col">FL(13:30) &gt; PI(12:30) &gt; RG(13:00) &gt; BR(13:30) &gt; ED(n/a) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">LAKE ONTARIO</td>
+          <td class="berco">S 20/21</td>
+          <td class="dt">13/11 12:30</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-13">PI</td>
+          <td class="calado">10,20</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="PI" data-d="2026-11-13">B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">FL(12:45) &gt; RG &gt; BR(13:30) &gt; ED(13:30) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI</td>
+        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ARCTOS</td>
           <td class="berco">E IB SP</td>
           <td class="dt">13/11 13:00</td>
-          <td class="ep relx" data-p="PI" data-d="2026-11-13">PI</td>
+          <td class="ep relx" data-p="RG" data-d="2026-11-13">RG</td>
           <td class="calado">6,60</td>
           <td class="brd"></td>
-          <td class="ab-b relx" data-p="PI" data-d="2026-11-13">B</td>
+          <td class="ab-b relx" data-p="RG" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">FL(13:30) &gt; RG &gt; BR(13:30) &gt; ED(14:15) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI</td>
+          <td class="esc esc-col">FL(13:30) &gt; BR(13:30) &gt; ED(14:15) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">GREEN ITAJAI</td>
           <td class="berco">S 35.2</td>
@@ -671,97 +681,87 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="FL" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RG &gt; BR(13:30) &gt; ED(13:30) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CMA CGM XIAMEN</td>
           <td class="berco">S TC 3</td>
           <td class="dt">13/11 13:00</td>
-          <td class="ep relx" data-p="RG" data-d="2026-11-13">RG</td>
+          <td class="ep relx" data-p="AD" data-d="2026-11-13">AD</td>
           <td class="calado">14,30</td>
           <td class="brd">BB</td>
-          <td class="ab-b relx" data-p="RG" data-d="2026-11-13">B</td>
+          <td class="ab-a relx" data-p="AD" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD(n/a) &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LOG-IN PANTANAL</td>
           <td class="berco">S TC 1.1</td>
           <td class="dt">13/11 13:00</td>
-          <td class="ep relx" data-p="AD" data-d="2026-11-13">AD</td>
+          <td class="ep relx" data-p="EV" data-d="2026-11-13">EV</td>
           <td class="calado">8,60</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="AD" data-d="2026-11-13">A</td>
+          <td class="ab-a relx" data-p="EV" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD(n/a) &gt; EV &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD(14:45) &gt; EV(n/a) &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SAGA ISOLDANA</td>
           <td class="berco">E 34</td>
           <td class="dt">13/11 13:00</td>
-          <td class="ep relx" data-p="EV" data-d="2026-11-13">EV</td>
+          <td class="ep relx" data-p="HL" data-d="2026-11-13">HL</td>
           <td class="calado">11,67</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="EV" data-d="2026-11-13">A</td>
+          <td class="ab-a relx" data-p="HL" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(13:30) &gt; ED(14:15) &gt; AD(14:45) &gt; EV(n/a) &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(14:15) &gt; AD(14:45) &gt; EV(14:45) &gt; HL(n/a) &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SEMIHA-AHMET-M</td>
           <td class="berco">S 31</td>
           <td class="dt">13/11 13:00</td>
-          <td class="ep relx" data-p="HL" data-d="2026-11-13">HL</td>
+          <td class="ep relx" data-p="LG" data-d="2026-11-13">LG</td>
           <td class="calado"></td>
           <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="HL" data-d="2026-11-13">A</td>
+          <td class="ab-a relx" data-p="LG" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD(14:45) &gt; EV(14:30) &gt; HL(n/a) &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(13:30) &gt; AD(14:45) &gt; EV(14:45) &gt; HL(14:30) &gt; LG(n/a) &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MERCOSUL ITAJAI</td>
           <td class="berco">E TC 1.1</td>
           <td class="dt">13/11 13:15</td>
-          <td class="ep relx" data-p="LG" data-d="2026-11-13">LG</td>
+          <td class="ep relx" data-p="AN" data-d="2026-11-13">AN</td>
           <td class="calado">8,40</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="LG" data-d="2026-11-13">A</td>
+          <td class="ab-a relx" data-p="AN" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(13:30) &gt; ED(14:15) &gt; AD(14:45) &gt; EV(15:00) &gt; HL(14:45) &gt; LG(n/a) &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR(13:30) &gt; ED(14:15) &gt; AD(14:45) &gt; EV(14:45) &gt; HL(15:00) &gt; LG(14:45) &gt; AN(n/a) &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">KOTA ELOK <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E TC 3</td>
           <td class="dt">13/11 13:30</td>
-          <td class="ep relx" data-p="BR" data-d="2026-11-13">BR/AN</td>
+          <td class="ep relx" data-p="BR" data-d="2026-11-13">BR/HI</td>
           <td class="calado">14,50</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="BR" data-d="2026-11-13">B/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">ED(14:15) &gt; AD(14:45) &gt; EV(15:00) &gt; HL(14:45) &gt; LG(15:15) &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR</td>
+          <td class="esc esc-col">ED(14:15) &gt; AD(14:45) &gt; EV(14:45) &gt; HL(15:00) &gt; LG(14:45) &gt; AN(15:15) &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL &gt; BR</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BESKIDY</td>
           <td class="berco">E LARGO</td>
           <td class="dt">13/11 14:00</td>
-          <td class="ep relx" data-p="HI" data-d="2026-11-13">HI</td>
+          <td class="ep relx" data-p="RO" data-d="2026-11-13">RO</td>
           <td class="calado">7,07</td>
           <td class="brd"></td>
-          <td class="ab-a relx" data-p="HI" data-d="2026-11-13">A</td>
+          <td class="ab-a relx" data-p="RO" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">ED(14:15) &gt; AD(14:45) &gt; EV(15:00) &gt; HL(14:45) &gt; LG(15:15) &gt; AN(15:45) &gt; HI(n/a) &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR</td>
+          <td class="esc esc-col">ED(14:15) &gt; AD(14:45) &gt; EV(14:45) &gt; HL(15:00) &gt; LG(14:45) &gt; AN(15:15) &gt; HI(15:45) &gt; RO(n/a) &gt; PI &gt; RG &gt; FL &gt; BR</td>
         </tr><tr style="background:#ffffff;color:#000000">
-          <td class="vessel">LAKE ONTARIO</td>
-          <td class="berco">S 20/21</td>
-          <td class="dt">13/11 14:00</td>
-          <td class="ep relx" data-p="ED" data-d="2026-11-13">ED</td>
-          <td class="calado"></td>
-          <td class="brd"></td>
-          <td class="ab-b relx" data-p="ED" data-d="2026-11-13">B</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">AD(14:45) &gt; EV(14:30) &gt; HL(14:45) &gt; LG(14:45) &gt; AN(15:00) &gt; HI(15:30) &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED</td>
-        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SAN NICOLAS MAERSK <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S EMB-2</td>
           <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 14:30 (provavelmente o horário ainda não foi atualizado)">13/11 14:00<br><span class="invi">⚠ livre 14:30</span></td>
-          <td class="ep relx" data-p="RO" data-d="2026-11-13">RO/EV</td>
-          <td class="calado">10,90</td>
-          <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="RO" data-d="2026-11-13">A/B</td>
+          <td class="ep relx" data-p="ED" data-d="2026-11-13">ED/HL</td>
+          <td class="calado"></td>
+          <td class="brd"></td>
+          <td class="ab-b relx" data-p="ED" data-d="2026-11-13">B/B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AD(14:45) &gt; EV(n/a) &gt; HL(14:45) &gt; LG(14:45) &gt; AN(15:15) &gt; HI(15:30) &gt; RO(n/a) &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED</td>
+          <td class="esc esc-col">AD(14:45) &gt; EV(14:45) &gt; HL(n/a) &gt; LG(14:45) &gt; AN(14:45) &gt; HI(15:15) &gt; RO(15:30) &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">AMOY GLORY</td>
           <td class="berco">S 39</td>
@@ -771,17 +771,17 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="AD" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD</td>
+          <td class="esc esc-col">EV &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">AMALIA</td>
           <td class="berco">S 37.1</td>
           <td class="dt">13/11 17:00</td>
-          <td class="ep relx" data-p="HL" data-d="2026-11-13">HL</td>
+          <td class="ep relx" data-p="EV" data-d="2026-11-13">EV</td>
           <td class="calado"></td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="HL" data-d="2026-11-13">B</td>
+          <td class="ab-b relx" data-p="EV" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL</td>
+          <td class="esc esc-col">LG &gt; AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SHANDONG XIN GUO</td>
           <td class="berco">E 37.1</td>
@@ -791,7 +791,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="LG" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AN &gt; HI &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG</td>
+          <td class="esc esc-col">AN &gt; HI &gt; RO &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DANUBE</td>
           <td class="berco">S TC 1.2</td>
@@ -801,7 +801,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="AN" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">HI &gt; RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG &gt; AN</td>
+          <td class="esc esc-col">HI &gt; RO &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG &gt; AN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">XIN CHANG SHA</td>
           <td class="berco">E TC 1.2</td>
@@ -811,7 +811,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="HI" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RO &gt; PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG &gt; AN &gt; HI</td>
+          <td class="esc esc-col">RO &gt; PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG &gt; AN &gt; HI</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LILIAN TRADER</td>
           <td class="berco">S ULT</td>
@@ -821,7 +821,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="RO" data-d="2026-11-13">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">PI &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO</td>
+          <td class="esc esc-col">PI &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG &gt; AN &gt; HI &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LARGO CALIFORNIA</td>
           <td class="berco">S AL 4</td>
@@ -831,27 +831,27 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="PI" data-d="2026-11-13">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">PI(n/a) &gt; FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO</td>
+          <td class="esc esc-col">PI(n/a) &gt; RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG &gt; AN &gt; HI &gt; RO</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CONTI CONQUEST <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S BTP-1</td>
           <td class="dt">14/11 02:30</td>
-          <td class="ep relx" data-p="PI" data-d="2026-11-13">PI/FL</td>
+          <td class="ep relx" data-p="PI" data-d="2026-11-13">PI/RG</td>
           <td class="calado">14,20</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="PI" data-d="2026-11-13">B/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">FL &gt; RG &gt; BR &gt; ED &gt; EV &gt; AD &gt; HL &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI</td>
+          <td class="esc esc-col">RG &gt; FL &gt; BR &gt; ED &gt; HL &gt; AD &gt; EV &gt; LG &gt; AN &gt; HI &gt; RO &gt; PI</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CMA CGM THORIUM <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S TC 2</td>
           <td class="dt">14/11 07:30</td>
-          <td class="ep relx" data-p="FL" data-d="2026-11-14">FL/RG</td>
+          <td class="ep relx" data-p="RG" data-d="2026-11-14">RG/FL</td>
           <td class="calado">11,30</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="FL" data-d="2026-11-14">B/A</td>
+          <td class="ab-b relx" data-p="RG" data-d="2026-11-14">B/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RG &gt; BR &gt; ED &gt; ML &gt; AD &gt; AG &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; FL</td>
+          <td class="esc esc-col">FL &gt; BR &gt; ED &gt; AG &gt; AD &gt; ML &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; RG</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MAERSK LEON</td>
           <td class="berco">E TC 2</td>
@@ -861,17 +861,17 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="BR" data-d="2026-11-14">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">RG(09:15) &gt; BR(n/a) &gt; ED &gt; ML &gt; AD &gt; AG &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; FL</td>
+          <td class="esc esc-col">FL(09:15) &gt; BR(n/a) &gt; ED &gt; AG &gt; AD &gt; ML &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; RG</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MSC SHUBA B <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S BTP-2</td>
           <td class="dt">14/11 15:00</td>
-          <td class="ep relx" data-p="RG" data-d="2026-11-14">RG/BR</td>
+          <td class="ep relx" data-p="FL" data-d="2026-11-14">FL/BR</td>
           <td class="calado">14,44</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="RG" data-d="2026-11-14">B/B</td>
+          <td class="ab-b relx" data-p="FL" data-d="2026-11-14">B/B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR &gt; ED &gt; ML &gt; AD &gt; AG &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; FL &gt; RG</td>
+          <td class="esc esc-col">BR &gt; ED &gt; AG &gt; AD &gt; ML &gt; LG &gt; AN &gt; HI &gt; PR &gt; PI &gt; RG &gt; FL</td>
         </tr></tbody>
       </table>
     </div>
@@ -890,7 +890,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
 
 <div id="relbox" onclick="if(event.target===this)this.style.display='none'"><div class="in" id="relin"></div></div>
 <script>
-var REL = {"d": {"AD": {"p": "AD", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:00 PIO GRANDE (E COS 3)", "f": "12:31", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794564000000, 1794569400000, "", "13/11 10:00 PIO GRANDE (E COS 3)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "AN": {"p": "AN", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:00 ELANDRA STAR (E AL 2)", "f": "12:07", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794564000000, 1794569400000, "", "13/11 10:00 ELANDRA STAR (E AL 2)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "BR": {"p": "BR", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:30 HMM PRESTIGE (E EMB-1)", "f": "13:14", "fut": false, "ab": ""}], "m2": [{"t": "13/11 11:15 MAERSK GANGES (S EMB-1)", "f": "12:53", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 225.0, "total": 225.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794568500000, 1794569400000, "A", "13/11 11:15 MAERSK GANGES (S EMB-1)"]], [[1794555000000, 1794568500000, 225, "inicio", "", null]]], "b12": [[[1794569400000, 1794569400000, "", "13/11 11:30 HMM PRESTIGE (E EMB-1)"]], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "ED": {"p": "ED", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [{"t": "13/11 11:30 HMM PRESTIGE (E EMB-1)", "f": "13:14", "fut": false, "ab": "A"}], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794569400000, 1794569400000, "A", "13/11 11:30 HMM PRESTIGE (E EMB-1)"]], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "EV": {"p": "EV", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "FL": {"p": "FL", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:30 NAVIOS VICTORY (E TGG)", "f": "11:36", "fut": false, "ab": ""}], "m2": [{"t": "13/11 10:00 PIO GRANDE (E COS 3)", "f": "12:31", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 180.0, "total": 180.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794564000000, 1794569400000, "A", "13/11 10:00 PIO GRANDE (E COS 3)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "b12": [[[1794565800000, 1794569400000, "", "13/11 10:30 NAVIOS VICTORY (E TGG)"]], [[1794555000000, 1794565800000, 180, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "HI": {"p": "HI", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:00 SKANDI CARLA (E 29)", "f": "12:08", "fut": false, "ab": ""}], "m2": [{"t": "13/11 07:30 JAKARTA (S AL 2)", "f": "09:23", "fut": false, "ab": "B"}], "s12": {"n": 1, "maior": 210.0, "total": 210.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 127.0, "total": 127.0, "mad": 0.0, "fechado": false, "maior_longo": 127.0, "total_longo": 127.0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794555000000, 1794561780000, "B", "13/11 07:30 JAKARTA (S AL 2)"]], [[1794561780000, 1794569400000, 127, "andamento", "", null]]], "b12": [[[1794567600000, 1794569400000, "", "13/11 11:00 SKANDI CARLA (E 29)"]], [[1794555000000, 1794567600000, 210, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "HL": {"p": "HL", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 07:30 JAKARTA (S AL 2)", "f": "09:23", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 127.0, "total": 127.0, "mad": 0.0, "fechado": false, "maior_longo": 127.0, "total_longo": 127.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794555000000, 1794561780000, "", "13/11 07:30 JAKARTA (S AL 2)"]], [[1794561780000, 1794569400000, 127, "andamento", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "LG": {"p": "LG", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "PI": {"p": "PI", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [{"t": "13/11 10:30 NAVIOS VICTORY (E TGG)", "f": "11:36", "fut": false, "ab": "A"}], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 180.0, "total": 180.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794565800000, 1794569400000, "A", "13/11 10:30 NAVIOS VICTORY (E TGG)"]], [[1794555000000, 1794565800000, 180, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "RG": {"p": "RG", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:15 MAERSK GANGES (S EMB-1)", "f": "12:53", "fut": false, "ab": ""}], "m2": [{"t": "13/11 11:00 SKANDI CARLA (E 29)", "f": "12:08", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 225.0, "total": 225.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 210.0, "total": 210.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794567600000, 1794569400000, "A", "13/11 11:00 SKANDI CARLA (E 29)"]], [[1794555000000, 1794567600000, 210, "inicio", "", null]]], "b12": [[[1794568500000, 1794569400000, "", "13/11 11:15 MAERSK GANGES (S EMB-1)"]], [[1794555000000, 1794568500000, 225, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "RO": {"p": "RO", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 08:00 SENORITA (S TGG)", "f": "09:08", "fut": false, "ab": ""}], "m2": [{"t": "13/11 08:00 SENORITA (S TGG)", "f": "09:08", "fut": false, "ab": "A"}, {"t": "13/11 10:00 ELANDRA STAR (E AL 2)", "f": "12:07", "fut": false, "ab": "B"}], "s12": {"n": 1, "maior": 142.0, "total": 172.0, "mad": 0.0, "fechado": false, "maior_longo": 142.0, "total_longo": 142.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 52.0, "total": 82.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 52.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794556800000, 1794560880000, "A", "13/11 08:00 SENORITA (S TGG)"], [1794564000000, 1794569400000, "B", "13/11 10:00 ELANDRA STAR (E AL 2)"]], [[1794555000000, 1794556800000, 30, "inicio", "", null], [1794560880000, 1794564000000, 52, "ciclo", "", 40]]], "b12": [[[1794556800000, 1794560880000, "", "13/11 08:00 SENORITA (S TGG)"]], [[1794555000000, 1794556800000, 30, "inicio", "", null], [1794560880000, 1794569400000, 142, "andamento", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}}, "i": {"AD|2026-11-05": "AD", "AD|2026-11-06": "AD", "AD|2026-11-07": "AD", "AD|2026-11-08": "AD", "AD|2026-11-09": "AD", "AD|2026-11-10": "AD", "AD|2026-11-11": "AD", "AD|2026-11-12": "AD", "AD|2026-11-13": "AD", "AD|2026-11-14": "AD", "AN|2026-11-05": "AN", "AN|2026-11-06": "AN", "AN|2026-11-07": "AN", "AN|2026-11-08": "AN", "AN|2026-11-09": "AN", "AN|2026-11-10": "AN", "AN|2026-11-11": "AN", "AN|2026-11-12": "AN", "AN|2026-11-13": "AN", "AN|2026-11-14": "AN", "BR|2026-11-05": "BR", "BR|2026-11-06": "BR", "BR|2026-11-07": "BR", "BR|2026-11-08": "BR", "BR|2026-11-09": "BR", "BR|2026-11-10": "BR", "BR|2026-11-11": "BR", "BR|2026-11-12": "BR", "BR|2026-11-13": "BR", "BR|2026-11-14": "BR", "ED|2026-11-05": "ED", "ED|2026-11-06": "ED", "ED|2026-11-07": "ED", "ED|2026-11-08": "ED", "ED|2026-11-09": "ED", "ED|2026-11-10": "ED", "ED|2026-11-11": "ED", "ED|2026-11-12": "ED", "ED|2026-11-13": "ED", "ED|2026-11-14": "ED", "EV|2026-11-05": "EV", "EV|2026-11-06": "EV", "EV|2026-11-07": "EV", "EV|2026-11-08": "EV", "EV|2026-11-09": "EV", "EV|2026-11-10": "EV", "EV|2026-11-11": "EV", "EV|2026-11-12": "EV", "EV|2026-11-13": "EV", "EV|2026-11-14": "EV", "FL|2026-11-05": "FL", "FL|2026-11-06": "FL", "FL|2026-11-07": "FL", "FL|2026-11-08": "FL", "FL|2026-11-09": "FL", "FL|2026-11-10": "FL", "FL|2026-11-11": "FL", "FL|2026-11-12": "FL", "FL|2026-11-13": "FL", "FL|2026-11-14": "FL", "HI|2026-11-05": "HI", "HI|2026-11-06": "HI", "HI|2026-11-07": "HI", "HI|2026-11-08": "HI", "HI|2026-11-09": "HI", "HI|2026-11-10": "HI", "HI|2026-11-11": "HI", "HI|2026-11-12": "HI", "HI|2026-11-13": "HI", "HI|2026-11-14": "HI", "HL|2026-11-05": "HL", "HL|2026-11-06": "HL", "HL|2026-11-07": "HL", "HL|2026-11-08": "HL", "HL|2026-11-09": "HL", "HL|2026-11-10": "HL", "HL|2026-11-11": "HL", "HL|2026-11-12": "HL", "HL|2026-11-13": "HL", "HL|2026-11-14": "HL", "LG|2026-11-05": "LG", "LG|2026-11-06": "LG", "LG|2026-11-07": "LG", "LG|2026-11-08": "LG", "LG|2026-11-09": "LG", "LG|2026-11-10": "LG", "LG|2026-11-11": "LG", "LG|2026-11-12": "LG", "LG|2026-11-13": "LG", "LG|2026-11-14": "LG", "PI|2026-11-05": "PI", "PI|2026-11-06": "PI", "PI|2026-11-07": "PI", "PI|2026-11-08": "PI", "PI|2026-11-09": "PI", "PI|2026-11-10": "PI", "PI|2026-11-11": "PI", "PI|2026-11-12": "PI", "PI|2026-11-13": "PI", "PI|2026-11-14": "PI", "RG|2026-11-05": "RG", "RG|2026-11-06": "RG", "RG|2026-11-07": "RG", "RG|2026-11-08": "RG", "RG|2026-11-09": "RG", "RG|2026-11-10": "RG", "RG|2026-11-11": "RG", "RG|2026-11-12": "RG", "RG|2026-11-13": "RG", "RG|2026-11-14": "RG", "RO|2026-11-05": "RO", "RO|2026-11-06": "RO", "RO|2026-11-07": "RO", "RO|2026-11-08": "RO", "RO|2026-11-09": "RO", "RO|2026-11-10": "RO", "RO|2026-11-11": "RO", "RO|2026-11-12": "RO", "RO|2026-11-13": "RO", "RO|2026-11-14": "RO"}, "dia": {}, "nm": {"2026-11-12": 41, "2026-11-13": 30, "2026-11-14": 5, "2026-11-15": 1}, "nma": {"2026-11-13": 5}};
+var REL = {"d": {"AD": {"p": "AD", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:00 PIO GRANDE (E COS 3)", "f": "12:31", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794564000000, 1794569400000, "", "13/11 10:00 PIO GRANDE (E COS 3)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "AN": {"p": "AN", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:00 ELANDRA STAR (E AL 2)", "f": "12:07", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794564000000, 1794569400000, "", "13/11 10:00 ELANDRA STAR (E AL 2)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "BR": {"p": "BR", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:30 HMM PRESTIGE (E EMB-1)", "f": "13:14", "fut": false, "ab": ""}], "m2": [{"t": "13/11 11:15 MAERSK GANGES (S EMB-1)", "f": "12:53", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 225.0, "total": 225.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794568500000, 1794569400000, "A", "13/11 11:15 MAERSK GANGES (S EMB-1)"]], [[1794555000000, 1794568500000, 225, "inicio", "", null]]], "b12": [[[1794569400000, 1794569400000, "", "13/11 11:30 HMM PRESTIGE (E EMB-1)"]], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "ED": {"p": "ED", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [{"t": "13/11 11:30 HMM PRESTIGE (E EMB-1)", "f": "13:14", "fut": false, "ab": "A"}], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794569400000, 1794569400000, "A", "13/11 11:30 HMM PRESTIGE (E EMB-1)"]], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "EV": {"p": "EV", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "FL": {"p": "FL", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 10:30 NAVIOS VICTORY (E TGG)", "f": "11:36", "fut": false, "ab": ""}], "m2": [{"t": "13/11 10:00 PIO GRANDE (E COS 3)", "f": "12:31", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 180.0, "total": 180.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 150.0, "total": 150.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794564000000, 1794569400000, "A", "13/11 10:00 PIO GRANDE (E COS 3)"]], [[1794555000000, 1794564000000, 150, "inicio", "", null]]], "b12": [[[1794565800000, 1794569400000, "", "13/11 10:30 NAVIOS VICTORY (E TGG)"]], [[1794555000000, 1794565800000, 180, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "HI": {"p": "HI", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:00 SKANDI CARLA (E 29)", "f": "12:08", "fut": false, "ab": ""}], "m2": [{"t": "13/11 07:30 JAKARTA (S AL 2)", "f": "09:23", "fut": false, "ab": "B"}], "s12": {"n": 1, "maior": 210.0, "total": 210.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 127.0, "total": 127.0, "mad": 0.0, "fechado": false, "maior_longo": 127.0, "total_longo": 127.0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794555000000, 1794561780000, "B", "13/11 07:30 JAKARTA (S AL 2)"]], [[1794561780000, 1794569400000, 127, "andamento", "", null]]], "b12": [[[1794567600000, 1794569400000, "", "13/11 11:00 SKANDI CARLA (E 29)"]], [[1794555000000, 1794567600000, 210, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "HL": {"p": "HL", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 07:30 JAKARTA (S AL 2)", "f": "09:23", "fut": false, "ab": ""}], "m2": [], "s12": {"n": 1, "maior": 127.0, "total": 127.0, "mad": 0.0, "fechado": false, "maior_longo": 127.0, "total_longo": 127.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[[1794555000000, 1794561780000, "", "13/11 07:30 JAKARTA (S AL 2)"]], [[1794561780000, 1794569400000, 127, "andamento", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "LG": {"p": "LG", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "PI": {"p": "PI", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [], "m2": [{"t": "13/11 10:30 NAVIOS VICTORY (E TGG)", "f": "11:36", "fut": false, "ab": "A"}], "s12": {"n": 0, "maior": 240.0, "total": 240.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 180.0, "total": 180.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794565800000, 1794569400000, "A", "13/11 10:30 NAVIOS VICTORY (E TGG)"]], [[1794555000000, 1794565800000, 180, "inicio", "", null]]], "b12": [[], [[1794555000000, 1794569400000, 240, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "RG": {"p": "RG", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 11:15 MAERSK GANGES (S EMB-1)", "f": "12:53", "fut": false, "ab": ""}], "m2": [{"t": "13/11 11:00 SKANDI CARLA (E 29)", "f": "12:08", "fut": false, "ab": "A"}], "s12": {"n": 1, "maior": 225.0, "total": 225.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 1, "maior": 210.0, "total": 210.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 0, "n_ciclo": 0}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794567600000, 1794569400000, "A", "13/11 11:00 SKANDI CARLA (E 29)"]], [[1794555000000, 1794567600000, 210, "inicio", "", null]]], "b12": [[[1794568500000, 1794569400000, "", "13/11 11:15 MAERSK GANGES (S EMB-1)"]], [[1794555000000, 1794568500000, 225, "inicio", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}, "RO": {"p": "RO", "ini": "13/11 07:30", "fim": "13/11 11:30", "fim2": "14/11 07:30", "nd": 1, "corte": "13/11 11:30", "m12": [{"t": "13/11 08:00 SENORITA (S TGG)", "f": "09:08", "fut": false, "ab": ""}], "m2": [{"t": "13/11 08:00 SENORITA (S TGG)", "f": "09:08", "fut": false, "ab": "A"}, {"t": "13/11 10:00 ELANDRA STAR (E AL 2)", "f": "12:07", "fut": false, "ab": "B"}], "s12": {"n": 1, "maior": 142.0, "total": 172.0, "mad": 0.0, "fechado": false, "maior_longo": 142.0, "total_longo": 142.0, "total_ciclo": 0, "n_ciclo": 0}, "s2": {"n": 2, "maior": 52.0, "total": 82.0, "mad": 0.0, "fechado": false, "maior_longo": 0, "total_longo": 0, "total_ciclo": 52.0, "n_ciclo": 1}, "c2": {"med": null, "n": 0, "lt5": 0}, "c12": {"med": null, "n": 0, "lt5": 0}, "b0": 1794555000000, "b1": 1794641400000, "ag": 1794569400000, "dd": [], "hj": 1794555000000, "vi": 1794555000000, "vd": [1794641400000, 1794727800000], "b2": [[[1794556800000, 1794560880000, "A", "13/11 08:00 SENORITA (S TGG)"], [1794564000000, 1794569400000, "B", "13/11 10:00 ELANDRA STAR (E AL 2)"]], [[1794555000000, 1794556800000, 30, "inicio", "", null], [1794560880000, 1794564000000, 52, "ciclo", "", 40]]], "b12": [[[1794556800000, 1794560880000, "", "13/11 08:00 SENORITA (S TGG)"]], [[1794555000000, 1794556800000, 30, "inicio", "", null], [1794560880000, 1794569400000, 142, "andamento", "", null]]], "dias": ["2026-11-12", "2026-11-13"]}}, "i": {"AD|2026-11-05": "AD", "AD|2026-11-06": "AD", "AD|2026-11-07": "AD", "AD|2026-11-08": "AD", "AD|2026-11-09": "AD", "AD|2026-11-10": "AD", "AD|2026-11-11": "AD", "AD|2026-11-12": "AD", "AD|2026-11-13": "AD", "AD|2026-11-14": "AD", "AN|2026-11-05": "AN", "AN|2026-11-06": "AN", "AN|2026-11-07": "AN", "AN|2026-11-08": "AN", "AN|2026-11-09": "AN", "AN|2026-11-10": "AN", "AN|2026-11-11": "AN", "AN|2026-11-12": "AN", "AN|2026-11-13": "AN", "AN|2026-11-14": "AN", "BR|2026-11-05": "BR", "BR|2026-11-06": "BR", "BR|2026-11-07": "BR", "BR|2026-11-08": "BR", "BR|2026-11-09": "BR", "BR|2026-11-10": "BR", "BR|2026-11-11": "BR", "BR|2026-11-12": "BR", "BR|2026-11-13": "BR", "BR|2026-11-14": "BR", "ED|2026-11-05": "ED", "ED|2026-11-06": "ED", "ED|2026-11-07": "ED", "ED|2026-11-08": "ED", "ED|2026-11-09": "ED", "ED|2026-11-10": "ED", "ED|2026-11-11": "ED", "ED|2026-11-12": "ED", "ED|2026-11-13": "ED", "ED|2026-11-14": "ED", "EV|2026-11-05": "EV", "EV|2026-11-06": "EV", "EV|2026-11-07": "EV", "EV|2026-11-08": "EV", "EV|2026-11-09": "EV", "EV|2026-11-10": "EV", "EV|2026-11-11": "EV", "EV|2026-11-12": "EV", "EV|2026-11-13": "EV", "EV|2026-11-14": "EV", "FL|2026-11-05": "FL", "FL|2026-11-06": "FL", "FL|2026-11-07": "FL", "FL|2026-11-08": "FL", "FL|2026-11-09": "FL", "FL|2026-11-10": "FL", "FL|2026-11-11": "FL", "FL|2026-11-12": "FL", "FL|2026-11-13": "FL", "FL|2026-11-14": "FL", "HI|2026-11-05": "HI", "HI|2026-11-06": "HI", "HI|2026-11-07": "HI", "HI|2026-11-08": "HI", "HI|2026-11-09": "HI", "HI|2026-11-10": "HI", "HI|2026-11-11": "HI", "HI|2026-11-12": "HI", "HI|2026-11-13": "HI", "HI|2026-11-14": "HI", "HL|2026-11-05": "HL", "HL|2026-11-06": "HL", "HL|2026-11-07": "HL", "HL|2026-11-08": "HL", "HL|2026-11-09": "HL", "HL|2026-11-10": "HL", "HL|2026-11-11": "HL", "HL|2026-11-12": "HL", "HL|2026-11-13": "HL", "HL|2026-11-14": "HL", "LG|2026-11-05": "LG", "LG|2026-11-06": "LG", "LG|2026-11-07": "LG", "LG|2026-11-08": "LG", "LG|2026-11-09": "LG", "LG|2026-11-10": "LG", "LG|2026-11-11": "LG", "LG|2026-11-12": "LG", "LG|2026-11-13": "LG", "LG|2026-11-14": "LG", "PI|2026-11-05": "PI", "PI|2026-11-06": "PI", "PI|2026-11-07": "PI", "PI|2026-11-08": "PI", "PI|2026-11-09": "PI", "PI|2026-11-10": "PI", "PI|2026-11-11": "PI", "PI|2026-11-12": "PI", "PI|2026-11-13": "PI", "PI|2026-11-14": "PI", "RG|2026-11-05": "RG", "RG|2026-11-06": "RG", "RG|2026-11-07": "RG", "RG|2026-11-08": "RG", "RG|2026-11-09": "RG", "RG|2026-11-10": "RG", "RG|2026-11-11": "RG", "RG|2026-11-12": "RG", "RG|2026-11-13": "RG", "RG|2026-11-14": "RG", "RO|2026-11-05": "RO", "RO|2026-11-06": "RO", "RO|2026-11-07": "RO", "RO|2026-11-08": "RO", "RO|2026-11-09": "RO", "RO|2026-11-10": "RO", "RO|2026-11-11": "RO", "RO|2026-11-12": "RO", "RO|2026-11-13": "RO", "RO|2026-11-14": "RO"}, "dia": {}, "nm": {"2026-11-12": 41, "2026-11-13": 30, "2026-11-14": 5, "2026-11-15": 1}, "nma": {"2026-11-13": 6}};
 function _h(m){m=Math.round(m);var s=m<0?'-':'';m=Math.abs(m);return s+Math.floor(m/60)+'h'+String(m%60).padStart(2,'0');}
 function _lista(L){if(!L.length)return '<tr><td>nenhuma</td></tr>';return L.map(function(x){return '<tr class="'+(x.fut?'fut':'')+'"><td>'+(x.ab?'<b>'+x.ab+'</b> ':'')+x.t+'</td><td>'+x.f+'</td></tr>';}).join('');}
 function _gaps(G){if(!G.length)return '<tr><td colspan=2>—</td></tr>';var nm={longo:['tl','descanso longo'],ciclo:['tc','dentro do ciclo'],emendado:['te','emendado'],andamento:['ta','em andamento'],inicio:['ti','antes da 1ª'],canc:['ti','após cancelada'],fimserv:['tf','fim do serviço']};return G.map(function(g){var t=g[3],z=nm[t],tg=z?'<span class="tg '+z[0]+'">'+z[1]+'</span> ':'';var fora=(t!=='longo'&&t!=='');return '<tr'+(fora?' class="cic"':'')+'><td>'+tg+g[0]+' → '+g[1]+'</td><td>'+(t==='emendado'?'—':_h(g[2]))+'</td></tr>';}).join('');}
