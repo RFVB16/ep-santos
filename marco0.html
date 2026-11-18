@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>23:16</b> (17/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 23:13</span><br>
+    <span style="font-size:15px">Atualizado às <b>23:26</b> (17/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 23:23</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>26</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>3</b> | Descanso médio efetivo (Δt, 7 dias): <b>10h10</b> | Posições médias após B: <b>19.6</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-17T23:16:53-03:00');
+  const gen = new Date('2026-11-17T23:26:57-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -713,25 +713,25 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal"><b class="dl-a">4h37</b></td>
           <td class="esc esc-col">RG(01:15) &gt; LC(01:15) &gt; GU(01:15) &gt; AD(01:30) &gt; SF(02:15) &gt; HL(02:30) &gt; CM(n/a) &gt; AG &gt; AN &gt; TK &gt; CV &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">MAERSK FRANKFURT</td>
-          <td class="berco">E EMB-1</td>
+          <td class="vessel">MANDARIN KAOHSIUNG</td>
+          <td class="berco">E 12-A</td>
           <td class="dt">18/11 02:45</td>
           <td class="ep relx" data-p="RG" data-d="2026-11-17">RG</td>
-          <td class="calado">10,20</td>
+          <td class="calado">6,50</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="RG" data-d="2026-11-17">B</td>
           <td class="cal"></td>
           <td class="esc esc-col">LC &gt; GU &gt; AD &gt; SF &gt; HL &gt; CM(03:00) &gt; AG &gt; AN &gt; TK &gt; CV &gt; SN &gt; RG</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">MANDARIN KAOHSIUNG</td>
-          <td class="berco">E 12-A</td>
-          <td class="dt">18/11 02:45</td>
+          <td class="vessel">MAERSK FRANKFURT</td>
+          <td class="berco">E EMB-1</td>
+          <td class="dt">18/11 03:00</td>
           <td class="ep relx" data-p="LC" data-d="2026-11-17">LC</td>
-          <td class="calado">6,50</td>
+          <td class="calado">10,20</td>
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="LC" data-d="2026-11-17">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GU &gt; AD &gt; SF &gt; HL &gt; CM(03:00) &gt; AG &gt; AN &gt; TK &gt; CV &gt; SN &gt; RG &gt; LC</td>
+          <td class="esc esc-col">GU &gt; AD &gt; SF &gt; HL &gt; CM &gt; AG &gt; AN &gt; TK &gt; CV &gt; SN &gt; RG &gt; LC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BC MIRABEL</td>
           <td class="berco">E 33</td>
