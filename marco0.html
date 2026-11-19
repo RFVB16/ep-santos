@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>13:26</b> (19/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 13:23</span><br>
+    <span style="font-size:15px">Atualizado às <b>13:37</b> (19/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 13:33</span><br>
     Ontem: <b>47</b> manobras | Hoje: <b>14</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h18</b> | Posições médias após B: <b>19.1</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-19T13:26:53-03:00');
+  const gen = new Date('2026-11-19T13:37:02-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
     </div>
     <div class="panel side indisp">
       <div class="panel-title" title="Hora em que cada um fica livre para uma entrada (E, margem 45 min, lancha até FB) e para uma saída/mudança (S, margem 25 min, lancha até o berço da próxima saída)">Indisponíveis · livre p/ E / S</div>
-      <div class="side-scroll"><table><tbody><tr><td class="prat">BA</td><td class="st"><span class="tE">E 15:45</span><br><span class="tS">S 16:15</span></td></tr><tr><td class="prat">SP</td><td class="st"><span class="tE">E 15:45</span><br><span class="tS">S 16:15</span></td></tr></tbody></table></div>
+      <div class="side-scroll"><table><tbody><tr><td class="prat">BA</td><td class="st"><span class="tE">E 15:45</span><br><span class="tS">S 15:45</span></td></tr><tr><td class="prat">SP</td><td class="st"><span class="tE">E 15:45</span><br><span class="tS">S 15:45</span></td></tr></tbody></table></div>
     </div>
   </div>
   <div class="panel proj">
@@ -538,7 +538,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">19/11 01:30</td>
           <td class="ep relx" data-p="CF" data-d="2026-11-18">CF</td>
           <td class="calado">7,90</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-b relx" data-p="CF" data-d="2026-11-18">B</td>
           <td class="cal">1h45</td>
           <td class="esc esc-col">LC(02:30) &gt; GU &gt; HL &gt; CM &gt; GM &gt; MM &gt; PA &gt; TK &gt; BR &gt; SN &gt; LB &gt; CF</td>
@@ -548,7 +548,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="dt">19/11 01:30</td>
           <td class="ep relx" data-p="GU" data-d="2026-11-18">GU</td>
           <td class="calado">9,08</td>
-          <td class="brd">BE</td>
+          <td class="brd"></td>
           <td class="ab-a relx" data-p="GU" data-d="2026-11-18">A</td>
           <td class="cal"><b class="dl-a">7h17</b></td>
           <td class="esc esc-col">LC(02:30) &gt; GU(n/a) &gt; HL &gt; CM &gt; GM &gt; MM &gt; PA &gt; TK &gt; BR &gt; SN &gt; LB &gt; CF</td>
@@ -753,16 +753,6 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="cal"></td>
           <td class="esc esc-col">SP(15:45) &gt; BA(15:45) &gt; GU(n/a) &gt; ED &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">DANNY <span class="p2">(2 PRÁTICOS)</span></td>
-          <td class="berco">S TIP-2</td>
-          <td class="dt">19/11 15:30</td>
-          <td class="ep relx" data-p="ED" data-d="2026-11-19">ED/LG</td>
-          <td class="calado">12,20</td>
-          <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="ED" data-d="2026-11-19">A/A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">SP(16:15) &gt; BA(16:15) &gt; GU(17:30) &gt; ED(n/a) &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN</td>
-        </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">STAR ASTRID</td>
           <td class="berco">S CTRLE</td>
           <td class="dt">19/11 16:00</td>
@@ -771,7 +761,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="SP" data-d="2026-11-19">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BA &gt; GU(17:00) &gt; ED(18:15) &gt; LG(18:15) &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP</td>
+          <td class="esc esc-col">BA &gt; GU(17:00) &gt; ED &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">NEPTULUS</td>
           <td class="berco">S 20/21</td>
@@ -781,17 +771,27 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="BA" data-d="2026-11-19">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GU(17:00) &gt; ED(18:15) &gt; LG(18:15) &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
+          <td class="esc esc-col">GU(17:00) &gt; ED &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">DANNY <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">S TIP-2</td>
+          <td class="dt">19/11 16:00</td>
+          <td class="ep relx" data-p="ED" data-d="2026-11-19">ED/LG</td>
+          <td class="calado">12,20</td>
+          <td class="brd">BB</td>
+          <td class="ab-a relx" data-p="ED" data-d="2026-11-19">A/A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">GU(17:30) &gt; ED(n/a) &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">EVIAN</td>
           <td class="berco">E TIP-2</td>
-          <td class="dt">19/11 16:00</td>
+          <td class="dt">19/11 16:30</td>
           <td class="ep relx" data-p="CM" data-d="2026-11-19">CM</td>
           <td class="calado">6,41</td>
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="CM" data-d="2026-11-19">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GU(17:45) &gt; ED(18:15) &gt; LG(18:15) &gt; CM(n/a) &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
+          <td class="esc esc-col">GU(17:45) &gt; ED(18:45) &gt; LG(18:45) &gt; CM(n/a) &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BARTOLOMEU DIAS</td>
           <td class="berco">M BTP-2 → EMB-1</td>
@@ -801,7 +801,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="CV" data-d="2026-11-19">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GU(17:15) &gt; ED(18:30) &gt; LG(18:30) &gt; CM(18:45) &gt; CV(n/a) &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
+          <td class="esc esc-col">GU(17:15) &gt; ED(19:00) &gt; LG(19:00) &gt; CM(19:15) &gt; CV(n/a) &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SOLANA S</td>
           <td class="berco">S 16/17</td>
@@ -811,7 +811,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="GU" data-d="2026-11-19">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">ED &gt; LG &gt; CM &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA &gt; GU</td>
+          <td class="esc esc-col">ED &gt; LG &gt; CM(19:15) &gt; CV &gt; MM &gt; LT &gt; BD &gt; NI &gt; SN &gt; SP &gt; BA &gt; GU</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">EL JUNIPER</td>
           <td class="berco">S 37.1</td>
