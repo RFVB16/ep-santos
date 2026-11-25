@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>14:06</b> (25/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 14:05</span><br>
+    <span style="font-size:15px">Atualizado às <b>14:16</b> (25/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 14:15</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>11</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h51</b> | Posições médias após B: <b>17.9</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-25T14:06:49-03:00');
+  const gen = new Date('2026-11-25T14:16:42-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -947,7 +947,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="berco">E IB-OE</td>
           <td class="dt">25/11 17:00</td>
           <td class="ep relx" data-p="FS" data-d="2026-11-25">FS</td>
-          <td class="calado"></td>
+          <td class="calado">11,10</td>
           <td class="brd"></td>
           <td class="ab-a relx" data-p="FS" data-d="2026-11-25">A</td>
           <td class="cal"></td>
