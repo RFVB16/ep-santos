@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>00:17</b> (26/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 00:13</span><br>
+    <span style="font-size:15px">Atualizado às <b>00:27</b> (26/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 00:23</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>24</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>8h44</b> | Posições médias após B: <b>17.8</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-26T00:17:11-03:00');
+  const gen = new Date('2026-11-26T00:27:06-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -1047,7 +1047,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="berco">S 23</td>
           <td class="dt">26/11 02:00</td>
           <td class="ep relx" data-p="MC" data-d="2026-11-25">MC</td>
-          <td class="calado">7,57</td>
+          <td class="calado">7,65</td>
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="MC" data-d="2026-11-25">A</td>
           <td class="cal"></td>
@@ -1062,96 +1062,96 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="AY" data-d="2026-11-25">A</td>
           <td class="cal"></td>
           <td class="esc esc-col">GA(02:45) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(n/a) &gt; DE &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
-        </tr><tr style="background:#ffffff;color:#000">
-          <td class="vessel">ONE PARANA <span class="p2">(2 PRÁTICOS)</span></td>
-          <td class="berco">E BTP-2</td>
-          <td class="dt">26/11 02:00</td>
-          <td class="ep relx" data-p="DE" data-d="2026-11-25">DE/CV</td>
-          <td class="calado">11,90</td>
-          <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="DE" data-d="2026-11-25">A/A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">GA(03:30) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(n/a) &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
-        </tr><tr style="background:#ffffff;color:#000">
+        </tr><tr style="background:#ffffff;color:#000000">
           <td class="vessel">ROMULO ALMEIDA</td>
           <td class="berco">S AL 1</td>
           <td class="dt">26/11 02:00</td>
-          <td class="ep relx" data-p="FS" data-d="2026-11-25">FS</td>
-          <td class="calado">9,50</td>
-          <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="FS" data-d="2026-11-25">A</td>
+          <td class="ep relx" data-p="DE" data-d="2026-11-25">DE</td>
+          <td class="calado"></td>
+          <td class="brd"></td>
+          <td class="ab-a relx" data-p="DE" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(02:45) &gt; VB(04:00) &gt; MC(04:00) &gt; AY(04:30) &gt; DE(04:15) &gt; CV(04:15) &gt; FS(n/a) &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
-        </tr><tr style="background:#ffffff;color:#000">
+          <td class="esc esc-col">GA(02:45) &gt; VB(04:00) &gt; MC(04:00) &gt; AY(04:30) &gt; DE(n/a) &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
+        </tr><tr style="background:#ffffff;color:#000000">
           <td class="vessel">SAKURA ADVANCE</td>
           <td class="berco">S AL 4</td>
           <td class="dt">26/11 02:00</td>
-          <td class="ep relx" data-p="LG" data-d="2026-11-25">LG</td>
-          <td class="calado">10,25</td>
-          <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="LG" data-d="2026-11-25">A</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-25">CV</td>
+          <td class="calado"></td>
+          <td class="brd"></td>
+          <td class="ab-a relx" data-p="CV" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(02:45) &gt; VB(04:00) &gt; MC(04:00) &gt; AY(04:30) &gt; DE(04:15) &gt; CV(04:15) &gt; FS(04:45) &gt; LG(n/a) &gt; SF &gt; EV &gt; BR &gt; SN</td>
+          <td class="esc esc-col">GA(02:45) &gt; VB(04:00) &gt; MC(04:00) &gt; AY(04:30) &gt; DE(04:45) &gt; CV(n/a) &gt; FS &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SENTINEL</td>
           <td class="berco">S TIP-3</td>
           <td class="dt">26/11 02:00</td>
-          <td class="ep relx" data-p="SF" data-d="2026-11-25">SF</td>
+          <td class="ep relx" data-p="FS" data-d="2026-11-25">FS</td>
           <td class="calado">13,20</td>
           <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="SF" data-d="2026-11-25">A</td>
+          <td class="ab-a relx" data-p="FS" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(03:00) &gt; VB(04:15) &gt; MC(04:15) &gt; AY(04:30) &gt; DE(04:15) &gt; CV(04:15) &gt; FS(04:45) &gt; LG(04:45) &gt; SF(n/a) &gt; EV &gt; BR &gt; SN</td>
+          <td class="esc esc-col">GA(03:00) &gt; VB(04:15) &gt; MC(04:15) &gt; AY(04:30) &gt; DE(04:45) &gt; CV(04:45) &gt; FS(n/a) &gt; LG &gt; SF &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LOG-IN EXPERIENCE</td>
           <td class="berco">S TC 1.1</td>
           <td class="dt">26/11 02:30</td>
-          <td class="ep relx" data-p="EV" data-d="2026-11-25">EV</td>
+          <td class="ep relx" data-p="LG" data-d="2026-11-25">LG</td>
           <td class="calado">10,20</td>
           <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="EV" data-d="2026-11-25">A</td>
+          <td class="ab-a relx" data-p="LG" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(02:45) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:30) &gt; LG(04:15) &gt; SF(04:45) &gt; EV(n/a) &gt; BR &gt; SN</td>
+          <td class="esc esc-col">GA(02:45) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:15) &gt; FS(04:45) &gt; LG(n/a) &gt; SF &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LEVANTES</td>
           <td class="berco">E TGG</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:15 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:15</span></td>
-          <td class="ep relx" data-p="BR" data-d="2026-11-25">BR</td>
+          <td class="dt">26/11 02:30</td>
+          <td class="ep relx" data-p="SF" data-d="2026-11-25">SF</td>
           <td class="calado">6,76</td>
           <td class="brd">BB</td>
-          <td class="ab-a relx" data-p="BR" data-d="2026-11-25">A</td>
+          <td class="ab-a relx" data-p="SF" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(03:30) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; BR(n/a) &gt; SN</td>
+          <td class="esc esc-col">GA(03:30) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(n/a) &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">EKATERINA</td>
           <td class="berco">E 23</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:30 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:30</span></td>
-          <td class="ep relx" data-p="GA" data-d="2026-11-25">GA</td>
+          <td class="dt">26/11 02:30</td>
+          <td class="ep relx" data-p="EV" data-d="2026-11-25">EV</td>
           <td class="calado">7,51</td>
           <td class="brd">BB</td>
-          <td class="ab-b relx" data-p="GA" data-d="2026-11-25">B</td>
+          <td class="ab-a relx" data-p="EV" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; BR(04:30) &gt; SN &gt; GA</td>
+          <td class="esc esc-col">GA(03:30) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(04:30) &gt; EV(n/a) &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">NC BRUMA</td>
           <td class="berco">E EMB-1</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:45 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:45</span></td>
-          <td class="ep relx" data-p="VB" data-d="2026-11-25">VB</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:15 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:15</span></td>
+          <td class="ep relx" data-p="BR" data-d="2026-11-25">BR</td>
           <td class="calado">8,30</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="VB" data-d="2026-11-25">B</td>
+          <td class="ab-a relx" data-p="BR" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(03:45) &gt; AY(04:15) &gt; DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; BR(04:30) &gt; SN &gt; GA &gt; VB</td>
+          <td class="esc esc-col">GA(03:30) &gt; VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(04:30) &gt; EV(04:45) &gt; BR(n/a) &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BETTYS LOVE</td>
           <td class="berco">E TIP-3</td>
-          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:45 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:45</span></td>
-          <td class="ep relx" data-p="MC" data-d="2026-11-25">MC</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:30 (provavelmente o horário ainda não foi atualizado)">26/11 02:30<br><span class="invi">⚠ livre 03:30</span></td>
+          <td class="ep relx" data-p="GA" data-d="2026-11-25">GA</td>
           <td class="calado">6,80</td>
           <td class="brd">BB</td>
-          <td class="ab-b relx" data-p="MC" data-d="2026-11-25">B</td>
+          <td class="ab-b relx" data-p="GA" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY(04:15) &gt; DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; BR(04:30) &gt; SN &gt; GA &gt; VB &gt; MC</td>
+          <td class="esc esc-col">VB(03:45) &gt; MC(03:45) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(04:30) &gt; EV(04:45) &gt; BR(05:15) &gt; SN &gt; GA</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">ONE PARANA <span class="p2">(2 PRÁTICOS)</span></td>
+          <td class="berco">E BTP-2</td>
+          <td class="dt" title="Horário previsto inviável: o prático escalado só fica livre às 03:45 (provavelmente o horário ainda não foi atualizado)">26/11 02:45<br><span class="invi">⚠ livre 03:45</span></td>
+          <td class="ep relx" data-p="VB" data-d="2026-11-25">VB/MC</td>
+          <td class="calado">11,90</td>
+          <td class="brd">BE</td>
+          <td class="ab-b relx" data-p="VB" data-d="2026-11-25">B/B</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">MC(n/a) &gt; AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(04:30) &gt; EV(04:45) &gt; BR(05:15) &gt; SN &gt; GA &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">LOG-IN PANTANAL</td>
           <td class="berco">E TC 1.1</td>
@@ -1161,17 +1161,17 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="SN" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY(04:15) &gt; DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; BR(04:30) &gt; SN(n/a) &gt; GA &gt; VB &gt; MC</td>
+          <td class="esc esc-col">AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; SF(04:30) &gt; EV(04:45) &gt; BR(05:15) &gt; SN(n/a) &gt; GA &gt; VB &gt; MC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MERCOSUL SUAPE</td>
           <td class="berco">S TC 2</td>
           <td class="dt">26/11 04:00</td>
-          <td class="ep relx" data-p="BR" data-d="2026-11-25">BR</td>
+          <td class="ep relx" data-p="SF" data-d="2026-11-25">SF</td>
           <td class="calado">8,90</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="BR" data-d="2026-11-25">B</td>
+          <td class="ab-b relx" data-p="SF" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY(04:15) &gt; DE(04:30) &gt; CV(04:30) &gt; FS(04:30) &gt; LG(04:15) &gt; SF(04:45) &gt; EV(04:15) &gt; SN(04:30) &gt; GA &gt; VB &gt; MC &gt; BR</td>
+          <td class="esc esc-col">AY(04:15) &gt; DE(04:30) &gt; CV(04:15) &gt; FS(04:45) &gt; LG(04:15) &gt; EV &gt; BR(04:30) &gt; SN(04:30) &gt; GA &gt; VB &gt; MC &gt; SF</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">VICENTE PINZON</td>
           <td class="berco">E BTP-3</td>
@@ -1181,7 +1181,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="AY" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">DE(05:00) &gt; CV(05:00) &gt; FS(04:30) &gt; LG(04:30) &gt; SF(04:45) &gt; EV(04:15) &gt; SN(05:00) &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY</td>
+          <td class="esc esc-col">DE(04:30) &gt; CV(04:30) &gt; FS(04:45) &gt; LG(04:15) &gt; EV(04:45) &gt; BR(05:15) &gt; SN(05:00) &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">EVER FAIR <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E TC 3</td>
@@ -1191,7 +1191,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="DE" data-d="2026-11-25">B/B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; SN &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE</td>
+          <td class="esc esc-col">CV &gt; FS &gt; LG &gt; EV &gt; BR(05:15) &gt; SN &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MSC DIVINA</td>
           <td class="berco">E 32/33</td>
@@ -1201,7 +1201,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="FS" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">LG &gt; SF &gt; EV &gt; SN &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS</td>
+          <td class="esc esc-col">LG &gt; EV &gt; BR &gt; SN &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CARLOS FISCHER</td>
           <td class="berco">S 29A</td>
@@ -1211,27 +1211,27 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="LG" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SF &gt; EV &gt; SN &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG</td>
+          <td class="esc esc-col">EV &gt; BR &gt; SN &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">HORIZON THEANO</td>
           <td class="berco">S AL 2</td>
           <td class="dt">26/11 06:00</td>
-          <td class="ep relx" data-p="SF" data-d="2026-11-25">SF</td>
+          <td class="ep relx" data-p="EV" data-d="2026-11-25">EV</td>
           <td class="calado">9,50</td>
           <td class="brd">BB</td>
-          <td class="ab-b relx" data-p="SF" data-d="2026-11-25">B</td>
+          <td class="ab-b relx" data-p="EV" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">EV &gt; SN &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; SF</td>
+          <td class="esc esc-col">BR &gt; SN &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; EV</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CMA CGM PACIFIC</td>
           <td class="berco">E TC 2</td>
           <td class="dt">26/11 06:30</td>
-          <td class="ep relx" data-p="EV" data-d="2026-11-25">EV</td>
+          <td class="ep relx" data-p="BR" data-d="2026-11-25">BR</td>
           <td class="calado">14,20</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="EV" data-d="2026-11-25">B</td>
+          <td class="ab-b relx" data-p="BR" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">SN &gt; GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV</td>
+          <td class="esc esc-col">SN &gt; GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; EV &gt; BR</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">COSTA DIADEMA</td>
           <td class="berco">E OUT 2/3</td>
@@ -1241,7 +1241,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="SN" data-d="2026-11-25">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; SN</td>
+          <td class="esc esc-col">GA &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">FRATERNELLE</td>
           <td class="berco">S 19</td>
@@ -1251,7 +1251,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="GA" data-d="2026-11-25">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">GA(n/a) &gt; VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; SF &gt; EV &gt; SN</td>
+          <td class="esc esc-col">GA(n/a) &gt; VB &gt; MC &gt; SF &gt; AY &gt; DE &gt; CV &gt; FS &gt; LG &gt; EV &gt; BR &gt; SN</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MSC MUSICA</td>
           <td class="berco">E 25</td>
@@ -1261,7 +1261,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-b relx" data-p="CF" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">VB &gt; MC &gt; BR &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF</td>
+          <td class="esc esc-col">VB &gt; MC &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">TOSCA</td>
           <td class="berco">S TEV</td>
@@ -1271,7 +1271,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="VB" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">VB(n/a) &gt; MC &gt; BR &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF</td>
+          <td class="esc esc-col">VB(n/a) &gt; MC &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">DELICATA</td>
           <td class="berco">S EMB-4</td>
@@ -1281,7 +1281,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="MC" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">VB(09:45) &gt; MC(n/a) &gt; BR &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF</td>
+          <td class="esc esc-col">VB(09:45) &gt; MC(n/a) &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">ALPHA SPIRIT</td>
           <td class="berco">S CS 2</td>
@@ -1291,7 +1291,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="VB" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(11:15) &gt; BR &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB</td>
+          <td class="esc esc-col">MC(11:15) &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">PRINCE JOY</td>
           <td class="berco">S 31</td>
@@ -1301,57 +1301,57 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="MC" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC</td>
+          <td class="esc esc-col">AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MSC LETICIA X</td>
           <td class="berco">S BTP-1</td>
           <td class="dt">26/11 14:00</td>
-          <td class="ep relx" data-p="BR" data-d="2026-11-26">BR</td>
+          <td class="ep relx" data-p="AY" data-d="2026-11-26">AY</td>
           <td class="calado">14,50</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="BR" data-d="2026-11-26">A</td>
+          <td class="ab-a relx" data-p="AY" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">BR(n/a) &gt; AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC</td>
+          <td class="esc esc-col">AY(n/a) &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CMA CGM SANTOS</td>
           <td class="berco">S TC 1.2</td>
           <td class="dt">26/11 17:00</td>
-          <td class="ep relx" data-p="BR" data-d="2026-11-26">BR</td>
+          <td class="ep relx" data-p="AY" data-d="2026-11-26">AY</td>
           <td class="calado">10,60</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="BR" data-d="2026-11-26">B</td>
+          <td class="ab-b relx" data-p="AY" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC &gt; BR</td>
+          <td class="esc esc-col">DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">JAKARTA</td>
           <td class="berco">E ALA</td>
           <td class="dt">26/11 19:00</td>
-          <td class="ep relx" data-p="AY" data-d="2026-11-26">AY</td>
+          <td class="ep relx" data-p="DE" data-d="2026-11-26">DE</td>
           <td class="calado">7,40</td>
           <td class="brd"></td>
-          <td class="ab-a relx" data-p="AY" data-d="2026-11-26">A</td>
+          <td class="ab-a relx" data-p="DE" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY(n/a) &gt; DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC &gt; BR</td>
+          <td class="esc esc-col">DE(n/a) &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">CAP SAN TAINARO <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">S EMB-2</td>
           <td class="dt">26/11 22:00</td>
-          <td class="ep relx" data-p="AY" data-d="2026-11-26">AY/DE</td>
+          <td class="ep relx" data-p="DE" data-d="2026-11-26">DE/NI</td>
           <td class="calado">11,20</td>
           <td class="brd">BE</td>
-          <td class="ab-b relx" data-p="AY" data-d="2026-11-26">B/A</td>
+          <td class="ab-b relx" data-p="DE" data-d="2026-11-26">B/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">DE &gt; NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC &gt; BR &gt; AY</td>
+          <td class="esc esc-col">NI &gt; CV &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC &gt; AY &gt; DE</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SAN AUGUSTIN MAERSK <span class="p2">(2 PRÁTICOS)</span></td>
           <td class="berco">E EMB-2</td>
           <td class="dt">26/11 22:30</td>
-          <td class="ep relx" data-p="NI" data-d="2026-11-26">NI/CV</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-26">CV/GM</td>
           <td class="calado">11,80</td>
           <td class="brd">BE</td>
-          <td class="ab-a relx" data-p="NI" data-d="2026-11-26">A/A</td>
+          <td class="ab-a relx" data-p="CV" data-d="2026-11-26">A/A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">DE(00:15) &gt; NI(n/a) &gt; CV &gt; GM &gt; LG &gt; EV &gt; SN &gt; CF &gt; VB &gt; MC &gt; BR &gt; AY</td>
+          <td class="esc esc-col">NI(00:15) &gt; CV(n/a) &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; CF &gt; VB &gt; MC &gt; AY &gt; DE</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">SVEND</td>
           <td class="berco">E LARGO</td>
@@ -1361,7 +1361,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd"></td>
           <td class="ab-b relx" data-p="CV" data-d="2026-11-27">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AG &gt; AN &gt; LB &gt; GM &gt; FS &gt; EV &gt; PA &gt; SN &gt; LE &gt; MC &gt; PR &gt; CV</td>
+          <td class="esc esc-col">GM &gt; AG &gt; LB &gt; FS &gt; EV &gt; PR &gt; PA &gt; SN &gt; LE &gt; MC &gt; AN &gt; CV</td>
         </tr></tbody>
       </table>
     </div>
@@ -1441,7 +1441,7 @@ document.addEventListener('click',function(e){var t=e.target.closest('.relx');if
           <th style="padding:8px;border-bottom:1px solid #ccc">Pos. média após B</th>
         </tr></thead>
         <tbody>
-          <tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">1</td><td style="white-space:nowrap;padding:4px 8px">01/01/2026 → 08/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">2</td><td style="white-space:nowrap;padding:4px 8px">08/01/2026 → 15/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">3</td><td style="white-space:nowrap;padding:4px 8px">15/01/2026 → 22/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">4</td><td style="white-space:nowrap;padding:4px 8px">22/01/2026 → 29/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">5</td><td style="white-space:nowrap;padding:4px 8px">29/01/2026 → 05/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">6</td><td style="white-space:nowrap;padding:4px 8px">05/02/2026 → 12/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">7</td><td style="white-space:nowrap;padding:4px 8px">12/02/2026 → 19/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">8</td><td style="white-space:nowrap;padding:4px 8px">19/02/2026 → 26/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">9</td><td style="white-space:nowrap;padding:4px 8px">26/02/2026 → 05/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">10</td><td style="white-space:nowrap;padding:4px 8px">05/03/2026 → 12/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">11</td><td style="white-space:nowrap;padding:4px 8px">12/03/2026 → 19/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">12</td><td style="white-space:nowrap;padding:4px 8px">19/03/2026 → 26/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">13</td><td style="white-space:nowrap;padding:4px 8px">26/03/2026 → 02/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">14</td><td style="white-space:nowrap;padding:4px 8px">02/04/2026 → 09/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">15</td><td style="white-space:nowrap;padding:4px 8px">09/04/2026 → 16/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">16</td><td style="white-space:nowrap;padding:4px 8px">16/04/2026 → 23/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">17</td><td style="white-space:nowrap;padding:4px 8px">23/04/2026 → 30/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">18</td><td style="white-space:nowrap;padding:4px 8px">30/04/2026 → 07/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">19</td><td style="white-space:nowrap;padding:4px 8px">07/05/2026 → 14/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">20</td><td style="white-space:nowrap;padding:4px 8px">14/05/2026 → 21/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">21</td><td style="white-space:nowrap;padding:4px 8px">21/05/2026 → 28/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">22</td><td style="white-space:nowrap;padding:4px 8px">28/05/2026 → 04/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">23</td><td style="white-space:nowrap;padding:4px 8px">04/06/2026 → 11/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">24</td><td style="white-space:nowrap;padding:4px 8px">11/06/2026 → 18/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">25</td><td style="white-space:nowrap;padding:4px 8px">18/06/2026 → 25/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">26</td><td style="white-space:nowrap;padding:4px 8px">25/06/2026 → 02/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">27</td><td style="white-space:nowrap;padding:4px 8px">02/07/2026 → 09/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">28</td><td style="white-space:nowrap;padding:4px 8px">09/07/2026 → 16/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">29</td><td style="white-space:nowrap;padding:4px 8px">16/07/2026 → 23/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">30</td><td style="white-space:nowrap;padding:4px 8px">23/07/2026 → 30/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">31</td><td style="white-space:nowrap;padding:4px 8px">30/07/2026 → 06/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">32</td><td style="white-space:nowrap;padding:4px 8px">06/08/2026 → 13/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">33</td><td style="white-space:nowrap;padding:4px 8px">13/08/2026 → 20/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">34</td><td style="white-space:nowrap;padding:4px 8px">20/08/2026 → 27/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">35</td><td style="white-space:nowrap;padding:4px 8px">27/08/2026 → 03/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">36</td><td style="white-space:nowrap;padding:4px 8px">03/09/2026 → 10/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">37</td><td style="white-space:nowrap;padding:4px 8px">10/09/2026 → 17/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">38</td><td style="white-space:nowrap;padding:4px 8px">17/09/2026 → 24/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">39</td><td style="white-space:nowrap;padding:4px 8px">24/09/2026 → 01/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">40</td><td style="white-space:nowrap;padding:4px 8px">01/10/2026 → 08/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">41</td><td style="white-space:nowrap;padding:4px 8px">08/10/2026 → 15/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">42</td><td style="white-space:nowrap;padding:4px 8px">15/10/2026 → 22/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">43</td><td style="white-space:nowrap;padding:4px 8px">22/10/2026 → 29/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">44</td><td style="white-space:nowrap;padding:4px 8px">29/10/2026 → 05/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">45</td><td style="white-space:nowrap;padding:4px 8px">05/11/2026 → 12/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">46</td><td style="white-space:nowrap;padding:4px 8px">12/11/2026 → 19/11/2026</td><td style="text-align:center;padding:4px 8px">277 (39.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h34</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style="background:#fff8dc"><td style="text-align:center;font-weight:600;padding:4px 8px">47 <span style="color:#aaa;font-weight:400">(parcial)</span></td><td style="white-space:nowrap;padding:4px 8px">19/11/2026 → 26/11/2026</td><td style="text-align:center;padding:4px 8px">253 (37.8/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.8</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">48</td><td style="white-space:nowrap;padding:4px 8px">26/11/2026 → 03/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">49</td><td style="white-space:nowrap;padding:4px 8px">03/12/2026 → 10/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">50</td><td style="white-space:nowrap;padding:4px 8px">10/12/2026 → 17/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">51</td><td style="white-space:nowrap;padding:4px 8px">17/12/2026 → 24/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">52</td><td style="white-space:nowrap;padding:4px 8px">24/12/2026 → 31/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr>
+          <tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">1</td><td style="white-space:nowrap;padding:4px 8px">01/01/2026 → 08/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">2</td><td style="white-space:nowrap;padding:4px 8px">08/01/2026 → 15/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">3</td><td style="white-space:nowrap;padding:4px 8px">15/01/2026 → 22/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">4</td><td style="white-space:nowrap;padding:4px 8px">22/01/2026 → 29/01/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">5</td><td style="white-space:nowrap;padding:4px 8px">29/01/2026 → 05/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">6</td><td style="white-space:nowrap;padding:4px 8px">05/02/2026 → 12/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">7</td><td style="white-space:nowrap;padding:4px 8px">12/02/2026 → 19/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">8</td><td style="white-space:nowrap;padding:4px 8px">19/02/2026 → 26/02/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">9</td><td style="white-space:nowrap;padding:4px 8px">26/02/2026 → 05/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">10</td><td style="white-space:nowrap;padding:4px 8px">05/03/2026 → 12/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">11</td><td style="white-space:nowrap;padding:4px 8px">12/03/2026 → 19/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">12</td><td style="white-space:nowrap;padding:4px 8px">19/03/2026 → 26/03/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">13</td><td style="white-space:nowrap;padding:4px 8px">26/03/2026 → 02/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">14</td><td style="white-space:nowrap;padding:4px 8px">02/04/2026 → 09/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">15</td><td style="white-space:nowrap;padding:4px 8px">09/04/2026 → 16/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">16</td><td style="white-space:nowrap;padding:4px 8px">16/04/2026 → 23/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">17</td><td style="white-space:nowrap;padding:4px 8px">23/04/2026 → 30/04/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">18</td><td style="white-space:nowrap;padding:4px 8px">30/04/2026 → 07/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">19</td><td style="white-space:nowrap;padding:4px 8px">07/05/2026 → 14/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">20</td><td style="white-space:nowrap;padding:4px 8px">14/05/2026 → 21/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">21</td><td style="white-space:nowrap;padding:4px 8px">21/05/2026 → 28/05/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">22</td><td style="white-space:nowrap;padding:4px 8px">28/05/2026 → 04/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">23</td><td style="white-space:nowrap;padding:4px 8px">04/06/2026 → 11/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">24</td><td style="white-space:nowrap;padding:4px 8px">11/06/2026 → 18/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">25</td><td style="white-space:nowrap;padding:4px 8px">18/06/2026 → 25/06/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">26</td><td style="white-space:nowrap;padding:4px 8px">25/06/2026 → 02/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">27</td><td style="white-space:nowrap;padding:4px 8px">02/07/2026 → 09/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">28</td><td style="white-space:nowrap;padding:4px 8px">09/07/2026 → 16/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">29</td><td style="white-space:nowrap;padding:4px 8px">16/07/2026 → 23/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">30</td><td style="white-space:nowrap;padding:4px 8px">23/07/2026 → 30/07/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">31</td><td style="white-space:nowrap;padding:4px 8px">30/07/2026 → 06/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">32</td><td style="white-space:nowrap;padding:4px 8px">06/08/2026 → 13/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">33</td><td style="white-space:nowrap;padding:4px 8px">13/08/2026 → 20/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">34</td><td style="white-space:nowrap;padding:4px 8px">20/08/2026 → 27/08/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">35</td><td style="white-space:nowrap;padding:4px 8px">27/08/2026 → 03/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">36</td><td style="white-space:nowrap;padding:4px 8px">03/09/2026 → 10/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">37</td><td style="white-space:nowrap;padding:4px 8px">10/09/2026 → 17/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">38</td><td style="white-space:nowrap;padding:4px 8px">17/09/2026 → 24/09/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">39</td><td style="white-space:nowrap;padding:4px 8px">24/09/2026 → 01/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">40</td><td style="white-space:nowrap;padding:4px 8px">01/10/2026 → 08/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">41</td><td style="white-space:nowrap;padding:4px 8px">08/10/2026 → 15/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">42</td><td style="white-space:nowrap;padding:4px 8px">15/10/2026 → 22/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">43</td><td style="white-space:nowrap;padding:4px 8px">22/10/2026 → 29/10/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">44</td><td style="white-space:nowrap;padding:4px 8px">29/10/2026 → 05/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">45</td><td style="white-space:nowrap;padding:4px 8px">05/11/2026 → 12/11/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style=""><td style="text-align:center;font-weight:600;padding:4px 8px">46</td><td style="white-space:nowrap;padding:4px 8px">12/11/2026 → 19/11/2026</td><td style="text-align:center;padding:4px 8px">277 (39.6/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h34</td><td style="text-align:center;font-weight:600;padding:4px 8px">19.2</td></tr><tr style="background:#fff8dc"><td style="text-align:center;font-weight:600;padding:4px 8px">47 <span style="color:#aaa;font-weight:400">(parcial)</span></td><td style="white-space:nowrap;padding:4px 8px">19/11/2026 → 26/11/2026</td><td style="text-align:center;padding:4px 8px">253 (37.7/dia)</td><td style="text-align:center;font-weight:600;padding:4px 8px">9h17</td><td style="text-align:center;font-weight:600;padding:4px 8px">17.8</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">48</td><td style="white-space:nowrap;padding:4px 8px">26/11/2026 → 03/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">49</td><td style="white-space:nowrap;padding:4px 8px">03/12/2026 → 10/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">50</td><td style="white-space:nowrap;padding:4px 8px">10/12/2026 → 17/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">51</td><td style="white-space:nowrap;padding:4px 8px">17/12/2026 → 24/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr><tr style="color:#bbb"><td style="text-align:center;font-weight:600;padding:4px 8px">52</td><td style="white-space:nowrap;padding:4px 8px">24/12/2026 → 31/12/2026</td><td style="text-align:center;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td><td style="text-align:center;font-weight:600;padding:4px 8px">—</td></tr>
         </tbody>
       </table>
     </div>
