@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>07:16</b> (26/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 07:11</span><br>
+    <span style="font-size:15px">Atualizado às <b>07:26</b> (26/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 07:22</span><br>
     Ontem: <b>33</b> manobras | Hoje: <b>35</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>3</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h12</b> | Posições médias após B: <b>18.1</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-26T07:16:47-03:00');
+  const gen = new Date('2026-11-26T07:26:42-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -1122,7 +1122,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="SF" data-d="2026-11-25">A</td>
           <td class="cal"><b class="dl-a">11h18</b></td>
           <td class="esc esc-col">LG(08:45) &gt; SF(n/a) &gt; BR &gt; SN &gt; VB &gt; FS &gt; MC &gt; EV &gt; CV &gt; GA &gt; AY &gt; DE</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">MSC MUSICA</td>
           <td class="berco">E 25</td>
           <td class="dt">26/11 07:30</td>
@@ -1132,7 +1132,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="BR" data-d="2026-11-26">A</td>
           <td class="cal"><b class="dl-a">12h27</b></td>
           <td class="esc esc-col">LG(08:45) &gt; BR(n/a) &gt; SN &gt; VB &gt; GM &gt; MC &gt; EV &gt; NI &gt; CV &gt; CF &gt; AY &gt; DE</td>
-        </tr><tr style="background:#b7b7ff;color:#000">
+        </tr><tr style="background:#33ccff;color:#000">
           <td class="vessel">VICENTE PINZON</td>
           <td class="berco">E BTP-3</td>
           <td class="dt">26/11 07:30</td>
