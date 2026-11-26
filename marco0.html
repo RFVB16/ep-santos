@@ -141,8 +141,8 @@ body { font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; background: 
 <div class="header">
   <h1>⚓ E2D — Escala 2 e Desce | Porto de Santos</h1>
   <div class="meta">
-    <span style="font-size:15px">Atualizado às <b>16:08</b> (26/11) · <b id="idade"></b></span>
-    <span style="opacity:.8"> · pauta do SPPilots lida às 16:04</span><br>
+    <span style="font-size:15px">Atualizado às <b>16:18</b> (26/11) · <b id="idade"></b></span>
+    <span style="opacity:.8"> · pauta do SPPilots lida às 16:14</span><br>
     Ontem: <b>35</b> manobras | Hoje: <b>17</b> manobras | Média do ano: <b>38.5</b>/dia<br>
     Navios 2 práticos (hoje): <b>1</b> | Descanso médio efetivo (Δt, 7 dias): <b>9h26</b> | Posições médias após B: <b>18.1</b>
   </div>
@@ -160,7 +160,7 @@ try{localStorage.setItem('e2d_esc',h?'0':'1')}catch(e){}}
 document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getItem('e2d_esc')==='1')togEsc()}catch(e){}});
 // Idade dos dados: "há X min"; fica vermelho se passar de 30 min (computador desligado / sessão caiu)
 (function(){
-  const gen = new Date('2026-11-26T16:08:16-03:00');
+  const gen = new Date('2026-11-26T16:18:34-03:00');
   const el = document.getElementById('idade');
   function upd() {
     const min = Math.max(0, Math.round((Date.now() - gen.getTime()) / 60000));
@@ -1012,26 +1012,26 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="ab-a relx" data-p="DE" data-d="2026-11-26">A</td>
           <td class="cal"></td>
           <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(n/a) &gt; CV &gt; NI &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
-        </tr><tr style="background:#ffffff;color:#000000">
-          <td class="vessel">SENTINEL</td>
-          <td class="berco">S TIP-3</td>
-          <td class="dt">26/11 18:00</td>
-          <td class="ep relx" data-p="CV" data-d="2026-11-26">CV</td>
-          <td class="calado"></td>
-          <td class="brd"></td>
-          <td class="ab-a relx" data-p="CV" data-d="2026-11-26">A</td>
-          <td class="cal"></td>
-          <td class="esc esc-col">MC(20:00) &gt; AY(20:00) &gt; CF(20:00) &gt; DE(20:30) &gt; CV(n/a) &gt; NI &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">NORD HELSINKI</td>
           <td class="berco">M 34 → 32</td>
           <td class="dt">26/11 19:00</td>
-          <td class="ep relx" data-p="NI" data-d="2026-11-26">NI</td>
+          <td class="ep relx" data-p="CV" data-d="2026-11-26">CV</td>
           <td class="calado">7,50</td>
+          <td class="brd">BB</td>
+          <td class="ab-a relx" data-p="CV" data-d="2026-11-26">A</td>
+          <td class="cal"></td>
+          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:00) &gt; CV(n/a) &gt; NI &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
+        </tr><tr style="background:#ffffff;color:#000">
+          <td class="vessel">SENTINEL</td>
+          <td class="berco">S TIP-3</td>
+          <td class="dt">26/11 19:00</td>
+          <td class="ep relx" data-p="NI" data-d="2026-11-26">NI</td>
+          <td class="calado">13,52</td>
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="NI" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:00) &gt; CV(20:45) &gt; NI(n/a) &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
+          <td class="esc esc-col">MC(20:00) &gt; AY(20:00) &gt; CF(20:00) &gt; DE(20:30) &gt; CV(20:30) &gt; NI(n/a) &gt; GM &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">MERCOSUL ITAJAI</td>
           <td class="berco">E TC 1.2</td>
@@ -1041,7 +1041,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="GM" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(20:45) &gt; GM(n/a) &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
+          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(21:45) &gt; GM(n/a) &gt; LG &gt; EV &gt; BR &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">FLAMINIA</td>
           <td class="berco">E 20/21</td>
@@ -1051,7 +1051,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BE</td>
           <td class="ab-a relx" data-p="LG" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(20:45) &gt; GM(21:30) &gt; LG(n/a) &gt; EV &gt; BR &gt; SN &gt; VB</td>
+          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(21:45) &gt; GM(21:30) &gt; LG(n/a) &gt; EV &gt; BR &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BC MIRABEL</td>
           <td class="berco">E CS 1</td>
@@ -1061,7 +1061,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="EV" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(20:45) &gt; GM(21:30) &gt; LG(21:45) &gt; EV(n/a) &gt; BR &gt; SN &gt; VB</td>
+          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(21:45) &gt; GM(21:30) &gt; LG(21:45) &gt; EV(n/a) &gt; BR &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BETTYS LOVE</td>
           <td class="berco">E TIP-3</td>
@@ -1071,7 +1071,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-a relx" data-p="BR" data-d="2026-11-26">A</td>
           <td class="cal"></td>
-          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(20:45) &gt; GM(21:30) &gt; LG(21:45) &gt; EV(22:15) &gt; BR(n/a) &gt; SN &gt; VB</td>
+          <td class="esc esc-col">MC(19:45) &gt; AY(19:45) &gt; CF(19:45) &gt; DE(20:15) &gt; CV(20:45) &gt; NI(21:45) &gt; GM(21:30) &gt; LG(21:45) &gt; EV(22:15) &gt; BR(n/a) &gt; SN &gt; VB</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">BOW FLORA</td>
           <td class="berco">S AL 3</td>
@@ -1081,7 +1081,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd">BB</td>
           <td class="ab-b relx" data-p="MC" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">AY &gt; CF &gt; DE &gt; CV &gt; NI &gt; GM(21:15) &gt; LG(21:15) &gt; EV(21:30) &gt; BR(22:00) &gt; SN &gt; VB &gt; MC</td>
+          <td class="esc esc-col">AY &gt; CF &gt; DE &gt; CV &gt; NI(22:00) &gt; GM(21:15) &gt; LG(21:15) &gt; EV(21:30) &gt; BR(22:00) &gt; SN &gt; VB &gt; MC</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">STENA CONTENDER</td>
           <td class="berco">E AL 3</td>
@@ -1091,7 +1091,7 @@ document.addEventListener('DOMContentLoaded',function(){try{if(localStorage.getI
           <td class="brd"></td>
           <td class="ab-b relx" data-p="AY" data-d="2026-11-26">B</td>
           <td class="cal"></td>
-          <td class="esc esc-col">CF &gt; DE &gt; CV &gt; NI &gt; GM &gt; LG(21:45) &gt; EV(22:15) &gt; BR(23:00) &gt; SN &gt; VB &gt; MC &gt; AY</td>
+          <td class="esc esc-col">CF &gt; DE &gt; CV &gt; NI(21:45) &gt; GM &gt; LG(21:45) &gt; EV(22:15) &gt; BR(23:00) &gt; SN &gt; VB &gt; MC &gt; AY</td>
         </tr><tr style="background:#ffffff;color:#000">
           <td class="vessel">INDUSTRIAL DIAMOND</td>
           <td class="berco">S CORTE</td>
